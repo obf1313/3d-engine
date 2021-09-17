@@ -21,7 +21,7 @@ const App = () => {
           <Home>
             <Switch>
               <ErrorBoundary>
-                <Route exact path={platform} component={MultipleModel} />
+                <Route exact path={platform} component={SimpleScene} />
                 <Route exact path={platform + 'example/simpleScene'} component={SimpleScene} />
                 <Route exact path={platform + 'example/textureScene'} component={TextureScene} />
                 <Route exact path={platform + 'example/dracoLoaderUse'} component={DracoLoaderUse} />

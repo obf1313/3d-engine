@@ -18,6 +18,12 @@ const TextureScene = () => {
   });
   const { camera } = useCameraHook({
     cameraType: CameraType.perspectiveCamera,
+    perspectiveParams: {
+      fov: 45,
+      aspect: getClientWidth() / (getClientHeight() - 60),
+      near: 1,
+      far: 100,
+    },
     position: [0, 200, 200]
   });
   const [threeContainer, setThreeContainer] = useState<any>();
