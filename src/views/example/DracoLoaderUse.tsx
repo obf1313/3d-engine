@@ -6,18 +6,21 @@
 import React, { useEffect, useState } from 'react';
 import { CameraType, useCameraHook, useSceneHook } from '@components/index';
 import {
-  Color, DirectionalLight, HemisphereLight, MeshBasicMaterial, MeshStandardMaterial,
+  Color, DirectionalLight, HemisphereLight, Mesh, MeshBasicMaterial, MeshPhongMaterial, MeshStandardMaterial,
   RepeatWrapping, Texture, TextureLoader, WebGLRenderer
 } from 'three';
 import { getClientHeight, getClientWidth, getTreeChildren } from '@utils/CommonFunc';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
+import { getIntersects } from '@utils/ThreeUtils';
 
 interface IMaterialData {
   name: string,
   material: any
 }
+
+let selectObjectList: Array<any> = [];
 
 const DracoLoaderUse = () => {
   const { scene } = useSceneHook({
@@ -41,6 +44,7 @@ const DracoLoaderUse = () => {
       }
       // 移除 resize 监听
       window.removeEventListener('resize', onWindowResize);
+      window.removeEventListener('click', onMouseClick);
     };
   }, []);
   useEffect(() => {
@@ -57,6 +61,7 @@ const DracoLoaderUse = () => {
     if (renderer) {
       initControls();
       window.addEventListener('resize', onWindowResize, false);
+      window.addEventListener('click', onMouseClick, false);
     }
   }, [renderer]);
   // 初始化场景
@@ -118,8 +123,10 @@ const DracoLoaderUse = () => {
     dracoLoader.setDecoderPath('/modelStatic/three/dracos/gltf/');
     loader.setDRACOLoader(dracoLoader);
     loader.load(url, (object: any) => {
+      // 对模型进行一些修改
       const floorNameList: Array<string> = ['_1F', '_2F', '_3F', '_4F', '_5F'];
       getTreeChildren(object.scene.children, (item: any) => {
+        // 预存生产线材质，为单击生产线高亮后取消做准备
         if (item.name.indexOf('Proline') !== -1) {
           materialList.push({
             name: item.name,
@@ -162,6 +169,41 @@ const DracoLoaderUse = () => {
     camera.aspect = getClientWidth() / (getClientHeight() - 60);
     camera.updateProjectionMatrix();
     renderer.setSize(getClientWidth(), getClientHeight() - 60);
+  };
+  // 监听鼠标单击事件
+  const onMouseClick = (event: MouseEvent) => {
+    // 获取 raycaster 和所有模型相交的数组，其中的元素按照距离排序，越近的越靠前
+    const intersects = getIntersects(event, threeContainer, camera, scene);
+    // 清空所有高亮材质
+    resetMaterial();
+    // 获取选中最近的 Mesh 对象
+    if (intersects.length !== 0 && intersects[0].object instanceof Mesh) {
+      const selectObject = intersects[0].object;
+      selectObjectList.push(selectObject);
+      onSelectObject(selectObject);
+    }
+  };
+  // 重置材质
+  const resetMaterial = () => {
+    for (let i = 0; i < selectObjectList.length; i++) {
+      if (materialList.filter((item) => item.name === selectObjectList[i].name).length > 0) {
+        selectObjectList[i].material = materialList.filter((item) => item.name === selectObjectList[i].name)[0].material;
+      }
+    }
+    selectObjectList = [];
+  };
+  // 选中某个对象
+  const onSelectObject = (tempSelectObject: any) => {
+    // 只有生产线可以点击
+    if (tempSelectObject.name.indexOf('Proline') !== -1) {
+      if (materialList.filter(item => item.name === tempSelectObject.name).length > 0) {
+        let oldOneMaterial = materialList.filter(item => item.name === tempSelectObject.name)[0];
+        tempSelectObject.material = new MeshPhongMaterial({
+          color: 0X4169E1,
+          map: oldOneMaterial.material.map
+        });
+      }
+    }
   };
   // 箭头纹理
   const initArrowTexture = () => {
