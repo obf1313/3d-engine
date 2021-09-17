@@ -14,3 +14,4 @@ export { default as SysLog } from '@views/systemManage/SysLog';
 export { default as SimpleScene } from '@views/example/SimpleScene';
 export { default as TextureScene } from '@views/example/TextureScene';
 export { default as DracoLoaderUse } from '@views/example/DracoLoaderUse';
+export { default as MultipleModel } from '@views/example/MultipleModel';
