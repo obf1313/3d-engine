@@ -12,3 +12,5 @@ export { default as NotFound } from '@views/error/NotFound';
 export { default as SysLog } from '@views/systemManage/SysLog';
 // 三维示例
 export { default as SimpleScene } from '@views/example/SimpleScene';
+export { default as TextureScene } from '@views/example/TextureScene';
+export { default as DracoLoaderUse } from '@views/example/DracoLoaderUse';

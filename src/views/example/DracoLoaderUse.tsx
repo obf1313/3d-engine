@@ -1,26 +1,39 @@
 /**
- * @description: 简单场景
+ * @description: 使用 dracoLoader 导入压缩后的模型
  * @author: cnn
- * @createTime: 2021/9/10 16:05
+ * @createTime: 2021/9/17 10:47
  **/
 import React, { useEffect, useState } from 'react';
 import { CameraType, useCameraHook, useSceneHook } from '@components/index';
-import { Color, HemisphereLight, DirectionalLight, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh } from 'three';
+import {
+  Color, DirectionalLight, HemisphereLight, MeshBasicMaterial, MeshStandardMaterial,
+  RepeatWrapping, Texture, TextureLoader, WebGLRenderer
+} from 'three';
+import { getClientHeight, getClientWidth, getTreeChildren } from '@utils/CommonFunc';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 
-const SimpleScene = () => {
+interface IMaterialData {
+  name: string,
+  material: any
+}
+
+const DracoLoaderUse = () => {
   const { scene } = useSceneHook({
     background: new Color(0xcce0ff)
   });
   const { camera } = useCameraHook({
     cameraType: CameraType.perspectiveCamera,
-    position: [0, 200, 200]
+    position: [0, 500, 500]
   });
   const [threeContainer, setThreeContainer] = useState<any>();
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
+  const [materialList, setMaterialList] = useState<Array<IMaterialData>>([]);
+  const [arrowTexture, setArrowTexture] = useState<Texture>();
   useEffect(() => {
+    initArrowTexture();
     return () => {
       // 移除 animation
       if (animationId) {
@@ -34,7 +47,7 @@ const SimpleScene = () => {
     if (scene && camera) {
       initScene();
     }
-  }, [scene, camera]);
+  }, [scene, camera, arrowTexture]);
   useEffect(() => {
     if (threeContainer) {
       initRenderer();
@@ -50,7 +63,7 @@ const SimpleScene = () => {
   const initScene = () => {
     const threeContainer = document.getElementById('threeContainer') || document;
     initLight();
-    initCube();
+    initModel();
     setThreeContainer(threeContainer);
   };
   // 初始化光源
@@ -91,21 +104,57 @@ const SimpleScene = () => {
     controls.target.set(0, 0, 0);
     controls.maxPolarAngle = Math.PI * 0.5;
     controls.minDistance = 2;
-    controls.maxDistance = 80;
+    controls.maxDistance = 500;
     controls.update();
     animate();
   };
-  // 生成一个 cube 放入场景中
-  const initCube = () => {
-    const geometry = new BoxGeometry(20, 20, 20);
-    const material = new MeshBasicMaterial({ color: 0xcc20ff });
-    const cube = new Mesh(geometry, material);
-    scene.add(cube);
+  // 初始化模型
+  const initModel = () => {
+    const url: string = '/modelStatic/three/model.gltf';
+    // 加载模型
+    const loader = new GLTFLoader();
+    // 设置解压库文件路径
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('/modelStatic/three/dracos/gltf/');
+    loader.setDRACOLoader(dracoLoader);
+    loader.load(url, (object: any) => {
+      const floorNameList: Array<string> = ['_1F', '_2F', '_3F', '_4F', '_5F'];
+      getTreeChildren(object.scene.children, (item: any) => {
+        if (item.name.indexOf('Proline') !== -1) {
+          materialList.push({
+            name: item.name,
+            material: item.material
+          });
+        }
+        if (floorNameList.indexOf(item.name) !== -1) {
+          // 楼板透明化
+          item.material = new MeshBasicMaterial({
+            color: 0X4169E1,
+            transparent: true,
+            opacity: 0.2
+          });
+        }
+        // 如果是箭头平面，则流动箭头动画
+        if (item.name.indexOf('arrow-plane') !== -1) {
+          item.material = new MeshStandardMaterial({
+            color: new Color(0xffffff),
+            map: arrowTexture,
+            transparent: true
+          });
+        }
+      });
+      setMaterialList([...materialList]);
+      scene.add(object.scene);
+    });
   };
   // 更新
   const animate = () => {
     const animationId = requestAnimationFrame(animate);
     setAnimationId(animationId);
+    // 通过设置纹理的位移达到箭头流动的效果
+    if (arrowTexture) {
+      arrowTexture.offset.y -= 0.05;
+    }
     renderer.render(scene, camera);
   };
   // 监听拉伸浏览器事件
@@ -114,6 +163,13 @@ const SimpleScene = () => {
     camera.updateProjectionMatrix();
     renderer.setSize(getClientWidth(), getClientHeight() - 60);
   };
+  // 箭头纹理
+  const initArrowTexture = () => {
+    const texture: Texture = new TextureLoader().load('/modelStatic/three/arrow-up.png');
+    texture.wrapS = texture.wrapT = RepeatWrapping;
+    texture.repeat.set(1, 100);
+    setArrowTexture(texture);
+  };
   return <div id="threeContainer" />;
 };
-export default SimpleScene;
+export default DracoLoaderUse;

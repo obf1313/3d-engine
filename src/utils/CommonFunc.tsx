@@ -165,3 +165,14 @@ export const getClientWidth = () => {
   // @ts-ignore
   return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 };
+/**
+ * customSet: 自定义设置数组元素的属性变化
+ * **/
+export const getTreeChildren = (array: Array<any>, customSet?: any) => {
+  return array.map((v: any) => {
+    const item = v;
+    if (customSet) customSet(item);
+    if (v.children) item.children = getTreeChildren(v.children, customSet);
+    return item;
+  });
+};

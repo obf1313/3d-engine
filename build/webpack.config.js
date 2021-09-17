@@ -59,12 +59,12 @@ module.exports = {
         }
       },
       // 第二种方法就是直接配置一个代理去访问静态资源路径，不在 index.html 页面中
-      // '/imagesStatic': {
-      //   target: 'http://localhost:8084',
-      //   pathRewrite: {
-      //     '^/imagesStatic': ''
-      //   }
-      // }
+      '/modelStatic': {
+        target: 'http://localhost:50010',
+        pathRewrite: {
+          '^/modelStatic': ''
+        }
+      }
     }
   }
 };

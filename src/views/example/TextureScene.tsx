@@ -1,15 +1,18 @@
 /**
- * @description: 简单场景
+ * @description: 三维模型贴材质，材质使用导入图片作为纹理
  * @author: cnn
- * @createTime: 2021/9/10 16:05
+ * @createTime: 2021/9/17 10:26
  **/
 import React, { useEffect, useState } from 'react';
 import { CameraType, useCameraHook, useSceneHook } from '@components/index';
-import { Color, HemisphereLight, DirectionalLight, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh } from 'three';
+import {
+  BoxGeometry, Color, DirectionalLight, HemisphereLight, Mesh,
+  MeshBasicMaterial, WebGLRenderer, TextureLoader, RepeatWrapping
+} from 'three';
+import { getClientHeight, getClientWidth } from '@utils/CommonFunc';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 
-const SimpleScene = () => {
+const TextureScene = () => {
   const { scene } = useSceneHook({
     background: new Color(0xcce0ff)
   });
@@ -98,7 +101,12 @@ const SimpleScene = () => {
   // 生成一个 cube 放入场景中
   const initCube = () => {
     const geometry = new BoxGeometry(20, 20, 20);
-    const material = new MeshBasicMaterial({ color: 0xcc20ff });
+    // 初始化纹理
+    const texture = new TextureLoader().load('/modelStatic/three/crate.gif');
+    texture.wrapS = texture.wrapT = RepeatWrapping;
+    const material = new MeshBasicMaterial({
+      map: texture
+    });
     const cube = new Mesh(geometry, material);
     scene.add(cube);
   };
@@ -116,4 +124,4 @@ const SimpleScene = () => {
   };
   return <div id="threeContainer" />;
 };
-export default SimpleScene;
+export default TextureScene;
