@@ -6,7 +6,10 @@
 import React, { createContext, useReducer } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ErrorBoundary } from '@components/index';
-import { NotFound, Home, SimpleScene, TextureScene, DracoLoaderUse, MultipleModel } from '@views/index';
+import {
+  NotFound, Home, SimpleScene, TextureScene, DracoLoaderUse,
+  MultipleModel, SkyBox
+} from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
 
@@ -21,11 +24,12 @@ const App = () => {
           <Home>
             <Switch>
               <ErrorBoundary>
-                <Route exact path={platform} component={SimpleScene} />
+                <Route exact path={platform} component={SkyBox} />
                 <Route exact path={platform + 'example/simpleScene'} component={SimpleScene} />
                 <Route exact path={platform + 'example/textureScene'} component={TextureScene} />
                 <Route exact path={platform + 'example/dracoLoaderUse'} component={DracoLoaderUse} />
                 <Route exact path={platform + 'example/multipleModel'} component={MultipleModel} />
+                <Route exact path={platform + 'example/skyBox'} component={SkyBox} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

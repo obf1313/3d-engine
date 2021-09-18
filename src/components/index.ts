@@ -17,3 +17,4 @@ export type { IFormColumns } from '@components/form/CommonForm';
 // three.js hook
 export { default as useCameraHook, CameraType } from '@components/threeHook/useCameraHook';
 export { default as useSceneHook } from '@components/threeHook/useSceneHook';
+export { default as useCubeTexture } from '@components/threeHook/useCubeTexture';

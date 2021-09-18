@@ -31,7 +31,7 @@ const useSceneHook = (props: ISceneProps) => {
   const [scene, setScene] = useState<Scene>(new Scene());
   useEffect(() => {
     initScene();
-  }, []);
+  }, [background]);
   // 初始化场景
   const initScene = () => {
     const scene = new Scene();
