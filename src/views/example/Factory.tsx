@@ -208,9 +208,9 @@ const Factory = () => {
   };
   // 箭头纹理
   const initArrowTexture = () => {
-    const texture: Texture = new TextureLoader().load('/modelStatic/three/arrow-right.png');
+    const texture: Texture = new TextureLoader().load('/modelStatic/three/arrow.png');
     texture.wrapS = texture.wrapT = RepeatWrapping;
-    texture.repeat.set(1, 10);
+    texture.repeat.set(1, 5);
     setArrowTexture(texture);
   };
   return <div id="threeContainer" />;
