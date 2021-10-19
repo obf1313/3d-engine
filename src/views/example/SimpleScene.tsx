@@ -4,16 +4,16 @@
  * @createTime: 2021/9/10 16:05
  **/
 import React, { useEffect, useState } from 'react';
-import { CameraType, useCameraHook, useSceneHook } from '@components/index';
 import { Color, HemisphereLight, DirectionalLight, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
+import { CameraType, initCamera, initScene } from '@utils/ThreeUtils';
 
 const SimpleScene = () => {
-  const { scene } = useSceneHook({
+  const scene = initScene({
     background: new Color(0xcce0ff)
   });
-  const { camera } = useCameraHook({
+  const camera = initCamera({
     cameraType: CameraType.perspectiveCamera,
     perspectiveParams: {
       fov: 45,
@@ -38,7 +38,7 @@ const SimpleScene = () => {
   }, []);
   useEffect(() => {
     if (scene && camera) {
-      initScene();
+      initMyScene();
     }
   }, [scene, camera]);
   useEffect(() => {
@@ -53,7 +53,7 @@ const SimpleScene = () => {
     }
   }, [renderer]);
   // 初始化场景
-  const initScene = () => {
+  const initMyScene = () => {
     const threeContainer = document.getElementById('threeContainer') || document;
     initLight();
     initCube();

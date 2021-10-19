@@ -1,12 +1,13 @@
 /**
- * @description: 使用 dracoLoader 导入压缩后的模型
+ * @description: 工厂模型
  * @author: cnn
- * @createTime: 2021/9/17 10:47
+ * @createTime: 2021/10/19 10:11
  **/
 import React, { useEffect, useState } from 'react';
 import {
-  Color, DirectionalLight, HemisphereLight, Mesh, MeshBasicMaterial, MeshPhongMaterial, MeshStandardMaterial,
-  RepeatWrapping, Texture, TextureLoader, WebGLRenderer
+  Color, DirectionalLight, Mesh, MeshBasicMaterial, MeshPhongMaterial,
+  MeshStandardMaterial, PointLight, RepeatWrapping, Texture, TextureLoader,
+  WebGLRenderer
 } from 'three';
 import { getClientHeight, getClientWidth, getTreeChildren } from '@utils/CommonFunc';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -25,10 +26,10 @@ const scene = initScene({
 });
 const camera = initCamera({
   cameraType: CameraType.perspectiveCamera,
-  position: [0, 500, 500]
+  position: [-45, 30, 50]
 });
 
-const DracoLoaderUse = () => {
+const Factory = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
@@ -47,7 +48,7 @@ const DracoLoaderUse = () => {
     };
   }, []);
   useEffect(() => {
-    if (scene && camera) {
+    if (scene && camera && arrowTexture) {
       initMyScene();
     }
   }, [scene, camera, arrowTexture]);
@@ -72,10 +73,20 @@ const DracoLoaderUse = () => {
   };
   // 初始化光源
   const initLight = () => {
-    // 半球光，光源直接放置于场景之上，光照颜色从天空光线颜色渐变到地面光线颜色。
-    const hemisphereLight = new HemisphereLight(0xffffff, 0x444444);
-    hemisphereLight.position.set(0, 200, 0);
-    scene.add(hemisphereLight);
+    // 点光源
+    // 从一个点向各个方向发射的光源。一个常见的例子是模拟一个灯泡发出的光。
+    const pointLight = new PointLight(0xffe7ba, 1, 100);
+    pointLight.position.set(-64, 39, 22);
+    scene.add(pointLight);
+    const pointLight1 = new PointLight(0xffe7ba, 1, 100);
+    pointLight1.position.set(-38, -59, 22);
+    scene.add(pointLight1);
+    const pointLight2 = new PointLight(0xffe7ba, 1, 100);
+    pointLight2.position.set(66, 45, 22);
+    scene.add(pointLight2);
+    const pointLight3 = new PointLight(0xffe7ba, 1, 100);
+    pointLight3.position.set(33, 162, 22);
+    scene.add(pointLight3);
     // 平行光
     // 平行光是沿着特定方向发射的光。
     // 这种光的表现像是无限远，从它发出的光线都是平行的。
@@ -107,14 +118,14 @@ const DracoLoaderUse = () => {
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.target.set(0, 0, 0);
     controls.maxPolarAngle = Math.PI * 0.5;
-    controls.minDistance = 2;
-    controls.maxDistance = 500;
+    controls.minDistance = 0;
+    controls.maxDistance = 150;
     controls.update();
     animate();
   };
   // 初始化模型
   const initModel = () => {
-    const url: string = '/modelStatic/three/model.gltf';
+    const url: string = '/modelStatic/three/BiomassFactory.gltf';
     // 加载模型
     const loader = new GLTFLoader();
     // 设置解压库文件路径
@@ -122,26 +133,18 @@ const DracoLoaderUse = () => {
     dracoLoader.setDecoderPath('/modelStatic/three/dracos/gltf/');
     loader.setDRACOLoader(dracoLoader);
     loader.load(url, (object: any) => {
-      // 对模型进行一些修改
-      const floorNameList: Array<string> = ['_1F', '_2F', '_3F', '_4F', '_5F'];
+      const pipeList = ['Mesh006', 'Mesh007'];
       getTreeChildren(object.scene.children, (item: any) => {
-        // 预存生产线材质，为单击生产线高亮后取消做准备
-        if (item.name.indexOf('Proline') !== -1) {
-          materialList.push({
-            name: item.name,
-            material: item.material
-          });
-        }
-        if (floorNameList.indexOf(item.name) !== -1) {
-          // 楼板透明化
+        // 管道半透明
+        if (pipeList.indexOf(item.name) !== -1) {
           item.material = new MeshBasicMaterial({
             color: 0X4169E1,
             transparent: true,
             opacity: 0.2
           });
         }
-        // 如果是箭头平面，则流动箭头动画
-        if (item.name.indexOf('arrow-plane') !== -1) {
+        // 管道内平面加箭头动画
+        if (item.name.indexOf('arrowPlane') !== -1) {
           item.material = new MeshStandardMaterial({
             color: new Color(0xffffff),
             map: arrowTexture,
@@ -149,7 +152,6 @@ const DracoLoaderUse = () => {
           });
         }
       });
-      setMaterialList([...materialList]);
       scene.add(object.scene);
     });
   };
@@ -159,7 +161,7 @@ const DracoLoaderUse = () => {
     setAnimationId(animationId);
     // 通过设置纹理的位移达到箭头流动的效果
     if (arrowTexture) {
-      arrowTexture.offset.y -= 0.05;
+      arrowTexture.offset.y -= 0.01;
     }
     renderer.render(scene, camera);
   };
@@ -206,11 +208,11 @@ const DracoLoaderUse = () => {
   };
   // 箭头纹理
   const initArrowTexture = () => {
-    const texture: Texture = new TextureLoader().load('/modelStatic/three/arrow-up.png');
+    const texture: Texture = new TextureLoader().load('/modelStatic/three/arrow-right.png');
     texture.wrapS = texture.wrapT = RepeatWrapping;
-    texture.repeat.set(1, 100);
+    texture.repeat.set(1, 10);
     setArrowTexture(texture);
   };
   return <div id="threeContainer" />;
 };
-export default DracoLoaderUse;
+export default Factory;

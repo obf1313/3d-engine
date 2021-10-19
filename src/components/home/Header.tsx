@@ -39,6 +39,7 @@ const Header = () => {
             <Menu.Item key="dracoLoaderUse">DracoLoader 导入</Menu.Item>
             <Menu.Item key="multipleModel">多模型（动画）</Menu.Item>
             <Menu.Item key="skyBox">天空盒</Menu.Item>
+            <Menu.Item key="factory">工厂模型</Menu.Item>
           </SubMenu>
         </Menu>
       </Row>

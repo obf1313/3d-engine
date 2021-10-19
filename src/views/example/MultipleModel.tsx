@@ -4,7 +4,6 @@
  * @createTime: 2021/9/17 13:17
  **/
 import React, { useEffect, useState } from 'react';
-import { CameraType, useCameraHook, useSceneHook } from '@components/index';
 import { getClientHeight, getClientWidth, getTreeChildren } from '@utils/CommonFunc';
 import {
   Color, DirectionalLight, HemisphereLight, MeshBasicMaterial, MeshLambertMaterial,
@@ -13,6 +12,7 @@ import {
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { CameraType, initCamera, initScene } from '@utils/ThreeUtils';
 
 // 是否停止相机移动
 let stopCamera: boolean = false;
@@ -20,11 +20,10 @@ let stopCamera: boolean = false;
 let isBack: boolean = false;
 
 const MultipleModel = () => {
-  const [modelList, setModelList] = useState<Array<string>>([]);
-  const { scene } = useSceneHook({
+  const scene = initScene({
     background: new Color(0xcce0ff)
   });
-  const { camera } = useCameraHook({
+  const camera  = initCamera({
     cameraType: CameraType.perspectiveCamera,
     perspectiveParams: {
       fov: 45,
@@ -35,6 +34,7 @@ const MultipleModel = () => {
     position: [0, 5, 10],
     lookPoint: [20, 10, 10]
   });
+  const [modelList, setModelList] = useState<Array<string>>([]);
   const [threeContainer, setThreeContainer] = useState<any>();
   const [renderer, setRenderer] = useState<any>();
   const [controls, setControls] = useState<any>();
@@ -59,7 +59,7 @@ const MultipleModel = () => {
   }, []);
   useEffect(() => {
     if (scene && camera) {
-      initScene();
+      initMyScene();
     }
   }, [scene, camera]);
   useEffect(() => {
@@ -94,7 +94,7 @@ const MultipleModel = () => {
     setModelList(modelList);
   };
   // 初始化场景
-  const initScene = () => {
+  const initMyScene = () => {
     const threeContainer = document.getElementById('threeContainer') || document;
     initLight();
     initModalList();

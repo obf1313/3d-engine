@@ -4,20 +4,19 @@
  * @createTime: 2021/9/18 9:12
  **/
 import React, { useEffect, useState } from 'react';
-import { CameraType, useCameraHook, useCubeTexture, useSceneHook } from '@components/index';
 import {
   HemisphereLight, DirectionalLight, WebGLRenderer, BoxGeometry,
   MeshBasicMaterial, Mesh
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
+import { CameraType, initCamera, initCubeTexture, initScene } from '@utils/ThreeUtils';
 
 const SkyBox = () => {
-  const { cubeTexture } = useCubeTexture({ path: '/modelStatic/three/box/', urlList: ['right.jpg', 'left.jpg', 'top.jpg', 'bottom.jpg', 'front.jpg', 'back.jpg'] });
-  const { scene } = useSceneHook({
-    background: cubeTexture
+  const scene = initScene({
+    background: initCubeTexture('/modelStatic/three/box/', ['right.jpg', 'left.jpg', 'top.jpg', 'bottom.jpg', 'front.jpg', 'back.jpg'])
   });
-  const { camera } = useCameraHook({
+  const camera = initCamera({
     cameraType: CameraType.perspectiveCamera,
     perspectiveParams: {
       fov: 45,
@@ -42,7 +41,7 @@ const SkyBox = () => {
   }, []);
   useEffect(() => {
     if (scene && camera) {
-      initScene();
+      initMyScene();
     }
   }, [scene, camera]);
   useEffect(() => {
@@ -57,7 +56,7 @@ const SkyBox = () => {
     }
   }, [renderer]);
   // 初始化场景
-  const initScene = () => {
+  const initMyScene = () => {
     const threeContainer = document.getElementById('threeContainer') || document;
     initLight();
     initCube();
