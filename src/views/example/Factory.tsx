@@ -213,6 +213,24 @@ const Factory = () => {
     texture.repeat.set(1, 5);
     setArrowTexture(texture);
   };
+  // 添加 echarts 平面 todo 只是为了以后使用，此处并不能使用
+  // const addPlane = (chart: any) => {
+  //   const lineChart = chart.getDataURL({
+  //     pixelRatio: 4,
+  //   });
+  //   const texture = new TextureLoader().load(lineChart);
+  //   const geometry = new PlaneGeometry(3, 4);
+  //   const material = new MeshBasicMaterial({
+  //     map: texture,
+  //     transparent: true,
+  //     side: DoubleSide
+  //   });
+  //   const plane = new Mesh(geometry, material);
+  //   // 远， 右， 上
+  //   plane.position.set(11.2, -1, 37);
+  //   plane.rotateY(80.1);
+  //   scene.add(plane);
+  // };
   return <div id="threeContainer" />;
 };
 export default Factory;
