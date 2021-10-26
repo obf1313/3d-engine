@@ -17,3 +17,4 @@ export { default as DracoLoaderUse } from '@views/example/DracoLoaderUse';
 export { default as MultipleModel } from '@views/example/MultipleModel';
 export { default as SkyBox } from '@views/example/SkyBox';
 export { default as Factory } from '@views/example/Factory';
+export { default as Line } from '@views/example/Line';

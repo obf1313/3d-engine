@@ -1,15 +1,18 @@
 /**
- * @description: 简单场景
+ * @description: 画线
  * @author: cnn
- * @createTime: 2021/9/10 16:05
+ * @createTime: 2021/10/26 13:50
  **/
 import React, { useEffect, useState } from 'react';
-import { Color, HemisphereLight, DirectionalLight, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh } from 'three';
+import {
+  Color, HemisphereLight, DirectionalLight, WebGLRenderer, LineBasicMaterial,
+  Vector3, BufferGeometry, Line
+} from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 
-const SimpleScene = () => {
+const ThreeLine = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
@@ -62,7 +65,7 @@ const SimpleScene = () => {
   const initMyScene = () => {
     const threeContainer = document.getElementById('threeContainer') || document;
     initLight();
-    initCube();
+    initLine();
     setThreeContainer(threeContainer);
   };
   // 初始化光源
@@ -107,12 +110,20 @@ const SimpleScene = () => {
     controls.update();
     animate();
   };
-  // 生成一个 cube 放入场景中
-  const initCube = () => {
-    const geometry = new BoxGeometry(20, 20, 20);
-    const material = new MeshBasicMaterial({ color: 0xcc20ff });
-    const cube = new Mesh(geometry, material);
-    THREE_CONST.scene.add(cube);
+  // 画线
+  const initLine = () => {
+    const material = new LineBasicMaterial({
+      color: 0x0000ff
+    });
+    const points = [];
+    points.push(new Vector3(-10, 0, 0));
+    points.push(new Vector3(0, 10, 0));
+    points.push(new Vector3(10, 0, 0));
+    // 几何体
+    const geometry = new BufferGeometry().setFromPoints(points);
+    // 线条未闭合
+    const line = new Line(geometry, material);
+    THREE_CONST.scene.add(line);
   };
   // 更新
   const animate = () => {
@@ -128,4 +139,4 @@ const SimpleScene = () => {
   };
   return <div id="threeContainer" />;
 };
-export default SimpleScene;
+export default ThreeLine;
