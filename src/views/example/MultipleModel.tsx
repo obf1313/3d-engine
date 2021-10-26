@@ -12,7 +12,7 @@ import {
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { CameraType, initCamera, initScene } from '@utils/ThreeUtils';
+import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 
 // 是否停止相机移动
 let stopCamera: boolean = false;
@@ -20,20 +20,6 @@ let stopCamera: boolean = false;
 let isBack: boolean = false;
 
 const MultipleModel = () => {
-  const scene = initScene({
-    background: new Color(0xcce0ff)
-  });
-  const camera  = initCamera({
-    cameraType: CameraType.perspectiveCamera,
-    perspectiveParams: {
-      fov: 45,
-      aspect: getClientWidth() / (getClientHeight() - 60),
-      near: 1,
-      far: 100,
-    },
-    position: [0, 5, 10],
-    lookPoint: [20, 10, 10]
-  });
   const [modelList, setModelList] = useState<Array<string>>([]);
   const [threeContainer, setThreeContainer] = useState<any>();
   const [renderer, setRenderer] = useState<any>();
@@ -43,25 +29,45 @@ const MultipleModel = () => {
   const [arrowTexture, setArrowTexture] = useState<Texture>();
   const [trackTexture, setTrackTexture] = useState<Texture>();
   useEffect(() => {
+    THREE_CONST.scene = initScene({
+      background: new Color(0xcce0ff)
+    });
+    THREE_CONST.camera = initCamera({
+      cameraType: CameraType.perspectiveCamera,
+      perspectiveParams: {
+        fov: 45,
+        aspect: getClientWidth() / (getClientHeight() - 60),
+        near: 1,
+        far: 100,
+      },
+      position: [0, 5, 10],
+      lookPoint: [20, 10, 10]
+    });
     initArrowTexture();
     initTrackTexture();
     getModelList();
+    return () => {
+      // 移除 resize 监听
+      window.removeEventListener('resize', onWindowResize);
+      stopCamera = false;
+      isBack = false;
+      // 重置全局变量
+      resetThreeConst();
+    };
+  }, []);
+  useEffect(() => {
     return () => {
       // 移除 animation
       if (animationId) {
         window.cancelAnimationFrame(animationId);
       }
-      // 移除 resize 监听
-      window.removeEventListener('resize', onWindowResize);
-      stopCamera = false;
-      isBack = false;
     };
-  }, []);
+  }, [animationId]);
   useEffect(() => {
-    if (scene && camera) {
+    if (THREE_CONST.scene && THREE_CONST.camera) {
       initMyScene();
     }
-  }, [scene, camera]);
+  }, [THREE_CONST.scene, THREE_CONST.camera]);
   useEffect(() => {
     if (threeContainer) {
       initRenderer();
@@ -105,7 +111,7 @@ const MultipleModel = () => {
     // 半球光，光源直接放置于场景之上，光照颜色从天空光线颜色渐变到地面光线颜色。
     const hemisphereLight = new HemisphereLight(0xffffff, 0x444444);
     hemisphereLight.position.set(0, 200, 0);
-    scene.add(hemisphereLight);
+    THREE_CONST.scene.add(hemisphereLight);
     // 平行光
     // 平行光是沿着特定方向发射的光。
     // 这种光的表现像是无限远，从它发出的光线都是平行的。
@@ -117,7 +123,7 @@ const MultipleModel = () => {
     directionalLight.shadow.camera.bottom = -100;
     directionalLight.shadow.camera.left = -120;
     directionalLight.shadow.camera.right = 120;
-    scene.add(directionalLight);
+    THREE_CONST.scene.add(directionalLight);
   };
   // 初始化 webgl 渲染器
   const initRenderer = () => {
@@ -134,7 +140,7 @@ const MultipleModel = () => {
   };
   // 初始化轨道控制器
   const initControls = () => {
-    const controls = new OrbitControls(camera, renderer.domElement);
+    const controls = new OrbitControls(THREE_CONST.camera, renderer.domElement);
     controls.target.set(0, 0, 0);
     controls.maxPolarAngle = Math.PI * 0.5;
     controls.minDistance = 2;
@@ -189,7 +195,7 @@ const MultipleModel = () => {
             setCube(item);
           }
         });
-        scene.add(object.scene);
+        THREE_CONST.scene.add(object.scene);
       });
     }
   };
@@ -197,13 +203,13 @@ const MultipleModel = () => {
   const animate = () => {
     const animationId = requestAnimationFrame(animate);
     setAnimationId(animationId);
-    renderer.render(scene, camera);
+    renderer.render(THREE_CONST.scene, THREE_CONST.camera);
     controls.update();
-    if (camera.position.z < 3 || camera.position.z === 3) {
+    if (THREE_CONST.camera.position.z < 3 || THREE_CONST.camera.position.z === 3) {
       stopCamera = true;
     }
     if (!stopCamera) {
-      camera.position.set(0, 0.5, camera.position.z - 0.05);
+      THREE_CONST.camera.position.set(0, 0.5, THREE_CONST.camera.position.z - 0.05);
     }
     // 设置纹理偏移
     if (arrowTexture) {
@@ -226,8 +232,8 @@ const MultipleModel = () => {
   };
   // 监听拉伸浏览器事件
   const onWindowResize = () => {
-    camera.aspect = getClientWidth() / (getClientHeight() - 60);
-    camera.updateProjectionMatrix();
+    THREE_CONST.camera.aspect = getClientWidth() / (getClientHeight() - 60);
+    THREE_CONST.camera.updateProjectionMatrix();
     renderer.setSize(getClientWidth(), getClientHeight() - 60);
   };
   // 箭头纹理

@@ -13,7 +13,7 @@ import { getClientHeight, getClientWidth, getTreeChildren } from '@utils/CommonF
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
-import { CameraType, getIntersects, initCamera, initScene } from '@utils/ThreeUtils';
+import { CameraType, getIntersects, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 
 interface IMaterialData {
   name: string,
@@ -21,13 +21,6 @@ interface IMaterialData {
 }
 
 let selectObjectList: Array<any> = [];
-const scene = initScene({
-  background: new Color(0xcce0ff)
-});
-const camera = initCamera({
-  cameraType: CameraType.perspectiveCamera,
-  position: [-45, 30, 50]
-});
 
 const Factory = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
@@ -36,22 +29,35 @@ const Factory = () => {
   const [materialList, setMaterialList] = useState<Array<IMaterialData>>([]);
   const [arrowTexture, setArrowTexture] = useState<Texture>();
   useEffect(() => {
+    THREE_CONST.scene = initScene({
+      background: new Color(0xcce0ff)
+    });
+    THREE_CONST.camera = initCamera({
+      cameraType: CameraType.perspectiveCamera,
+      position: [-45, 30, 50]
+    });
     initArrowTexture();
+    return () => {
+      // 移除 resize 监听
+      window.removeEventListener('resize', onWindowResize);
+      window.removeEventListener('click', onMouseClick);
+      // 重置全局变量
+      resetThreeConst();
+    };
+  }, []);
+  useEffect(() => {
     return () => {
       // 移除 animation
       if (animationId) {
         window.cancelAnimationFrame(animationId);
       }
-      // 移除 resize 监听
-      window.removeEventListener('resize', onWindowResize);
-      window.removeEventListener('click', onMouseClick);
     };
-  }, []);
+  }, [animationId]);
   useEffect(() => {
-    if (scene && camera && arrowTexture) {
+    if (THREE_CONST.scene && THREE_CONST.camera && arrowTexture) {
       initMyScene();
     }
-  }, [scene, camera, arrowTexture]);
+  }, [THREE_CONST.scene, THREE_CONST.camera, arrowTexture]);
   useEffect(() => {
     if (threeContainer) {
       initRenderer();
@@ -77,16 +83,16 @@ const Factory = () => {
     // 从一个点向各个方向发射的光源。一个常见的例子是模拟一个灯泡发出的光。
     const pointLight = new PointLight(0xffe7ba, 1, 100);
     pointLight.position.set(-64, 39, 22);
-    scene.add(pointLight);
+    THREE_CONST.scene.add(pointLight);
     const pointLight1 = new PointLight(0xffe7ba, 1, 100);
     pointLight1.position.set(-38, -59, 22);
-    scene.add(pointLight1);
+    THREE_CONST.scene.add(pointLight1);
     const pointLight2 = new PointLight(0xffe7ba, 1, 100);
     pointLight2.position.set(66, 45, 22);
-    scene.add(pointLight2);
+    THREE_CONST.scene.add(pointLight2);
     const pointLight3 = new PointLight(0xffe7ba, 1, 100);
     pointLight3.position.set(33, 162, 22);
-    scene.add(pointLight3);
+    THREE_CONST.scene.add(pointLight3);
     // 平行光
     // 平行光是沿着特定方向发射的光。
     // 这种光的表现像是无限远，从它发出的光线都是平行的。
@@ -98,7 +104,7 @@ const Factory = () => {
     directionalLight.shadow.camera.bottom = -100;
     directionalLight.shadow.camera.left = -120;
     directionalLight.shadow.camera.right = 120;
-    scene.add(directionalLight);
+    THREE_CONST.scene.add(directionalLight);
   };
   // 初始化 webgl 渲染器
   const initRenderer = () => {
@@ -115,7 +121,7 @@ const Factory = () => {
   };
   // 初始化轨道控制器
   const initControls = () => {
-    const controls = new OrbitControls(camera, renderer.domElement);
+    const controls = new OrbitControls(THREE_CONST.camera, renderer.domElement);
     controls.target.set(0, 0, 0);
     controls.maxPolarAngle = Math.PI * 0.5;
     controls.minDistance = 0;
@@ -152,7 +158,7 @@ const Factory = () => {
           });
         }
       });
-      scene.add(object.scene);
+      THREE_CONST.scene.add(object.scene);
     });
   };
   // 更新
@@ -163,18 +169,18 @@ const Factory = () => {
     if (arrowTexture) {
       arrowTexture.offset.y -= 0.01;
     }
-    renderer.render(scene, camera);
+    renderer.render(THREE_CONST.scene, THREE_CONST.camera);
   };
   // 监听拉伸浏览器事件
   const onWindowResize = () => {
-    camera.aspect = getClientWidth() / (getClientHeight() - 60);
-    camera.updateProjectionMatrix();
+    THREE_CONST.camera.aspect = getClientWidth() / (getClientHeight() - 60);
+    THREE_CONST.camera.updateProjectionMatrix();
     renderer.setSize(getClientWidth(), getClientHeight() - 60);
   };
   // 监听鼠标单击事件
   const onMouseClick = (event: MouseEvent) => {
     // 获取 raycaster 和所有模型相交的数组，其中的元素按照距离排序，越近的越靠前
-    const intersects = getIntersects(event, threeContainer, camera, scene);
+    const intersects = getIntersects(event, threeContainer, THREE_CONST.camera, THREE_CONST.scene);
     // 清空所有高亮材质
     resetMaterial();
     // 获取选中最近的 Mesh 对象

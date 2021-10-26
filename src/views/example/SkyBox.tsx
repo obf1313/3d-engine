@@ -10,40 +10,46 @@ import {
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
-import { CameraType, initCamera, initCubeTexture, initScene } from '@utils/ThreeUtils';
+import { CameraType, initCamera, initCubeTexture, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 
 const SkyBox = () => {
-  const scene = initScene({
-    background: initCubeTexture('/modelStatic/three/box/', ['right.jpg', 'left.jpg', 'top.jpg', 'bottom.jpg', 'front.jpg', 'back.jpg'])
-  });
-  const camera = initCamera({
-    cameraType: CameraType.perspectiveCamera,
-    perspectiveParams: {
-      fov: 45,
-      aspect: getClientWidth() / (getClientHeight() - 60),
-      near: 1,
-      far: 100,
-    },
-    position: [0, 200, 200]
-  });
   const [threeContainer, setThreeContainer] = useState<any>();
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
+  useEffect(() => {
+    THREE_CONST.scene = initScene({
+      background: initCubeTexture('/modelStatic/three/box/', ['right.jpg', 'left.jpg', 'top.jpg', 'bottom.jpg', 'front.jpg', 'back.jpg'])
+    });
+    THREE_CONST.camera = initCamera({
+      cameraType: CameraType.perspectiveCamera,
+      perspectiveParams: {
+        fov: 45,
+        aspect: getClientWidth() / (getClientHeight() - 60),
+        near: 1,
+        far: 100,
+      },
+      position: [0, 200, 200]
+    });
+    return () => {
+      // 移除 resize 监听
+      window.removeEventListener('resize', onWindowResize);
+      // 重置全局变量
+      resetThreeConst();
+    };
+  }, []);
   useEffect(() => {
     return () => {
       // 移除 animation
       if (animationId) {
         window.cancelAnimationFrame(animationId);
       }
-      // 移除 resize 监听
-      window.removeEventListener('resize', onWindowResize);
     };
-  }, []);
+  }, [animationId]);
   useEffect(() => {
-    if (scene && camera) {
+    if (THREE_CONST.scene && THREE_CONST.camera) {
       initMyScene();
     }
-  }, [scene, camera]);
+  }, [THREE_CONST.scene, THREE_CONST.camera]);
   useEffect(() => {
     if (threeContainer) {
       initRenderer();
@@ -67,7 +73,7 @@ const SkyBox = () => {
     // 半球光，光源直接放置于场景之上，光照颜色从天空光线颜色渐变到地面光线颜色。
     const hemisphereLight = new HemisphereLight(0xffffff, 0x444444);
     hemisphereLight.position.set(0, 200, 0);
-    scene.add(hemisphereLight);
+    THREE_CONST.scene.add(hemisphereLight);
     // 平行光
     // 平行光是沿着特定方向发射的光。
     // 这种光的表现像是无限远，从它发出的光线都是平行的。
@@ -79,7 +85,7 @@ const SkyBox = () => {
     directionalLight.shadow.camera.bottom = -100;
     directionalLight.shadow.camera.left = -120;
     directionalLight.shadow.camera.right = 120;
-    scene.add(directionalLight);
+    THREE_CONST.scene.add(directionalLight);
   };
   // 初始化 webgl 渲染器
   const initRenderer = () => {
@@ -96,7 +102,7 @@ const SkyBox = () => {
   };
   // 初始化轨道控制器
   const initControls = () => {
-    const controls = new OrbitControls(camera, renderer.domElement);
+    const controls = new OrbitControls(THREE_CONST.camera, renderer.domElement);
     controls.target.set(0, 0, 0);
     controls.maxPolarAngle = Math.PI * 0.5;
     controls.minDistance = 2;
@@ -109,18 +115,18 @@ const SkyBox = () => {
     const geometry = new BoxGeometry(20, 20, 20);
     const material = new MeshBasicMaterial({ color: 0xcc20ff });
     const cube = new Mesh(geometry, material);
-    scene.add(cube);
+    THREE_CONST.scene.add(cube);
   };
   // 更新
   const animate = () => {
     const animationId = requestAnimationFrame(animate);
     setAnimationId(animationId);
-    renderer.render(scene, camera);
+    renderer.render(THREE_CONST.scene, THREE_CONST.camera);
   };
   // 监听拉伸浏览器事件
   const onWindowResize = () => {
-    camera.aspect = getClientWidth() / (getClientHeight() - 60);
-    camera.updateProjectionMatrix();
+    THREE_CONST.camera.aspect = getClientWidth() / (getClientHeight() - 60);
+    THREE_CONST.camera.updateProjectionMatrix();
     renderer.setSize(getClientWidth(), getClientHeight() - 60);
   };
   return <div id="threeContainer" />;

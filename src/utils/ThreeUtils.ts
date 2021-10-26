@@ -8,6 +8,22 @@ import {
   PerspectiveCamera, Raycaster, Scene, Texture, Vector3
 } from 'three';
 import { getClientHeight, getClientWidth } from '@utils/CommonFunc';
+
+
+/**
+ * Three.js 全局变量
+**/
+export const THREE_CONST: any = {
+  scene: null,
+  camera: null
+};
+/**
+ * 重置全局变量
+**/
+export const resetThreeConst = () => {
+  THREE_CONST.scene = null;
+  THREE_CONST.camera = null;
+};
 export enum CameraType {
   /**
    * 透视相机
