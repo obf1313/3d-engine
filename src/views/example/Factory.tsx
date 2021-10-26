@@ -5,9 +5,9 @@
  **/
 import React, { useEffect, useState } from 'react';
 import {
-  Color, DirectionalLight, Mesh, MeshBasicMaterial, MeshPhongMaterial,
+  Color, DirectionalLight, DoubleSide, Mesh, MeshBasicMaterial, MeshPhongMaterial,
   MeshStandardMaterial, PointLight, RepeatWrapping, Texture, TextureLoader,
-  WebGLRenderer
+  WebGLRenderer, PlaneGeometry, VideoTexture
 } from 'three';
 import { getClientHeight, getClientWidth, getTreeChildren } from '@utils/CommonFunc';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -160,6 +160,7 @@ const Factory = () => {
       });
       THREE_CONST.scene.add(object.scene);
     });
+    addPlane();
   };
   // 更新
   const animate = () => {
@@ -237,6 +238,29 @@ const Factory = () => {
   //   plane.rotateY(80.1);
   //   scene.add(plane);
   // };
-  return <div id="threeContainer" />;
+  // 添加 视频 平面
+  const addPlane = () => {
+    const video = document.getElementById('video');
+    // @ts-ignore
+    const texture = new VideoTexture(video);
+    const geometry = new PlaneGeometry(4, 2.25);
+    const material = new MeshBasicMaterial({
+      map: texture,
+      side: DoubleSide
+    });
+    const plane = new Mesh(geometry, material);
+    // 远， 右， 上
+    plane.position.set(11.2, -1, 37);
+    plane.rotateY(80.1);
+    THREE_CONST.scene.add(plane);
+  };
+  return (
+    <>
+      <div id="threeContainer" />
+      <video id="video" controls width={400} height={300} style={{ display: 'none' }} autoPlay loop>
+        <source src="/modelStatic/three/1.mp4" type='video/ogg; codecs="theora, vorbis"' />
+      </video>
+    </>
+  );
 };
 export default Factory;
