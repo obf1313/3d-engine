@@ -20,3 +20,4 @@ export { default as Factory } from '@views/example/Factory';
 export { default as Line } from '@views/example/Line';
 // 三维示例 - 摄像机
 export { default as ArrayCamera } from '@views/example/camera/ArrayCamera';
+export { default as CubeCamera } from '@views/example/camera/CubeCamera';

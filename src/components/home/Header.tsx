@@ -10,6 +10,7 @@ import { OrderedListOutlined } from '@ant-design/icons';
 import { platform, projectName } from '@utils/CommonVars';
 import './index.less';
 import logo from '@static/images/logo.png';
+import { CubeCamera } from '@views/index';
 
 const { SubMenu } = Menu;
 
@@ -42,6 +43,7 @@ const Header = () => {
             <Menu.Item key="factory">工厂模型</Menu.Item>
             <Menu.Item key="line">画线</Menu.Item>
             <Menu.Item key="arrayCamera">摄像机阵列</Menu.Item>
+            <Menu.Item key="cubeCamera">立方相机</Menu.Item>
           </SubMenu>
         </Menu>
       </Row>

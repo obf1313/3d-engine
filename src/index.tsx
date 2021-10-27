@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ErrorBoundary } from '@components/index';
 import {
   NotFound, Home, SimpleScene, TextureScene, DracoLoaderUse,
-  MultipleModel, SkyBox, Factory, Line, ArrayCamera
+  MultipleModel, SkyBox, Factory, Line, ArrayCamera, CubeCamera
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -33,6 +33,7 @@ const App = () => {
                 <Route exact path={platform + 'example/factory'} component={Factory} />
                 <Route exact path={platform + 'example/line'} component={Line} />
                 <Route exact path={platform + 'example/arrayCamera'} component={ArrayCamera} />
+                <Route exact path={platform + 'example/cubeCamera'} component={CubeCamera} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>
