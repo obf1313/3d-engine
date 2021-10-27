@@ -5,8 +5,9 @@
  **/
 import React, { useEffect, useState } from 'react';
 import {
-  Color, DirectionalLight, HemisphereLight, Mesh, MeshBasicMaterial, MeshPhongMaterial, MeshStandardMaterial,
-  RepeatWrapping, Texture, TextureLoader, WebGLRenderer
+  Color, DirectionalLight, DoubleSide, HemisphereLight, Mesh,
+  MeshBasicMaterial, MeshPhongMaterial, MeshStandardMaterial, RepeatWrapping, Texture,
+  TextureLoader, WebGLRenderer
 } from 'three';
 import { getClientHeight, getClientWidth, getTreeChildren } from '@utils/CommonFunc';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -151,6 +152,7 @@ const DracoLoaderUse = () => {
           item.material = new MeshStandardMaterial({
             color: new Color(0xffffff),
             map: arrowTexture,
+            side: DoubleSide,
             transparent: true
           });
         }

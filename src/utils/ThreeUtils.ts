@@ -90,7 +90,7 @@ interface ISceneProps {
   // 如果不为空，它将强制场景中的每个物体使用这里的材质来渲染。默认值为 null。
   overrideMaterial?: Material
 }
-export const initScene = (props: ISceneProps) => {
+export const initScene = (props: ISceneProps = {}) => {
   const { autoUpdate = true, background, environment, fog, overrideMaterial } = props;
   const scene = new Scene();
   if (!autoUpdate) {

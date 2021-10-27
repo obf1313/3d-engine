@@ -41,6 +41,7 @@ const Header = () => {
             <Menu.Item key="skyBox">天空盒</Menu.Item>
             <Menu.Item key="factory">工厂模型</Menu.Item>
             <Menu.Item key="line">画线</Menu.Item>
+            <Menu.Item key="arrayCamera">摄像机阵列</Menu.Item>
           </SubMenu>
         </Menu>
       </Row>

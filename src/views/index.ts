@@ -18,3 +18,5 @@ export { default as MultipleModel } from '@views/example/MultipleModel';
 export { default as SkyBox } from '@views/example/SkyBox';
 export { default as Factory } from '@views/example/Factory';
 export { default as Line } from '@views/example/Line';
+// 三维示例 - 摄像机
+export { default as ArrayCamera } from '@views/example/camera/ArrayCamera';
