@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import {
   WebGLRenderer, PerspectiveCamera, CameraHelper, OrthographicCamera,
   BufferGeometry, MathUtils, Float32BufferAttribute, Points,
-  PointsMaterial, Mesh, SphereGeometry, MeshBasicMaterial, Group, Color
+  PointsMaterial, Mesh, SphereGeometry, MeshBasicMaterial, Group
 } from 'three';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
