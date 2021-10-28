@@ -16,7 +16,6 @@ import { initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 
 let mesh: any;
 
-// todo 不行，显示和官网的不一样
 const ArrayCamera = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
   const [renderer, setRenderer] = useState<any>();
@@ -24,6 +23,7 @@ const ArrayCamera = () => {
   useEffect(() => {
     initCamera();
     THREE_CONST.scene = initScene();
+    initMyScene();
     return () => {
       // 移除 resize 监听
       window.removeEventListener('resize', onWindowResize);
@@ -39,11 +39,6 @@ const ArrayCamera = () => {
       }
     };
   }, [animationId]);
-  useEffect(() => {
-    if (THREE_CONST.scene && THREE_CONST.camera) {
-      initMyScene();
-    }
-  }, [THREE_CONST.scene, THREE_CONST.camera]);
   useEffect(() => {
     if (threeContainer) {
       initRenderer();
@@ -72,8 +67,9 @@ const ArrayCamera = () => {
     for (let y = 0; y < amount; y++) {
       for (let x = 0; x < amount; x++) {
         const subCamera = new PerspectiveCamera(40, aspectRatio, 0.1, 10);
+        // 无语了找了半天问题结果是大小写问题
         // @ts-ignore
-        subCamera.viewPort = new Vector4(Math.floor(x * width), Math.floor(y * height), Math.ceil(width), Math.ceil(height));
+        subCamera.viewport = new Vector4(Math.floor(x * width), Math.floor(y * height), Math.ceil(width), Math.ceil(height));
         subCamera.position.x = (x / amount) - 0.5;
         subCamera.position.y = 0.5 - (y / amount);
         subCamera.position.z = 1.5;
