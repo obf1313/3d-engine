@@ -8,7 +8,6 @@ import React, { useEffect, useState } from 'react';
 import {
   WebGLRenderer, MeshBasicMaterial, Mesh, CubeTextureLoader, SphereGeometry
 } from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 import { AnaglyphEffect } from 'three/examples/jsm/effects/AnaglyphEffect';
@@ -16,11 +15,12 @@ import { AnaglyphEffect } from 'three/examples/jsm/effects/AnaglyphEffect';
 let textureCube: any;
 let spheres: Array<any> = [];
 let effect: any;
-let windowHalfX: number;
-let windowHalfY: number;
-let mouseX: number;
-let mouseY: number;
+let windowHalfX: number = getClientWidth() / 2;
+let windowHalfY: number = (getClientHeight() - 60) / 2;
+let mouseX: number = 0;
+let mouseY: number = 0;
 
+// 虽然但是其实我并不理解这个例子和 StereoCamera 有什么联系，其实是 AnaglyphEffect 这个里面用了
 const StereoCamera = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
   const [renderer, setRenderer] = useState<any>();
@@ -51,8 +51,13 @@ const StereoCamera = () => {
   }, [threeContainer]);
   useEffect(() => {
     if (renderer) {
-      initControls();
-      window.addEventListener('resize', onWindowResize, false);
+      const width = getClientWidth() || 2;
+      const height = (getClientHeight() - 60) || 2;
+      effect = new AnaglyphEffect(renderer);
+      effect.setSize(width, height);
+      animate();
+      window.addEventListener('resize', onWindowResize);
+      window.addEventListener('mousemove', onDocumentMouseMove);
     }
   }, [renderer]);
   // 初始化场景
@@ -89,21 +94,7 @@ const StereoCamera = () => {
     // 设置设备像素比。通常用于避免 HiDPI 设备上绘图模糊
     renderer.setPixelRatio(window.devicePixelRatio);
     threeContainer.appendChild(renderer.domElement);
-    const width = getClientWidth() || 2;
-    const height = (getClientHeight() - 60) || 2;
-    effect = new AnaglyphEffect(renderer);
-    effect.setSize(width, height);
     setRenderer(renderer);
-  };
-  // 初始化轨道控制器
-  const initControls = () => {
-    const controls = new OrbitControls(THREE_CONST.camera, renderer.domElement);
-    controls.target.set(0, 0, 0);
-    controls.maxPolarAngle = Math.PI * 0.5;
-    controls.minDistance = 2;
-    controls.maxDistance = 80;
-    controls.update();
-    animate();
   };
   // 生成一堆球球
   const initSphereGeometry = () => {
@@ -122,8 +113,8 @@ const StereoCamera = () => {
   // 更新
   const animate = () => {
     const animationId = requestAnimationFrame(animate);
-    render();
     setAnimationId(animationId);
+    render();
   };
   // 监听拉伸浏览器事件
   const onWindowResize = () => {
