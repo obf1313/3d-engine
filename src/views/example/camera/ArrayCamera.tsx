@@ -22,7 +22,7 @@ const ArrayCamera = () => {
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
   useEffect(() => {
-    THREE_CONST.scene = initScene({});
+    THREE_CONST.scene = initScene();
     initCamera();
     return () => {
       // 移除 resize 监听

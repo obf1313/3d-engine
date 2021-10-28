@@ -15,7 +15,8 @@ import { getClientHeight, getClientWidth } from '@utils/CommonFunc';
 **/
 export const THREE_CONST: any = {
   scene: null,
-  camera: null
+  camera: null,
+  stats: null
 };
 /**
  * 重置全局变量
@@ -125,7 +126,7 @@ export interface ICameraProps {
   },
   // fov 表示摄像机视锥体垂直视野角度，最小值为 0，最大值为 180，默认值为 50，实际项目中一般都定义 45，因为 45 最接近人正常睁眼角度；
   // aspect 表示摄像机视锥体长宽比，默认长宽比为 1，即表示看到的是正方形，实际项目中使用的是屏幕的宽高比；
-  // near 表示摄像机视锥体近端面，这个值默认为 0.1，实际项目中都会设置为 1；
+  // near 表示摄像机视锥体近端面，这个值默认为 0.1，实际项目中都会设置为 1，大于 0 的数；
   // far 表示摄像机视锥体远端面，默认为 2000，这个值可以是无限的，说的简单点就是我们视觉所能看到的最远距离。
   perspectiveParams?: {
     fov: number, // 摄像机视锥体垂直视野角度
