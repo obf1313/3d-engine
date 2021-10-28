@@ -27,9 +27,6 @@ const Camera = () => {
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
   useEffect(() => {
-    // 我去就是因为我加了背景色导致我的左边一直不出来
-    THREE_CONST.scene = initScene();
-    initCamera();
     initMyScene();
     return () => {
       // 移除 resize 监听
@@ -61,6 +58,9 @@ const Camera = () => {
   }, [renderer]);
   // 初始化场景
   const initMyScene = () => {
+    // 我去就是因为我加了背景色导致我的左边一直不出来
+    THREE_CONST.scene = initScene();
+    initCamera();
     const threeContainer = document.getElementById('threeContainer') || document;
     initParticles();
     initStarBackground();

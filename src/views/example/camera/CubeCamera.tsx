@@ -36,22 +36,6 @@ const CubeCamera = () => {
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
   useEffect(() => {
-    const textureLoader = new TextureLoader();
-    const texture = textureLoader.load('/modelStatic/three/home.jpg');
-    texture.encoding = sRGBEncoding;
-    texture.mapping = EquirectangularReflectionMapping;
-    THREE_CONST.scene = initScene({
-      background: texture
-    });
-    THREE_CONST.camera = initCamera({
-      cameraType: CameraType.perspectiveCamera,
-      perspectiveParams: {
-        fov: 60,
-        aspect: getClientWidth() / (getClientHeight() - 60),
-        near: 1,
-        far: 1000,
-      }
-    });
     initMyScene();
     return () => {
       // 移除 resize 监听
@@ -83,6 +67,22 @@ const CubeCamera = () => {
   }, [renderer]);
   // 初始化场景
   const initMyScene = () => {
+    const textureLoader = new TextureLoader();
+    const texture = textureLoader.load('/modelStatic/three/home.jpg');
+    texture.encoding = sRGBEncoding;
+    texture.mapping = EquirectangularReflectionMapping;
+    THREE_CONST.scene = initScene({
+      background: texture
+    });
+    THREE_CONST.camera = initCamera({
+      cameraType: CameraType.perspectiveCamera,
+      perspectiveParams: {
+        fov: 60,
+        aspect: getClientWidth() / (getClientHeight() - 60),
+        near: 1,
+        far: 1000,
+      }
+    });
     const threeContainer = document.getElementById('threeContainer') || document;
     initCubeCamera();
     setThreeContainer(threeContainer);

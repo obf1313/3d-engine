@@ -17,19 +17,6 @@ const SkyBox = () => {
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
   useEffect(() => {
-    THREE_CONST.scene = initScene({
-      background: initCubeTexture('/modelStatic/three/box/', ['right.jpg', 'left.jpg', 'top.jpg', 'bottom.jpg', 'front.jpg', 'back.jpg'])
-    });
-    THREE_CONST.camera = initCamera({
-      cameraType: CameraType.perspectiveCamera,
-      perspectiveParams: {
-        fov: 45,
-        aspect: getClientWidth() / (getClientHeight() - 60),
-        near: 1,
-        far: 100,
-      },
-      position: [0, 200, 200]
-    });
     initMyScene();
     return () => {
       // 移除 resize 监听
@@ -59,6 +46,19 @@ const SkyBox = () => {
   }, [renderer]);
   // 初始化场景
   const initMyScene = () => {
+    THREE_CONST.scene = initScene({
+      background: initCubeTexture('/modelStatic/three/box/', ['right.jpg', 'left.jpg', 'top.jpg', 'bottom.jpg', 'front.jpg', 'back.jpg'])
+    });
+    THREE_CONST.camera = initCamera({
+      cameraType: CameraType.perspectiveCamera,
+      perspectiveParams: {
+        fov: 45,
+        aspect: getClientWidth() / (getClientHeight() - 60),
+        near: 1,
+        far: 100,
+      },
+      position: [0, 200, 200]
+    });
     const threeContainer = document.getElementById('threeContainer') || document;
     initLight();
     initCube();

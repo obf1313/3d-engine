@@ -9,7 +9,7 @@ import { ErrorBoundary } from '@components/index';
 import {
   NotFound, Home, SimpleScene, TextureScene, DracoLoaderUse,
   MultipleModel, SkyBox, Factory, Line, ArrayCamera, CubeCamera,
-  Camera
+  Camera, StereoCamera
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -36,6 +36,7 @@ const App = () => {
                 <Route exact path={platform + 'example/arrayCamera'} component={ArrayCamera} />
                 <Route exact path={platform + 'example/cubeCamera'} component={CubeCamera} />
                 <Route exact path={platform + 'example/camera'} component={Camera} />
+                <Route exact path={platform + 'example/stereoCamera'} component={StereoCamera} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

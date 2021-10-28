@@ -21,8 +21,6 @@ const ArrayCamera = () => {
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
   useEffect(() => {
-    initCamera();
-    THREE_CONST.scene = initScene();
     initMyScene();
     return () => {
       // 移除 resize 监听
@@ -52,6 +50,8 @@ const ArrayCamera = () => {
   }, [renderer]);
   // 初始化场景
   const initMyScene = () => {
+    initCamera();
+    THREE_CONST.scene = initScene();
     const threeContainer = document.getElementById('threeContainer') || document;
     initLight();
     initCube();
