@@ -46,6 +46,7 @@ const Header = () => {
             <Menu.Item key="arrayCamera">摄像机阵列</Menu.Item>
             <Menu.Item key="cubeCamera">立方相机</Menu.Item>
             <Menu.Item key="stereoCamera">立体相机</Menu.Item>
+            <Menu.Item key="boxGeometry">立方缓冲几何体</Menu.Item>
           </SubMenu>
         </Menu>
       </Row>

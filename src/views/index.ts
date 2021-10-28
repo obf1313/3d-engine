@@ -23,3 +23,5 @@ export { default as Camera } from '@views/example/camera/Camera';
 export { default as ArrayCamera } from '@views/example/camera/ArrayCamera';
 export { default as CubeCamera } from '@views/example/camera/CubeCamera';
 export { default as StereoCamera } from '@views/example/camera/StereoCamera';
+// 三维示例 - 几何体
+export { default as BoxGeometry } from '@views/example/geometry/BoxGeometry';

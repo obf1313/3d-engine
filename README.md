@@ -5,9 +5,10 @@
 - [x] PerspectiveCamera 透视相机，OrthographicCamera 正交相机。
 - [x] CubeCamera 立方相机。
 - [x] StereoCamera 立体相机。
-## Geometry 几何体。
-- [ ] BoxGeometry 立体缓冲几何体。
-## 工作中用到的技术，无归类
+## Geometry 几何体
+- [x] BoxGeometry 立体缓冲几何体。
+- [ ] CircleGeometry 圆形缓冲几何体。
+## 工作中用到的技术，暂无归类
 - [x] Line 画线。
 - [x] SimpleScene 简单场景，包含 scene, light, camera, renderer, OrbitControls, 简单结合体。
 - [x] SkyBox 天空盒背景。
