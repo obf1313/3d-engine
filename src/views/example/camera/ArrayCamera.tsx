@@ -1,7 +1,7 @@
 /**
  * @description: 摄像机阵列
- * ArrayCamera 用于更加高效地使用一组已经预定义的摄像机来渲染一个场景。这将能够更好地提升VR场景的渲染性能。
- * 一个 ArrayCamera 的实例中总是包含着一组子摄像机，应当为每一个子摄像机定义viewport（视口）这个属性，这一属性决定了由该子摄像机所渲染的视口区域的大小。
+ * ArrayCamera 用于更加高效地使用一组已经预定义的摄像机来渲染一个场景。这将能够更好地提升 VR 场景的渲染性能。
+ * 一个 ArrayCamera 的实例中总是包含着一组子摄像机，应当为每一个子摄像机定义 viewport（视口）这个属性，这一属性决定了由该子摄像机所渲染的视口区域的大小。
  * @author: cnn
  * @createTime: 2021/10/27 9:29
  **/
@@ -22,8 +22,8 @@ const ArrayCamera = () => {
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
   useEffect(() => {
-    THREE_CONST.scene = initScene();
     initCamera();
+    THREE_CONST.scene = initScene();
     return () => {
       // 移除 resize 监听
       window.removeEventListener('resize', onWindowResize);
@@ -51,8 +51,8 @@ const ArrayCamera = () => {
   }, [threeContainer]);
   useEffect(() => {
     if (renderer) {
+      window.addEventListener('resize', onWindowResize);
       animate();
-      window.addEventListener('resize', onWindowResize, false);
     }
   }, [renderer]);
   // 初始化场景
@@ -89,7 +89,6 @@ const ArrayCamera = () => {
   };
   // 初始化光源
   const initLight = () => {
-
     THREE_CONST.scene.add(new AmbientLight(0x222244));
     const light = new DirectionalLight();
     light.position.set(0.5, 0.5, 1);
