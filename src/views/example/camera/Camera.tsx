@@ -27,9 +27,8 @@ const Camera = () => {
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
   useEffect(() => {
-    THREE_CONST.scene = initScene({
-      background: new Color(0x000000)
-    });
+    // 我去就是因为我加了背景色导致我的左边一直不出来
+    THREE_CONST.scene = initScene();
     initCamera();
     initMyScene();
     return () => {
@@ -179,7 +178,7 @@ const Camera = () => {
     renderer.render(THREE_CONST.scene, activeCamera);
     activeCameraHelper.visible = true;
     renderer.setViewport(getClientWidth() / 2, 0, getClientWidth() / 2, getClientHeight() - 60);
-    // renderer.render(THREE_CONST.scene, THREE_CONST.camera);
+    renderer.render(THREE_CONST.scene, THREE_CONST.camera);
   };
   // 监听拉伸浏览器事件
   const onWindowResize = () => {
@@ -208,6 +207,13 @@ const Camera = () => {
         break;
     }
   };
-  return <div id="threeContainer" />;
+  return (
+    <>
+      <div id="threeContainer" />
+      <div style={{ position: 'absolute', top: 60, left: 10, zIndex: 999, color: 'white' }}>
+        按 <span style={{ color: 'green' }}>o</span> 为 正交相机，按 <span style={{ color: 'green' }}>p</span> 为透视相机。
+      </div>
+    </>
+  );
 };
 export default Camera;
