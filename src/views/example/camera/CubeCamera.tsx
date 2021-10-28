@@ -52,6 +52,7 @@ const CubeCamera = () => {
         far: 1000,
       }
     });
+    initMyScene();
     return () => {
       // 移除 resize 监听
       window.removeEventListener('resize', onWindowResize);
@@ -67,11 +68,6 @@ const CubeCamera = () => {
       }
     };
   }, [animationId]);
-  useEffect(() => {
-    if (THREE_CONST.scene && THREE_CONST.camera) {
-      initMyScene();
-    }
-  }, [THREE_CONST.scene, THREE_CONST.camera]);
   useEffect(() => {
     if (threeContainer) {
       initRenderer();
@@ -103,9 +99,6 @@ const CubeCamera = () => {
     threeContainer.appendChild(renderer.domElement);
     setRenderer(renderer);
   };
-  // todo 说实话我并不知道为什么我的球上有黑色的
-  // 好像是奇怪的 圆环缓冲扭结几何体 这个导致的
-  // 把这个注释掉就没什么问题了
   // 生成立方相机
   const initCubeCamera = () => {
     cubeRenderTarget1 = new WebGLCubeRenderTarget(256, {
@@ -133,8 +126,8 @@ const CubeCamera = () => {
     cube = new Mesh(new BoxGeometry(20, 20, 20), material);
     THREE_CONST.scene.add(cube);
     // 圆环缓冲扭结几何体
-    // torus = new Mesh(new TorusKnotGeometry(10, 5, 128, 16), material);
-    // THREE_CONST.scene.add(torus);
+    torus = new Mesh(new TorusKnotGeometry(10, 5, 128, 16), material);
+    THREE_CONST.scene.add(torus);
   };
   // 更新
   const animate = () => {
@@ -154,11 +147,11 @@ const CubeCamera = () => {
     cube.position.z = Math.sin(time * 0.001) * 30;
     cube.rotation.x += 0.02;
     cube.rotation.y += 0.03;
-    // torus.position.x = Math.cos(time * 0.001 + 10) * 30;
-    // torus.position.y = Math.sin(time * 0.001 + 10) * 30;
-    // torus.position.z = Math.sin(time * 0.001 + 10) * 30;
-    // torus.rotation.x += 0.02;
-    // torus.rotation.y += 0.03;
+    torus.position.x = Math.cos(time * 0.001 + 10) * 30;
+    torus.position.y = Math.sin(time * 0.001 + 10) * 30;
+    torus.position.z = Math.sin(time * 0.001 + 10) * 30;
+    torus.rotation.x += 0.02;
+    torus.rotation.y += 0.03;
     THREE_CONST.camera.position.x = 100 * Math.sin(phi) * Math.cos(theta);
     THREE_CONST.camera.position.y = 100 * Math.cos(phi);
     THREE_CONST.camera.position.z = 100 * Math.sin(phi) * Math.sin(theta);

@@ -54,10 +54,10 @@ const DracoLoaderUse = () => {
     };
   }, [animationId]);
   useEffect(() => {
-    if (THREE_CONST.scene && THREE_CONST.camera) {
+    if (arrowTexture) {
       initMyScene();
     }
-  }, [THREE_CONST.scene, THREE_CONST.camera, arrowTexture]);
+  }, [arrowTexture]);
   useEffect(() => {
     if (threeContainer) {
       initRenderer();

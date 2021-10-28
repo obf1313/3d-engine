@@ -54,10 +54,10 @@ const Factory = () => {
     };
   }, [animationId]);
   useEffect(() => {
-    if (THREE_CONST.scene && THREE_CONST.camera && arrowTexture) {
+    if (arrowTexture) {
       initMyScene();
     }
-  }, [THREE_CONST.scene, THREE_CONST.camera, arrowTexture]);
+  }, [arrowTexture]);
   useEffect(() => {
     if (threeContainer) {
       initRenderer();

@@ -43,6 +43,7 @@ const MultipleModel = () => {
       position: [0, 5, 10],
       lookPoint: [20, 10, 10]
     });
+    initMyScene();
     initArrowTexture();
     initTrackTexture();
     getModelList();
@@ -63,11 +64,6 @@ const MultipleModel = () => {
       }
     };
   }, [animationId]);
-  useEffect(() => {
-    if (THREE_CONST.scene && THREE_CONST.camera) {
-      initMyScene();
-    }
-  }, [THREE_CONST.scene, THREE_CONST.camera]);
   useEffect(() => {
     if (threeContainer) {
       initRenderer();

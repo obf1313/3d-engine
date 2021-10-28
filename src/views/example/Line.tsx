@@ -30,6 +30,7 @@ const ThreeLine = () => {
       },
       position: [0, 200, 200]
     });
+    initMyScene();
     return () => {
       // 移除 resize 监听
       window.removeEventListener('resize', onWindowResize);
@@ -45,11 +46,6 @@ const ThreeLine = () => {
       }
     };
   }, [animationId]);
-  useEffect(() => {
-    if (THREE_CONST.scene && THREE_CONST.camera) {
-      initMyScene();
-    }
-  }, [THREE_CONST.scene, THREE_CONST.camera]);
   useEffect(() => {
     if (threeContainer) {
       initRenderer();

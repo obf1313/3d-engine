@@ -31,6 +31,7 @@ const Camera = () => {
       background: new Color(0x000000)
     });
     initCamera();
+    initMyScene();
     return () => {
       // 移除 resize 监听
       window.removeEventListener('resize', onWindowResize);
@@ -47,11 +48,6 @@ const Camera = () => {
       }
     };
   }, [animationId]);
-  useEffect(() => {
-    if (THREE_CONST.scene && THREE_CONST.camera) {
-      initMyScene();
-    }
-  }, [THREE_CONST.scene, THREE_CONST.camera]);
   useEffect(() => {
     if (threeContainer) {
       initRenderer();
