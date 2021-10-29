@@ -34,22 +34,29 @@ const Header = () => {
       <Row>
         <Menu onClick={menuClick} selectedKeys={[current]} mode="horizontal" style={{ borderBottom: 'none' }}>
           <SubMenu key="example" title="示例列表" icon={<OrderedListOutlined />}>
-            <Menu.Item key="simpleScene">简单场景</Menu.Item>
-            <Menu.Item key="textureScene">三维模型材质</Menu.Item>
-            <Menu.Item key="dracoLoaderUse">DracoLoader 导入</Menu.Item>
-            <Menu.Item key="multipleModel">多模型（动画）</Menu.Item>
-            <Menu.Item key="skyBox">天空盒</Menu.Item>
-            <Menu.Item key="factory">工厂模型</Menu.Item>
-            <Menu.Item key="line">画线</Menu.Item>
-            <Menu.Item key="camera">正交相机、透视相机</Menu.Item>
-            <Menu.Item key="arrayCamera">摄像机阵列</Menu.Item>
-            <Menu.Item key="cubeCamera">立方相机</Menu.Item>
-            <Menu.Item key="stereoCamera">立体相机</Menu.Item>
-            <Menu.Item key="boxGeometry">立方缓冲几何体</Menu.Item>
-            <Menu.Item key="circleGeometry">圆形缓冲几何体</Menu.Item>
-            <Menu.Item key="coneGeometry">圆锥缓冲几何体</Menu.Item>
-            <Menu.Item key="cylinderGeometry">圆柱缓冲几何体</Menu.Item>
-            <Menu.Item key="dodecahedronGeometry">十二面缓冲几何体</Menu.Item>
+            <Menu.ItemGroup title="Camera 相机">
+              <Menu.Item key="camera">正交相机、透视相机</Menu.Item>
+              <Menu.Item key="arrayCamera">摄像机阵列</Menu.Item>
+              <Menu.Item key="cubeCamera">立方相机</Menu.Item>
+              <Menu.Item key="stereoCamera">立体相机</Menu.Item>
+            </Menu.ItemGroup>
+            <Menu.ItemGroup title="Geometry 几何体">
+              <Menu.Item key="boxGeometry">立方缓冲几何体</Menu.Item>
+              <Menu.Item key="circleGeometry">圆形缓冲几何体</Menu.Item>
+              <Menu.Item key="coneGeometry">圆锥缓冲几何体</Menu.Item>
+              <Menu.Item key="cylinderGeometry">圆柱缓冲几何体</Menu.Item>
+              <Menu.Item key="dodecahedronGeometry">十二面缓冲几何体</Menu.Item>
+              <Menu.Item key="edgesGeometry">边缘几何体</Menu.Item>
+            </Menu.ItemGroup>
+            <Menu.ItemGroup title="Other 其他">
+              <Menu.Item key="line">画线</Menu.Item>
+              <Menu.Item key="simpleScene">简单场景</Menu.Item>
+              <Menu.Item key="skyBox">天空盒</Menu.Item>
+              <Menu.Item key="textureScene">三维模型材质</Menu.Item>
+              <Menu.Item key="dracoLoaderUse">DracoLoader 导入</Menu.Item>
+              <Menu.Item key="factory">工厂模型</Menu.Item>
+              <Menu.Item key="multipleModel">多模型（动画）</Menu.Item>
+            </Menu.ItemGroup>
           </SubMenu>
         </Menu>
       </Row>

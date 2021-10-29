@@ -11,6 +11,7 @@
 - [x] ConeGeometry 圆锥缓冲几何体。
 - [x] CylinderGeometry 圆柱缓冲几何体。
 - [x] DodecahedronGeometry 十二面缓冲几何体。
+- [ ] EdgesGeometry 边缘几何体。
 ## 工作中用到的技术，暂无归类
 - [x] Line 画线。
 - [x] SimpleScene 简单场景，包含 scene, light, camera, renderer, OrbitControls, 简单结合体。
