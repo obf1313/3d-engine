@@ -1,21 +1,20 @@
 /**
- * @description: CircleGeometry 圆形缓冲几何体
- * CircleGeometry 是欧式几何的一个简单形状，它由围绕着一个中心点的三角分段的数量所构造，由给定的半径来延展。 同时它也可以用于创建规则多边形，其分段数量取决于该规则多边形的边数。
+ * @description: 十二面缓冲几何体
  * @author: cnn
- * @createTime: 2021/10/28 17:19
+ * @createTime: 2021/10/29 9:56
  **/
 import React, { useEffect, useState } from 'react';
 import {
-  Color, WebGLRenderer, CircleGeometry as TCircleGeometry, MeshBasicMaterial,
-  Mesh, DoubleSide
+  Color, WebGLRenderer, DodecahedronGeometry as TDodecahedronGeometry, MeshBasicMaterial,
+  Mesh
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 
-let circle: any;
+let dodecahedron: any;
 
-const CircleGeometry = () => {
+const DodecahedronGeometry = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
@@ -63,7 +62,7 @@ const CircleGeometry = () => {
       position: [0, 200, 200]
     });
     const threeContainer = document.getElementById('threeContainer') || document;
-    initCircle();
+    initCylinder();
     setThreeContainer(threeContainer);
   };
   // 初始化 webgl 渲染器
@@ -89,20 +88,20 @@ const CircleGeometry = () => {
     controls.update();
     animate();
   };
-  // 生成一个 circle 放入场景中
-  const initCircle = () => {
-    const geometry = new TCircleGeometry(5, 32);
-    const material = new MeshBasicMaterial({ color: 0xffff00, side: DoubleSide });
-    circle = new Mesh(geometry, material);
-    THREE_CONST.scene.add(circle);
+  // 生成一个 dodecahedron 放入场景中
+  const initCylinder = () => {
+    const geometry = new TDodecahedronGeometry(5);
+    const material = new MeshBasicMaterial({ color: 0xffff00 });
+    dodecahedron = new Mesh(geometry, material);
+    THREE_CONST.scene.add(dodecahedron);
   };
   // 更新
   const animate = () => {
     const animationId = requestAnimationFrame(animate);
     setAnimationId(animationId);
-    if (circle) {
-      circle.rotation.x += 0.01;
-      circle.rotation.y += 0.01;
+    if (dodecahedron) {
+      dodecahedron.rotation.x += 0.01;
+      dodecahedron.rotation.y += 0.01;
     }
     renderer.render(THREE_CONST.scene, THREE_CONST.camera);
   };
@@ -114,4 +113,4 @@ const CircleGeometry = () => {
   };
   return <div id="threeContainer" />;
 };
-export default CircleGeometry;
+export default DodecahedronGeometry;

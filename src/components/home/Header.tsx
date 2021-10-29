@@ -10,7 +10,6 @@ import { OrderedListOutlined } from '@ant-design/icons';
 import { platform, projectName } from '@utils/CommonVars';
 import './index.less';
 import logo from '@static/images/logo.png';
-import { Camera, CubeCamera, StereoCamera } from '@views/index';
 
 const { SubMenu } = Menu;
 
@@ -47,6 +46,10 @@ const Header = () => {
             <Menu.Item key="cubeCamera">立方相机</Menu.Item>
             <Menu.Item key="stereoCamera">立体相机</Menu.Item>
             <Menu.Item key="boxGeometry">立方缓冲几何体</Menu.Item>
+            <Menu.Item key="circleGeometry">圆形缓冲几何体</Menu.Item>
+            <Menu.Item key="coneGeometry">圆锥缓冲几何体</Menu.Item>
+            <Menu.Item key="cylinderGeometry">圆柱缓冲几何体</Menu.Item>
+            <Menu.Item key="dodecahedronGeometry">十二面缓冲几何体</Menu.Item>
           </SubMenu>
         </Menu>
       </Row>
