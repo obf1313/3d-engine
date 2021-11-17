@@ -1,5 +1,6 @@
 /**
  * @description: 二十面缓冲几何体
+ * 一个用于生成二十面体的类。
  * @author: cnn
  * @createTime: 2021/11/17 16:13
  **/
@@ -22,6 +23,7 @@ const IcosahedronGeometry = () => {
       window.removeEventListener('resize', onWindowResize);
       // 重置全局变量
       resetThreeConst();
+      icosahedronGeometry = null;
     };
   }, []);
   useEffect(() => {

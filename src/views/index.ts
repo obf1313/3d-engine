@@ -32,3 +32,4 @@ export { default as DodecahedronGeometry } from '@views/example/geometry/Dodecah
 export { default as EdgesGeometry } from '@views/example/geometry/EdgesGeometry';
 export { default as ExtrudeGeometry } from '@views/example/geometry/ExtrudeGeometry';
 export { default as IcosahedronGeometry } from '@views/example/geometry/IcosahedronGeometry';
+export { default as LatheGeometry } from '@views/example/geometry/LatheGeometry';

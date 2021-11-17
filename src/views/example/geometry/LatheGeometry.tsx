@@ -1,19 +1,21 @@
 /**
- * @description: 挤压缓冲几何体
- * 从一个形状路径中，挤压出一个 BufferGeometry。
- * 该对象将一个二维形状挤出为一个三维几何体。
+ * @description: 车削缓冲几何体
+ * 创建具有轴对称性的网格，比如花瓶。车削绕着 Y 轴来进行旋转。
  * @author: cnn
- * @createTime: 2021/11/17 15:17
+ * @createTime: 2021/11/17 16:22
  **/
 import React, { useEffect, useState } from 'react';
-import { Color, WebGLRenderer, ExtrudeGeometry as TExtrudeGeometry, MeshBasicMaterial, Mesh, Shape } from 'three';
+import {
+  Color, WebGLRenderer, LatheGeometry as TLatheGeometry, MeshBasicMaterial, Mesh,
+  Vector2, DoubleSide
+} from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 
-let extrudeGeometry: any;
+let latheGeometry: any;
 
-const ExtrudeGeometry = () => {
+const LatheGeometry = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
@@ -24,7 +26,7 @@ const ExtrudeGeometry = () => {
       window.removeEventListener('resize', onWindowResize);
       // 重置全局变量
       resetThreeConst();
-      extrudeGeometry = null;
+      latheGeometry = null;
     };
   }, []);
   useEffect(() => {
@@ -62,7 +64,7 @@ const ExtrudeGeometry = () => {
       position: [0, 200, 200]
     });
     const threeContainer = document.getElementById('threeContainer') || document;
-    initExtrudeGeometry();
+    initLatheGeometry();
     setThreeContainer(threeContainer);
   };
   // 初始化 webgl 渲染器
@@ -88,38 +90,28 @@ const ExtrudeGeometry = () => {
     controls.update();
     animate();
   };
-  // 生成一个 extrudeGeometry 放入场景中
-  const initExtrudeGeometry = () => {
-    const height = 12;
-    const width = 8;
-    const shape = new Shape();
-    // 长方形
-    shape.moveTo(0, 0);
-    shape.lineTo(0, width);
-    shape.lineTo(height, width);
-    shape.lineTo(height, 0);
-    shape.lineTo(0, 0);
-    const extrudeSettings = {
-      steps: 2, // 用于沿着挤出样条的深度细分的点的数量，默认值为 1。
-      depth: 16, // 挤出的形状的深度，默认值为 1。
-      bevelEnabled: true, // 对挤出的形状应用是否斜角，默认值为 true。
-      bevelThickness: 1, // 设置原始形状上斜角的厚度。默认值为 0.2。
-      bevelSize: 1, // 斜角与原始形状轮廓之间的延伸距离，默认值为 bevelThickness-0.1 什么意思？。
-      bevelOffset: 0, // 斜角开始到原始形状轮廓的距离，默认值 0。
-      bevelSegments: 1, // 斜角的分段层数，默认值为3。
-    };
-    const geometry = new TExtrudeGeometry(shape, extrudeSettings);
-    const material = new MeshBasicMaterial({ color: 0x00ff00 });
-    extrudeGeometry = new Mesh(geometry, material);
-    THREE_CONST.scene.add(extrudeGeometry);
+  // 生成一个 latheGeometry 放入场景中
+  const initLatheGeometry = () => {
+    const points = [];
+    for (let i = 0; i < 10; i++) {
+      points.push(new Vector2(Math.sin(i * 0.2) * 10 + 5, (i - 5) * 2));
+    }
+    // points 指 y 梯度点，其实我也不是很懂，大概理解
+    const geometry = new TLatheGeometry(points, 5);
+    const material = new MeshBasicMaterial({
+      color: 0x00ff00,
+      side: DoubleSide
+    });
+    latheGeometry = new Mesh(geometry, material);
+    THREE_CONST.scene.add(latheGeometry);
   };
   // 更新
   const animate = () => {
     const animationId = requestAnimationFrame(animate);
     setAnimationId(animationId);
-    if (extrudeGeometry) {
-      extrudeGeometry.rotation.x += 0.01;
-      extrudeGeometry.rotation.y += 0.01;
+    if (latheGeometry) {
+      latheGeometry.rotation.x += 0.01;
+      latheGeometry.rotation.y += 0.01;
     }
     renderer.render(THREE_CONST.scene, THREE_CONST.camera);
   };
@@ -131,4 +123,4 @@ const ExtrudeGeometry = () => {
   };
   return <div id="threeContainer" />;
 };
-export default ExtrudeGeometry;
+export default LatheGeometry;

@@ -1,5 +1,6 @@
 /**
  * @description: 边缘几何体
+ * 这可以作为一个辅助对象来查看 geometry 的边缘。
  * @author: cnn
  * @createTime: 2021/10/29 10:08
  **/
