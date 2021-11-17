@@ -34,3 +34,4 @@ export { default as ExtrudeGeometry } from '@views/example/geometry/ExtrudeGeome
 export { default as IcosahedronGeometry } from '@views/example/geometry/IcosahedronGeometry';
 export { default as LatheGeometry } from '@views/example/geometry/LatheGeometry';
 export { default as OctahedronGeometry } from '@views/example/geometry/OctahedronGeometry';
+export { default as PlaneGeometry } from '@views/example/geometry/PlaneGeometry';

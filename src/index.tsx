@@ -11,7 +11,7 @@ import {
   MultipleModel, SkyBox, Factory, Line, ArrayCamera, CubeCamera,
   Camera, StereoCamera, BoxGeometry, CircleGeometry, ConeGeometry,
   CylinderGeometry, DodecahedronGeometry, EdgesGeometry, ExtrudeGeometry,
-  IcosahedronGeometry, LatheGeometry, OctahedronGeometry
+  IcosahedronGeometry, LatheGeometry, OctahedronGeometry, PlaneGeometry
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -52,6 +52,7 @@ const App = () => {
                 <Route exact path={platform + 'example/icosahedronGeometry'} component={IcosahedronGeometry} />
                 <Route exact path={platform + 'example/latheGeometry'} component={LatheGeometry} />
                 <Route exact path={platform + 'example/octahedronGeometry'} component={OctahedronGeometry} />
+                <Route exact path={platform + 'example/planeGeometry'} component={PlaneGeometry} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

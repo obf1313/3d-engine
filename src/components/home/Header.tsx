@@ -13,6 +13,7 @@ import logo from '@static/images/logo.png';
 import ExtrudeGeometry from '@views/example/geometry/ExtrudeGeometry';
 import LatheGeometry from '@views/example/geometry/LatheGeometry';
 import { OctahedronGeometry } from '@views/index';
+import PlaneGeometry from '@views/example/geometry/PlaneGeometry';
 
 const { SubMenu } = Menu;
 
@@ -54,6 +55,7 @@ const Header = () => {
               <Menu.Item key="icosahedronGeometry">二十面缓冲几何体</Menu.Item>
               <Menu.Item key="latheGeometry">车削缓冲几何体</Menu.Item>
               <Menu.Item key="octahedronGeometry">八面缓冲几何体</Menu.Item>
+              <Menu.Item key="planeGeometry">平面缓冲几何体</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="line">画线</Menu.Item>
