@@ -10,6 +10,7 @@ import { OrderedListOutlined } from '@ant-design/icons';
 import { platform, projectName } from '@utils/CommonVars';
 import './index.less';
 import logo from '@static/images/logo.png';
+import ExtrudeGeometry from '@views/example/geometry/ExtrudeGeometry';
 
 const { SubMenu } = Menu;
 
@@ -47,6 +48,7 @@ const Header = () => {
               <Menu.Item key="cylinderGeometry">圆柱缓冲几何体</Menu.Item>
               <Menu.Item key="dodecahedronGeometry">十二面缓冲几何体</Menu.Item>
               <Menu.Item key="edgesGeometry">边缘几何体</Menu.Item>
+              <Menu.Item key="extrudeGeometry">挤压缓冲几何体</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="line">画线</Menu.Item>

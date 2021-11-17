@@ -30,3 +30,4 @@ export { default as ConeGeometry } from '@views/example/geometry/ConeGeometry';
 export { default as CylinderGeometry } from '@views/example/geometry/CylinderGeometry';
 export { default as DodecahedronGeometry } from '@views/example/geometry/DodecahedronGeometry';
 export { default as EdgesGeometry } from '@views/example/geometry/EdgesGeometry';
+export { default as ExtrudeGeometry } from '@views/example/geometry/ExtrudeGeometry';

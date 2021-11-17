@@ -10,7 +10,7 @@ import {
   NotFound, Home, SimpleScene, TextureScene, DracoLoaderUse,
   MultipleModel, SkyBox, Factory, Line, ArrayCamera, CubeCamera,
   Camera, StereoCamera, BoxGeometry, CircleGeometry, ConeGeometry,
-  CylinderGeometry, DodecahedronGeometry, EdgesGeometry
+  CylinderGeometry, DodecahedronGeometry, EdgesGeometry, ExtrudeGeometry
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -26,6 +26,7 @@ const App = () => {
           <Home>
             <Switch>
               <ErrorBoundary>
+                {/* 三维示例 */}
                 <Route exact path={platform} component={SimpleScene} />
                 <Route exact path={platform + 'example/simpleScene'} component={SimpleScene} />
                 <Route exact path={platform + 'example/textureScene'} component={TextureScene} />
@@ -34,16 +35,19 @@ const App = () => {
                 <Route exact path={platform + 'example/skyBox'} component={SkyBox} />
                 <Route exact path={platform + 'example/factory'} component={Factory} />
                 <Route exact path={platform + 'example/line'} component={Line} />
+                {/* 三维示例 - 摄像机 */}
                 <Route exact path={platform + 'example/arrayCamera'} component={ArrayCamera} />
                 <Route exact path={platform + 'example/cubeCamera'} component={CubeCamera} />
                 <Route exact path={platform + 'example/camera'} component={Camera} />
                 <Route exact path={platform + 'example/stereoCamera'} component={StereoCamera} />
+                {/* 三维示例 - 几何体 */}
                 <Route exact path={platform + 'example/boxGeometry'} component={BoxGeometry} />
                 <Route exact path={platform + 'example/circleGeometry'} component={CircleGeometry} />
                 <Route exact path={platform + 'example/coneGeometry'} component={ConeGeometry} />
                 <Route exact path={platform + 'example/cylinderGeometry'} component={CylinderGeometry} />
                 <Route exact path={platform + 'example/dodecahedronGeometry'} component={DodecahedronGeometry} />
                 <Route exact path={platform + 'example/edgesGeometry'} component={EdgesGeometry} />
+                <Route exact path={platform + 'example/extrudeGeometry'} component={ExtrudeGeometry} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>
