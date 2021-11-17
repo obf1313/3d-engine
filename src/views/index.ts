@@ -31,3 +31,4 @@ export { default as CylinderGeometry } from '@views/example/geometry/CylinderGeo
 export { default as DodecahedronGeometry } from '@views/example/geometry/DodecahedronGeometry';
 export { default as EdgesGeometry } from '@views/example/geometry/EdgesGeometry';
 export { default as ExtrudeGeometry } from '@views/example/geometry/ExtrudeGeometry';
+export { default as IcosahedronGeometry } from '@views/example/geometry/IcosahedronGeometry';

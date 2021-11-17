@@ -10,7 +10,8 @@ import {
   NotFound, Home, SimpleScene, TextureScene, DracoLoaderUse,
   MultipleModel, SkyBox, Factory, Line, ArrayCamera, CubeCamera,
   Camera, StereoCamera, BoxGeometry, CircleGeometry, ConeGeometry,
-  CylinderGeometry, DodecahedronGeometry, EdgesGeometry, ExtrudeGeometry
+  CylinderGeometry, DodecahedronGeometry, EdgesGeometry, ExtrudeGeometry,
+  IcosahedronGeometry
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -48,6 +49,7 @@ const App = () => {
                 <Route exact path={platform + 'example/dodecahedronGeometry'} component={DodecahedronGeometry} />
                 <Route exact path={platform + 'example/edgesGeometry'} component={EdgesGeometry} />
                 <Route exact path={platform + 'example/extrudeGeometry'} component={ExtrudeGeometry} />
+                <Route exact path={platform + 'example/icosahedronGeometry'} component={IcosahedronGeometry} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

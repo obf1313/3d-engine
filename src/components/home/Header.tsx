@@ -49,6 +49,7 @@ const Header = () => {
               <Menu.Item key="dodecahedronGeometry">十二面缓冲几何体</Menu.Item>
               <Menu.Item key="edgesGeometry">边缘几何体</Menu.Item>
               <Menu.Item key="extrudeGeometry">挤压缓冲几何体</Menu.Item>
+              <Menu.Item key="icosahedronGeometry">二十面缓冲几何体</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="line">画线</Menu.Item>

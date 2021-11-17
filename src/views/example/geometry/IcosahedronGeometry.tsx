@@ -1,18 +1,17 @@
 /**
- * @description: 挤压缓冲几何体
- * 该对象将一个二维形状挤出为一个三维几何体。
+ * @description: 二十面缓冲几何体
  * @author: cnn
- * @createTime: 2021/11/17 15:17
+ * @createTime: 2021/11/17 16:13
  **/
 import React, { useEffect, useState } from 'react';
-import { Color, WebGLRenderer, ExtrudeGeometry as TExtrudeGeometry, MeshBasicMaterial, Mesh, Shape } from 'three';
+import { Color, WebGLRenderer, IcosahedronGeometry as TIcosahedronGeometry, MeshBasicMaterial, Mesh, Shape } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 
-let extrudeGeometry: any;
+let icosahedronGeometry: any;
 
-const ExtrudeGeometry = () => {
+const IcosahedronGeometry = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
@@ -23,7 +22,6 @@ const ExtrudeGeometry = () => {
       window.removeEventListener('resize', onWindowResize);
       // 重置全局变量
       resetThreeConst();
-      extrudeGeometry = null;
     };
   }, []);
   useEffect(() => {
@@ -61,7 +59,7 @@ const ExtrudeGeometry = () => {
       position: [0, 200, 200]
     });
     const threeContainer = document.getElementById('threeContainer') || document;
-    initExtrudeGeometry();
+    initIcosahedronGeometry();
     setThreeContainer(threeContainer);
   };
   // 初始化 webgl 渲染器
@@ -87,38 +85,24 @@ const ExtrudeGeometry = () => {
     controls.update();
     animate();
   };
-  // 生成一个 extrudeGeometry 放入场景中
-  const initExtrudeGeometry = () => {
-    const height = 12;
-    const width = 8;
-    const shape = new Shape();
-    // 长方形
-    shape.moveTo(0, 0);
-    shape.lineTo(0, width);
-    shape.lineTo(height, width);
-    shape.lineTo(height, 0);
-    shape.lineTo(0, 0);
-    const extrudeSettings = {
-      steps: 2, // 用于沿着挤出样条的深度细分的点的数量，默认值为 1。
-      depth: 16, // 挤出的形状的深度，默认值为 1。
-      bevelEnabled: true, // 对挤出的形状应用是否斜角，默认值为 true。
-      bevelThickness: 1, // 设置原始形状上斜角的厚度。默认值为 0.2。
-      bevelSize: 1, // 斜角与原始形状轮廓之间的延伸距离，默认值为 bevelThickness-0.1 什么意思？。
-      bevelOffset: 0, // 斜角开始到原始形状轮廓的距离，默认值 0。
-      bevelSegments: 1, // 斜角的分段层数，默认值为3。
-    };
-    const geometry = new TExtrudeGeometry(shape, extrudeSettings);
+  // 生成一个 icosahedronGeometry 放入场景中
+  const initIcosahedronGeometry = () => {
+    // 参数
+    // radius — 二十面体的半径，默认为 1。
+    // detail — 默认值为 0。将这个值设为一个大于 0 的数将会为它增加一些顶点，使其不再是一个二十面体。当这个值大于 1 的时候，实际上它将变成一个球体。
+    // todo detail 设置为大于 1 的数会报错。
+    const geometry = new TIcosahedronGeometry(5, 1);
     const material = new MeshBasicMaterial({ color: 0x00ff00 });
-    extrudeGeometry = new Mesh(geometry, material);
-    THREE_CONST.scene.add(extrudeGeometry);
+    icosahedronGeometry = new Mesh(geometry, material);
+    THREE_CONST.scene.add(icosahedronGeometry);
   };
   // 更新
   const animate = () => {
     const animationId = requestAnimationFrame(animate);
     setAnimationId(animationId);
-    if (extrudeGeometry) {
-      extrudeGeometry.rotation.x += 0.01;
-      extrudeGeometry.rotation.y += 0.01;
+    if (icosahedronGeometry) {
+      icosahedronGeometry.rotation.x += 0.01;
+      icosahedronGeometry.rotation.y += 0.01;
     }
     renderer.render(THREE_CONST.scene, THREE_CONST.camera);
   };
@@ -130,4 +114,4 @@ const ExtrudeGeometry = () => {
   };
   return <div id="threeContainer" />;
 };
-export default ExtrudeGeometry;
+export default IcosahedronGeometry;
