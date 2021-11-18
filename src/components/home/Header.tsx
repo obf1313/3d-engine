@@ -56,6 +56,15 @@ const Header = () => {
               <Menu.Item key="latheGeometry">车削缓冲几何体</Menu.Item>
               <Menu.Item key="octahedronGeometry">八面缓冲几何体</Menu.Item>
               <Menu.Item key="planeGeometry">平面缓冲几何体</Menu.Item>
+              <Menu.Item key="polyhedronGeometry">多面缓冲几何体</Menu.Item>
+              <Menu.Item key="ringGeometry">圆环缓冲几何体</Menu.Item>
+              <Menu.Item key="shapeGeometry">形状缓冲几何体</Menu.Item>
+              <Menu.Item key="sphereGeometry">球缓冲几何体</Menu.Item>
+              <Menu.Item key="tetrahedronGeometry">四面缓冲几何体</Menu.Item>
+              <Menu.Item key="torusGeometry">圆环缓冲几何体</Menu.Item>
+              <Menu.Item key="torusKnotGeometry">圆环缓冲扭结几何体</Menu.Item>
+              <Menu.Item key="tubeGeometry">管道缓冲几何体</Menu.Item>
+              <Menu.Item key="wireframeGeometry">网格几何体</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="line">画线</Menu.Item>

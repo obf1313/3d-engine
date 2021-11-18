@@ -35,3 +35,12 @@ export { default as IcosahedronGeometry } from '@views/example/geometry/Icosahed
 export { default as LatheGeometry } from '@views/example/geometry/LatheGeometry';
 export { default as OctahedronGeometry } from '@views/example/geometry/OctahedronGeometry';
 export { default as PlaneGeometry } from '@views/example/geometry/PlaneGeometry';
+export { default as PolyhedronGeometry } from '@views/example/geometry/PolyhedronGeometry';
+export { default as RingGeometry } from '@views/example/geometry/RingGeometry';
+export { default as ShapeGeometry } from '@views/example/geometry/ShapeGeometry';
+export { default as SphereGeometry } from '@views/example/geometry/SphereGeometry';
+export { default as TetrahedronGeometry } from '@views/example/geometry/TetrahedronGeometry';
+export { default as TorusGeometry } from '@views/example/geometry/TorusGeometry';
+export { default as TorusKnotGeometry } from '@views/example/geometry/TorusKnotGeometry';
+export { default as TubeGeometry } from '@views/example/geometry/TubeGeometry';
+export { default as WireframeGeometry } from '@views/example/geometry/WireframeGeometry';

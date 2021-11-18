@@ -11,7 +11,9 @@ import {
   MultipleModel, SkyBox, Factory, Line, ArrayCamera, CubeCamera,
   Camera, StereoCamera, BoxGeometry, CircleGeometry, ConeGeometry,
   CylinderGeometry, DodecahedronGeometry, EdgesGeometry, ExtrudeGeometry,
-  IcosahedronGeometry, LatheGeometry, OctahedronGeometry, PlaneGeometry
+  IcosahedronGeometry, LatheGeometry, OctahedronGeometry, PlaneGeometry,
+  PolyhedronGeometry, RingGeometry, ShapeGeometry, SphereGeometry, TetrahedronGeometry,
+  TorusGeometry, TorusKnotGeometry, TubeGeometry, WireframeGeometry
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -53,6 +55,15 @@ const App = () => {
                 <Route exact path={platform + 'example/latheGeometry'} component={LatheGeometry} />
                 <Route exact path={platform + 'example/octahedronGeometry'} component={OctahedronGeometry} />
                 <Route exact path={platform + 'example/planeGeometry'} component={PlaneGeometry} />
+                <Route exact path={platform + 'example/polyhedronGeometry'} component={PolyhedronGeometry} />
+                <Route exact path={platform + 'example/ringGeometry'} component={RingGeometry} />
+                <Route exact path={platform + 'example/shapeGeometry'} component={ShapeGeometry} />
+                <Route exact path={platform + 'example/sphereGeometry'} component={SphereGeometry} />
+                <Route exact path={platform + 'example/tetrahedronGeometry'} component={TetrahedronGeometry} />
+                <Route exact path={platform + 'example/torusGeometry'} component={TorusGeometry} />
+                <Route exact path={platform + 'example/torusKnotGeometry'} component={TorusKnotGeometry} />
+                <Route exact path={platform + 'example/tubeGeometry'} component={TubeGeometry} />
+                <Route exact path={platform + 'example/wireframeGeometry'} component={WireframeGeometry} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>
