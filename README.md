@@ -17,13 +17,13 @@
 - [x] LatheGeometry 车削缓冲几何体。
 - [x] OctahedronGeometry 八面缓冲几何体。
 - [x] PlaneGeometry 平面缓冲几何体。
-- [ ] PolyhedronGeometry 多面缓冲几何体。
-- [ ] RingGeometry 圆环缓冲几何体。
-- [ ] ShapeGeometry 形状缓冲几何体。
-- [ ] SphereGeometry 球缓冲几何体。
-- [ ] TetrahedronGeometry 四面缓冲几何体。
-- [ ] TorusGeometry 圆环缓冲几何体。
-- [ ] TorusKnotGeometry 圆环缓冲扭结几何体。
+- [x] PolyhedronGeometry 多面缓冲几何体。
+- [x] RingGeometry 圆环缓冲几何体。
+- [x] ShapeGeometry 形状缓冲几何体。
+- [x] SphereGeometry 球缓冲几何体。
+- [x] TetrahedronGeometry 四面缓冲几何体。
+- [x] TorusGeometry 圆环缓冲几何体。
+- [x] TorusKnotGeometry 圆环缓冲扭结几何体。
 - [ ] TubeGeometry 管道缓冲几何体。
 - [ ] WireframeGeometry 网格几何体。
 ## 工作中用到的技术，暂无归类
