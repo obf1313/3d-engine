@@ -5,6 +5,17 @@
 - [x] PerspectiveCamera 透视相机，OrthographicCamera 正交相机。
 - [x] CubeCamera 立方相机。
 - [x] StereoCamera 立体相机。
+## light 灯光
+- [ ] Light 光源基类。
+- [ ] LightProbe 光照探针。
+- [ ] AmbientLight 环境光。
+- [ ] AmbientLightProbe 环境光探针。
+- [ ] DirectionalLight 平行光。
+- [ ] HemisphereLight 半球光。
+- [ ] HemisphereLightProbe 半球光探针。
+- [ ] PointLight 点光源。
+- [ ] RectAreaLight 平面光光源。
+- [ ] SpotLight 聚光灯。
 ## Geometry 几何体
 - [x] BoxGeometry 立体缓冲几何体。
 - [x] CircleGeometry 圆形缓冲几何体。
