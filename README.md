@@ -24,8 +24,8 @@
 - [x] TetrahedronGeometry 四面缓冲几何体。
 - [x] TorusGeometry 圆环缓冲几何体。
 - [x] TorusKnotGeometry 圆环缓冲扭结几何体。
-- [ ] TubeGeometry 管道缓冲几何体。
-- [ ] WireframeGeometry 网格几何体。
+- [x] TubeGeometry 管道缓冲几何体。
+- [x] WireframeGeometry 网格几何体。
 ## 工作中用到的技术，暂无归类
 - [x] Line 画线。
 - [x] SimpleScene 简单场景，包含 scene, light, camera, renderer, OrbitControls, 简单结合体。
