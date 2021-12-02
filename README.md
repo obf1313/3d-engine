@@ -8,12 +8,12 @@
 ## light 灯光
 - [ ] Light 光源基类。
 - [ ] LightProbe 光照探针。
-- [ ] AmbientLight 环境光。
+- [x] AmbientLight 环境光。
 - [ ] AmbientLightProbe 环境光探针。
-- [ ] DirectionalLight 平行光。
-- [ ] HemisphereLight 半球光。
+- [x] DirectionalLight 平行光。
+- [x] HemisphereLight 半球光。
 - [ ] HemisphereLightProbe 半球光探针。
-- [ ] PointLight 点光源。
+- [x] PointLight 点光源。
 - [ ] RectAreaLight 平面光光源。
 - [ ] SpotLight 聚光灯。
 ## Geometry 几何体

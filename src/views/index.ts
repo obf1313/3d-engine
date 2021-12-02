@@ -44,3 +44,8 @@ export { default as TorusGeometry } from '@views/example/geometry/TorusGeometry'
 export { default as TorusKnotGeometry } from '@views/example/geometry/TorusKnotGeometry';
 export { default as TubeGeometry } from '@views/example/geometry/TubeGeometry';
 export { default as WireframeGeometry } from '@views/example/geometry/WireframeGeometry';
+// 三维示例 - 灯光
+export { default as AmbientLight } from '@views/example/light/AmbientLight';
+export { default as DirectionalLight } from '@views/example/light/DirectionalLight';
+export { default as HemisphereLight } from '@views/example/light/HemisphereLight';
+export { default as PointLight } from '@views/example/light/PointLight';

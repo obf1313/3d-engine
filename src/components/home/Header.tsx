@@ -66,6 +66,12 @@ const Header = () => {
               <Menu.Item key="tubeGeometry">管道缓冲几何体</Menu.Item>
               <Menu.Item key="wireframeGeometry">网格几何体</Menu.Item>
             </Menu.ItemGroup>
+            <Menu.ItemGroup title="Light 灯光">
+              <Menu.Item key="ambientLight">环境光</Menu.Item>
+              <Menu.Item key="directionalLight">平行光</Menu.Item>
+              <Menu.Item key="hemisphereLight">半球光</Menu.Item>
+              <Menu.Item key="pointLight">点光源</Menu.Item>
+            </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="line">画线</Menu.Item>
               <Menu.Item key="simpleScene">简单场景</Menu.Item>
