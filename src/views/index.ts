@@ -49,3 +49,5 @@ export { default as AmbientLight } from '@views/example/light/AmbientLight';
 export { default as DirectionalLight } from '@views/example/light/DirectionalLight';
 export { default as HemisphereLight } from '@views/example/light/HemisphereLight';
 export { default as PointLight } from '@views/example/light/PointLight';
+export { default as RectAreaLight } from '@views/example/light/RectAreaLight';
+export { default as SpotLight } from '@views/example/light/SpotLight';

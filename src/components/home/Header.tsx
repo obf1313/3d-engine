@@ -71,6 +71,8 @@ const Header = () => {
               <Menu.Item key="directionalLight">平行光</Menu.Item>
               <Menu.Item key="hemisphereLight">半球光</Menu.Item>
               <Menu.Item key="pointLight">点光源</Menu.Item>
+              <Menu.Item key="rectAreaLight">平面光光源</Menu.Item>
+              <Menu.Item key="spotLight">聚光灯</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="line">画线</Menu.Item>

@@ -14,8 +14,8 @@
 - [x] HemisphereLight 半球光。
 - [ ] HemisphereLightProbe 半球光探针。
 - [x] PointLight 点光源。
-- [ ] RectAreaLight 平面光光源。
-- [ ] SpotLight 聚光灯。
+- [x] RectAreaLight 平面光光源。
+- [x] SpotLight 聚光灯。
 ## Geometry 几何体
 - [x] BoxGeometry 立体缓冲几何体。
 - [x] CircleGeometry 圆形缓冲几何体。
