@@ -154,7 +154,6 @@ const SpotLight = () => {
   };
   // 更新
   const animate = () => {
-    console.log('111');
     tween(spotlight1);
     tween(spotlight2);
     tween(spotlight3);

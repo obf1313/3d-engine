@@ -7,7 +7,7 @@
 - [x] StereoCamera 立体相机。
 ## light 灯光
 - [ ] Light 光源基类。
-- [ ] LightProbe 光照探针。
+- [x] LightProbe 光照探针。
 - [x] AmbientLight 环境光。
 - [ ] AmbientLightProbe 环境光探针。
 - [x] DirectionalLight 平行光。

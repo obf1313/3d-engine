@@ -14,7 +14,8 @@ import {
   IcosahedronGeometry, LatheGeometry, OctahedronGeometry, PlaneGeometry,
   PolyhedronGeometry, RingGeometry, ShapeGeometry, SphereGeometry, TetrahedronGeometry,
   TorusGeometry, TorusKnotGeometry, TubeGeometry, WireframeGeometry, AmbientLight,
-  DirectionalLight, HemisphereLight, PointLight, RectAreaLight, SpotLight
+  DirectionalLight, HemisphereLight, PointLight, RectAreaLight, SpotLight,
+  LightProbe
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -72,6 +73,7 @@ const App = () => {
                 <Route exact path={platform + 'example/pointLight'} component={PointLight} />
                 <Route exact path={platform + 'example/rectAreaLight'} component={RectAreaLight} />
                 <Route exact path={platform + 'example/spotLight'} component={SpotLight} />
+                <Route exact path={platform + 'example/lightProbe'} component={LightProbe} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

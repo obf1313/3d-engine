@@ -4,7 +4,7 @@
  * @createTime: 2021/9/17 11:11
  **/
 import {
-  Color, CubeTextureLoader, Fog, Material, OrthographicCamera,
+  Color, CubeTexture, CubeTextureLoader, Fog, Material, OrthographicCamera,
   PerspectiveCamera, Raycaster, Scene, Texture, Vector3
 } from 'three';
 import { getClientHeight, getClientWidth } from '@utils/CommonFunc';
@@ -64,10 +64,10 @@ export const getIntersects = (event: MouseEvent, container: any, camera: any, sc
  * 文件路径前缀 path: string,
  * 文件列表，指定顺序: pos-x, neg-x, pos-y, neg-y, pos-z, neg-z：urlList: [string, string, string, string, string, string]
 **/
-export const initCubeTexture = (path: string, urlList: [string, string, string, string, string, string]) => {
+export const initCubeTexture = (path: string, urlList: [string, string, string, string, string, string], backFunc?: (texture: CubeTexture) => void) => {
   const cubeTextureLoader = new CubeTextureLoader();
   cubeTextureLoader.setPath(path);
-  return cubeTextureLoader.load(urlList);
+  return cubeTextureLoader.load(urlList, backFunc);
 };
 /**
  * 初始化 Scene

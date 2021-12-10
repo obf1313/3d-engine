@@ -51,3 +51,4 @@ export { default as HemisphereLight } from '@views/example/light/HemisphereLight
 export { default as PointLight } from '@views/example/light/PointLight';
 export { default as RectAreaLight } from '@views/example/light/RectAreaLight';
 export { default as SpotLight } from '@views/example/light/SpotLight';
+export { default as LightProbe } from '@views/example/light/LightProbe';
