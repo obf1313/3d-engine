@@ -6,13 +6,13 @@
 - [x] CubeCamera 立方相机。
 - [x] StereoCamera 立体相机。
 ## light 灯光
-- [ ] Light 光源基类。
+- [x] Light 光源基类，暂无示例。
 - [x] LightProbe 光照探针。
 - [x] AmbientLight 环境光。
-- [ ] AmbientLightProbe 环境光探针。
+- [x] AmbientLightProbe 环境光探针，暂无示例。
 - [x] DirectionalLight 平行光。
 - [x] HemisphereLight 半球光。
-- [ ] HemisphereLightProbe 半球光探针。
+- [x] HemisphereLightProbe 半球光探针，暂无示例。
 - [x] PointLight 点光源。
 - [x] RectAreaLight 平面光光源。
 - [x] SpotLight 聚光灯。
@@ -37,6 +37,25 @@
 - [x] TorusKnotGeometry 圆环缓冲扭结几何体。
 - [x] TubeGeometry 管道缓冲几何体。
 - [x] WireframeGeometry 网格几何体。
+## 材质
+- [ ] LineBasicMaterial 基础线条材质。
+- [ ] LineDashedMaterial 虚线材质。
+- [ ] Material 材质。
+- [ ] MeshBasicMaterial 基础网格材质。
+- [ ] MeshDepthMaterial 深度网格材质。
+- [ ] MeshDistanceMaterial 深度着色材质。
+- [ ] MeshLambertMaterial Lambert网格材质。
+- [ ] MeshMatcapMaterial 无翻译。
+- [ ] MeshNormalMaterial 法线网格材质。
+- [ ] MeshPhongMaterial Phong网格材质。
+- [ ] MeshPhysicalMaterial 物理网格材质。
+- [ ] MeshStandardMaterial 标准网格材质。
+- [ ] MeshToonMaterial 无翻译。
+- [ ] PointsMaterial 点材质。
+- [ ] RawShaderMaterial 原始着色器材质。
+- [ ] ShaderMaterial 着色器材质。
+- [ ] ShadowMaterial 阴影材质。
+- [ ] SpriteMaterial 点精灵材质。
 ## 工作中用到的技术，暂无归类
 - [x] Line 画线。
 - [x] SimpleScene 简单场景，包含 scene, light, camera, renderer, OrbitControls, 简单结合体。
