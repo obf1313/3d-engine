@@ -38,8 +38,8 @@
 - [x] TubeGeometry 管道缓冲几何体。
 - [x] WireframeGeometry 网格几何体。
 ## 材质
-- [ ] LineBasicMaterial 基础线条材质。
-- [ ] LineDashedMaterial 虚线材质。
+- [x] LineBasicMaterial 基础线条材质。
+- [x] LineDashedMaterial 虚线材质。
 - [ ] Material 材质。
 - [ ] MeshBasicMaterial 基础网格材质。
 - [ ] MeshDepthMaterial 深度网格材质。

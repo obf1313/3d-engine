@@ -75,6 +75,10 @@ const Header = () => {
               <Menu.Item key="spotLight">聚光灯</Menu.Item>
               <Menu.Item key="lightProbe">光照探针</Menu.Item>
             </Menu.ItemGroup>
+            <Menu.ItemGroup title="Material 材质">
+              <Menu.Item key="lineBasicMaterial">基础线条材质</Menu.Item>
+              <Menu.Item key="lineDashedMaterial">虚线材质</Menu.Item>
+            </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="line">画线</Menu.Item>
               <Menu.Item key="simpleScene">简单场景</Menu.Item>

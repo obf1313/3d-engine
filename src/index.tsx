@@ -15,7 +15,7 @@ import {
   PolyhedronGeometry, RingGeometry, ShapeGeometry, SphereGeometry, TetrahedronGeometry,
   TorusGeometry, TorusKnotGeometry, TubeGeometry, WireframeGeometry, AmbientLight,
   DirectionalLight, HemisphereLight, PointLight, RectAreaLight, SpotLight,
-  LightProbe
+  LightProbe, LineBasicMaterial, LineDashedMaterial
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -74,6 +74,9 @@ const App = () => {
                 <Route exact path={platform + 'example/rectAreaLight'} component={RectAreaLight} />
                 <Route exact path={platform + 'example/spotLight'} component={SpotLight} />
                 <Route exact path={platform + 'example/lightProbe'} component={LightProbe} />
+                {/* 三维示例 - 材质 */}
+                <Route exact path={platform + 'example/lineBasicMaterial'} component={LineBasicMaterial} />
+                <Route exact path={platform + 'example/lineDashedMaterial'} component={LineDashedMaterial} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>
