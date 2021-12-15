@@ -25,6 +25,7 @@ const LineBasicMaterial = () => {
       window.removeEventListener('resize', onWindowResize);
       // 重置全局变量
       resetThreeConst();
+      parentNode = null;
     };
   }, []);
   useEffect(() => {

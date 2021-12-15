@@ -55,3 +55,5 @@ export { default as LightProbe } from '@views/example/light/LightProbe';
 // 三维示例 - 材质
 export { default as LineBasicMaterial } from '@views/example/material/LineBasicMaterial';
 export { default as LineDashedMaterial } from '@views/example/material/LineDashedMaterial';
+export { default as MeshBasicMaterial } from '@views/example/material/MeshBasicMaterial';
+export { default as MeshDepthMaterial } from '@views/example/material/MeshDepthMaterial';

@@ -78,6 +78,8 @@ const Header = () => {
             <Menu.ItemGroup title="Material 材质">
               <Menu.Item key="lineBasicMaterial">基础线条材质</Menu.Item>
               <Menu.Item key="lineDashedMaterial">虚线材质</Menu.Item>
+              <Menu.Item key="meshBasicMaterial">基础网格材质</Menu.Item>
+              <Menu.Item key="meshDepthMaterial">深度网格材质</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="line">画线</Menu.Item>

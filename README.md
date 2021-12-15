@@ -41,8 +41,8 @@
 - [x] LineBasicMaterial 基础线条材质。
 - [x] LineDashedMaterial 虚线材质。
 - [ ] Material 材质。
-- [ ] MeshBasicMaterial 基础网格材质。
-- [ ] MeshDepthMaterial 深度网格材质。
+- [x] MeshBasicMaterial 基础网格材质。
+- [x] MeshDepthMaterial 深度网格材质。
 - [ ] MeshDistanceMaterial 深度着色材质。
 - [ ] MeshLambertMaterial Lambert网格材质。
 - [ ] MeshMatcapMaterial 无翻译。

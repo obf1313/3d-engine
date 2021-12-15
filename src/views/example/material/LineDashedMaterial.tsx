@@ -14,7 +14,7 @@ import * as GeometryUtils from 'three/examples/jsm/utils/GeometryUtils.js';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 
-const objects: Array<any> = [];
+let objects: Array<any> = [];
 
 const LineDashedMaterial = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
@@ -27,6 +27,7 @@ const LineDashedMaterial = () => {
       window.removeEventListener('resize', onWindowResize);
       // 重置全局变量
       resetThreeConst();
+      objects = [];
     };
   }, []);
   useEffect(() => {
