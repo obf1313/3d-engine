@@ -12,7 +12,7 @@ import './index.less';
 import logo from '@static/images/logo.png';
 import ExtrudeGeometry from '@views/example/geometry/ExtrudeGeometry';
 import LatheGeometry from '@views/example/geometry/LatheGeometry';
-import { OctahedronGeometry } from '@views/index';
+import { MeshDistanceMaterial, MeshLambertMaterial, OctahedronGeometry } from '@views/index';
 import PlaneGeometry from '@views/example/geometry/PlaneGeometry';
 
 const { SubMenu } = Menu;
@@ -80,6 +80,11 @@ const Header = () => {
               <Menu.Item key="lineDashedMaterial">虚线材质</Menu.Item>
               <Menu.Item key="meshBasicMaterial">基础网格材质</Menu.Item>
               <Menu.Item key="meshDepthMaterial">深度网格材质</Menu.Item>
+              <Menu.Item key="meshDistanceMaterial">深度着色材质</Menu.Item>
+              <Menu.Item key="meshLambertMaterial">Lambert 网格材质</Menu.Item>
+              <Menu.Item key="meshMatcapMaterial">材质捕捉纹理定义材质</Menu.Item>
+              <Menu.Item key="meshNormalMaterial">法线网格材质</Menu.Item>
+              <Menu.Item key="meshPhongMaterial">Phong 网格材质</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="line">画线</Menu.Item>

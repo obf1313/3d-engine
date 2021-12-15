@@ -8,14 +8,15 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ErrorBoundary } from '@components/index';
 import {
   NotFound, Home, SimpleScene, TextureScene, DracoLoaderUse,
-  MultipleModel, SkyBox, Factory, Line, ArrayCamera, CubeCamera,
-  Camera, StereoCamera, BoxGeometry, CircleGeometry, ConeGeometry,
-  CylinderGeometry, DodecahedronGeometry, EdgesGeometry, ExtrudeGeometry,
-  IcosahedronGeometry, LatheGeometry, OctahedronGeometry, PlaneGeometry,
-  PolyhedronGeometry, RingGeometry, ShapeGeometry, SphereGeometry, TetrahedronGeometry,
-  TorusGeometry, TorusKnotGeometry, TubeGeometry, WireframeGeometry, AmbientLight,
-  DirectionalLight, HemisphereLight, PointLight, RectAreaLight, SpotLight,
-  LightProbe, LineBasicMaterial, LineDashedMaterial, MeshBasicMaterial, MeshDepthMaterial
+  MultipleModel, SkyBox, Factory, Line, ArrayCamera,
+  CubeCamera, Camera, StereoCamera, BoxGeometry, CircleGeometry,
+  ConeGeometry, CylinderGeometry, DodecahedronGeometry, EdgesGeometry, ExtrudeGeometry,
+  IcosahedronGeometry, LatheGeometry, OctahedronGeometry, PlaneGeometry, PolyhedronGeometry,
+  RingGeometry, ShapeGeometry, SphereGeometry, TetrahedronGeometry, TorusGeometry,
+  TorusKnotGeometry, TubeGeometry, WireframeGeometry, AmbientLight, DirectionalLight,
+  HemisphereLight, PointLight, RectAreaLight, SpotLight, LightProbe,
+  LineBasicMaterial, LineDashedMaterial, MeshBasicMaterial, MeshDepthMaterial, MeshDistanceMaterial,
+  MeshLambertMaterial, MeshMatcapMaterial, MeshNormalMaterial, MeshPhongMaterial
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -79,6 +80,11 @@ const App = () => {
                 <Route exact path={platform + 'example/lineDashedMaterial'} component={LineDashedMaterial} />
                 <Route exact path={platform + 'example/meshBasicMaterial'} component={MeshBasicMaterial} />
                 <Route exact path={platform + 'example/meshDepthMaterial'} component={MeshDepthMaterial} />
+                <Route exact path={platform + 'example/meshDistanceMaterial'} component={MeshDistanceMaterial} />
+                <Route exact path={platform + 'example/meshLambertMaterial'} component={MeshLambertMaterial} />
+                <Route exact path={platform + 'example/meshMatcapMaterial'} component={MeshMatcapMaterial} />
+                <Route exact path={platform + 'example/meshNormalMaterial'} component={MeshNormalMaterial} />
+                <Route exact path={platform + 'example/meshPhongMaterial'} component={MeshPhongMaterial} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

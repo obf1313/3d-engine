@@ -43,11 +43,11 @@
 - [ ] Material 材质。
 - [x] MeshBasicMaterial 基础网格材质。
 - [x] MeshDepthMaterial 深度网格材质。
-- [ ] MeshDistanceMaterial 深度着色材质。
-- [ ] MeshLambertMaterial Lambert网格材质。
-- [ ] MeshMatcapMaterial 无翻译。
-- [ ] MeshNormalMaterial 法线网格材质。
-- [ ] MeshPhongMaterial Phong网格材质。
+- [x] MeshDistanceMaterial 深度着色材质。
+- [x] MeshLambertMaterial Lambert网格材质。
+- [x] MeshMatcapMaterial 材质捕捉纹理定义材质（我自己按功能翻译的）。
+- [x] MeshNormalMaterial 法线网格材质。
+- [x] MeshPhongMaterial Phong网格材质。
 - [ ] MeshPhysicalMaterial 物理网格材质。
 - [ ] MeshStandardMaterial 标准网格材质。
 - [ ] MeshToonMaterial 无翻译。

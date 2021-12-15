@@ -6,7 +6,7 @@
  **/
 import React, { useEffect, useState } from 'react';
 import {
-  Color, WebGLRenderer, TorusKnotGeometry, MeshDepthMaterial as TMeshDepthMaterial, Mesh, PointLight, AmbientLight
+  Color, WebGLRenderer, TorusKnotGeometry, MeshDepthMaterial as TMeshDepthMaterial, Mesh
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';

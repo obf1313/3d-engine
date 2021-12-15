@@ -57,3 +57,8 @@ export { default as LineBasicMaterial } from '@views/example/material/LineBasicM
 export { default as LineDashedMaterial } from '@views/example/material/LineDashedMaterial';
 export { default as MeshBasicMaterial } from '@views/example/material/MeshBasicMaterial';
 export { default as MeshDepthMaterial } from '@views/example/material/MeshDepthMaterial';
+export { default as MeshDistanceMaterial } from '@views/example/material/MeshDistanceMaterial';
+export { default as MeshLambertMaterial } from '@views/example/material/MeshLambertMaterial';
+export { default as MeshMatcapMaterial } from '@views/example/material/MeshMatcapMaterial';
+export { default as MeshNormalMaterial } from '@views/example/material/MeshNormalMaterial';
+export { default as MeshPhongMaterial } from '@views/example/material/MeshPhongMaterial';

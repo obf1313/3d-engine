@@ -1,13 +1,13 @@
 /**
- * @description: 基础网格材质
- * 一个以简单着色（平面或线框）方式来绘制几何体的材质。
- * 这种材质不受光照的影响。
+ * @description: 法线网格材质
+ * 一种把法向量映射到 RGB 颜色的材质。
  * @author: cnn
- * @createTime: 2021/12/15 10:45
+ * @createTime: 2021/12/15 14:42
  **/
 import React, { useEffect, useState } from 'react';
 import {
-  Color, WebGLRenderer, TorusKnotGeometry, MeshBasicMaterial as TMeshBasicMaterial, Mesh, Fog, FrontSide
+  Color, WebGLRenderer, TorusKnotGeometry, MeshNormalMaterial as TMeshNormalMaterial, Mesh,
+  DoubleSide, HemisphereLight
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
@@ -15,7 +15,7 @@ import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from 
 
 let cube: any;
 
-const MeshBasicMaterial = () => {
+const MeshNormalMaterial = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
@@ -51,22 +51,30 @@ const MeshBasicMaterial = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0x444444),
-      fog: new Fog(0xe25abe)
+      background: new Color(0x444444)
     });
+    // 主要是 near 值的设置
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
       perspectiveParams: {
-        fov: 45,
+        fov: 70,
         aspect: getClientWidth() / (getClientHeight() - 60),
-        near: 1,
+        near: 10,
         far: 100
       },
-      position: [0, 0, 100]
+      position: [0, 0, 35]
     });
     const threeContainer = document.getElementById('threeContainer') || document;
+    initLight();
     initCube();
     setThreeContainer(threeContainer);
+  };
+  // 初始化光源
+  const initLight = () => {
+    // 半球光，光源直接放置于场景之上，光照颜色从天空光线颜色渐变到地面光线颜色。
+    const hemisphereLight = new HemisphereLight(0xffffff, 0x444444);
+    hemisphereLight.position.set(0, 200, 0);
+    THREE_CONST.scene.add(hemisphereLight);
   };
   // 初始化 webgl 渲染器
   const initRenderer = () => {
@@ -93,14 +101,9 @@ const MeshBasicMaterial = () => {
   };
   // 生成一个 cube 放入场景中
   const initCube = () => {
-    const geometry = new TorusKnotGeometry(10, 3, 100, 16, 2, 3);
-    // fog 的使用还是有欠缺，不是很清楚为什么不会改变物体颜色
-    const material = new TMeshBasicMaterial({
-      color: 0x049ef4,
-      depthTest: true,
-      depthWrite: true,
-      side: FrontSide,
-      // wireframe: true
+    const geometry = new TorusKnotGeometry(10, 3, 200, 32);
+    const material = new TMeshNormalMaterial({
+      side: DoubleSide
     });
     cube = new Mesh(geometry, material);
     THREE_CONST.scene.add(cube);
@@ -121,4 +124,4 @@ const MeshBasicMaterial = () => {
   };
   return <div id="threeContainer" />;
 };
-export default MeshBasicMaterial;
+export default MeshNormalMaterial;
