@@ -16,7 +16,9 @@ import {
   TorusKnotGeometry, TubeGeometry, WireframeGeometry, AmbientLight, DirectionalLight,
   HemisphereLight, PointLight, RectAreaLight, SpotLight, LightProbe,
   LineBasicMaterial, LineDashedMaterial, MeshBasicMaterial, MeshDepthMaterial, MeshDistanceMaterial,
-  MeshLambertMaterial, MeshMatcapMaterial, MeshNormalMaterial, MeshPhongMaterial
+  MeshLambertMaterial, MeshMatcapMaterial, MeshNormalMaterial, MeshPhongMaterial, MeshPhysicalMaterial,
+  MeshStandardMaterial, MeshToonMaterial, PointsMaterial, RawShaderMaterial, ShaderMaterial,
+  ShadowMaterial, SpriteMaterial
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -85,6 +87,14 @@ const App = () => {
                 <Route exact path={platform + 'example/meshMatcapMaterial'} component={MeshMatcapMaterial} />
                 <Route exact path={platform + 'example/meshNormalMaterial'} component={MeshNormalMaterial} />
                 <Route exact path={platform + 'example/meshPhongMaterial'} component={MeshPhongMaterial} />
+                <Route exact path={platform + 'example/meshPhysicalMaterial'} component={MeshPhysicalMaterial} />
+                <Route exact path={platform + 'example/meshStandardMaterial'} component={MeshStandardMaterial} />
+                <Route exact path={platform + 'example/meshToonMaterial'} component={MeshToonMaterial} />
+                <Route exact path={platform + 'example/pointsMaterial'} component={PointsMaterial} />
+                <Route exact path={platform + 'example/rawShaderMaterial'} component={RawShaderMaterial} />
+                <Route exact path={platform + 'example/shaderMaterial'} component={ShaderMaterial} />
+                <Route exact path={platform + 'example/shadowMaterial'} component={ShadowMaterial} />
+                <Route exact path={platform + 'example/spriteMaterial'} component={SpriteMaterial} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

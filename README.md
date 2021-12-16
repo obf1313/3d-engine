@@ -48,14 +48,14 @@
 - [x] MeshMatcapMaterial 材质捕捉纹理定义材质（我自己按功能翻译的）。
 - [x] MeshNormalMaterial 法线网格材质。
 - [x] MeshPhongMaterial Phong网格材质。
-- [ ] MeshPhysicalMaterial 物理网格材质。
-- [ ] MeshStandardMaterial 标准网格材质。
-- [ ] MeshToonMaterial 无翻译。
-- [ ] PointsMaterial 点材质。
+- [x] MeshPhysicalMaterial 物理网格材质。
+- [x] MeshStandardMaterial 标准网格材质。
+- [x] MeshToonMaterial 卡通网格材质。
+- [x] PointsMaterial 点材质。
 - [ ] RawShaderMaterial 原始着色器材质。
 - [ ] ShaderMaterial 着色器材质。
 - [ ] ShadowMaterial 阴影材质。
-- [ ] SpriteMaterial 点精灵材质。
+- [x] SpriteMaterial 点精灵材质。
 ## 工作中用到的技术，暂无归类
 - [x] Line 画线。
 - [x] SimpleScene 简单场景，包含 scene, light, camera, renderer, OrbitControls, 简单结合体。

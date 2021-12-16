@@ -4,7 +4,7 @@
  * @createTime: 2021/9/17 11:11
  **/
 import {
-  Color, CubeTexture, CubeTextureLoader, Fog, Material, OrthographicCamera,
+  Color, CubeTexture, CubeTextureLoader, Fog, FogExp2, Material, OrthographicCamera,
   PerspectiveCamera, Raycaster, Scene, Texture, Vector3
 } from 'three';
 import { getClientHeight, getClientWidth } from '@utils/CommonFunc';
@@ -87,7 +87,7 @@ interface ISceneProps {
   // 默认为 null。
   environment?: Texture,
   // 一个 fog 实例定义了影响场景中的每个物体的雾的类型。默认值为 null。
-  fog?: Fog,
+  fog?: Fog | FogExp2,
   // 如果不为空，它将强制场景中的每个物体使用这里的材质来渲染。默认值为 null。
   overrideMaterial?: Material
 }

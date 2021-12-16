@@ -85,6 +85,14 @@ const Header = () => {
               <Menu.Item key="meshMatcapMaterial">材质捕捉纹理定义材质</Menu.Item>
               <Menu.Item key="meshNormalMaterial">法线网格材质</Menu.Item>
               <Menu.Item key="meshPhongMaterial">Phong 网格材质</Menu.Item>
+              <Menu.Item key="meshPhysicalMaterial">物理网格材质</Menu.Item>
+              <Menu.Item key="meshStandardMaterial">标准网格材质</Menu.Item>
+              <Menu.Item key="meshToonMaterial">卡通网格材质</Menu.Item>
+              <Menu.Item key="pointsMaterial">点材质</Menu.Item>
+              <Menu.Item key="rawShaderMaterial">原始着色器材质</Menu.Item>
+              <Menu.Item key="shaderMaterial">着色器材质</Menu.Item>
+              <Menu.Item key="shadowMaterial">阴影材质</Menu.Item>
+              <Menu.Item key="spriteMaterial">点精灵材质</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="line">画线</Menu.Item>

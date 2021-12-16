@@ -62,3 +62,11 @@ export { default as MeshLambertMaterial } from '@views/example/material/MeshLamb
 export { default as MeshMatcapMaterial } from '@views/example/material/MeshMatcapMaterial';
 export { default as MeshNormalMaterial } from '@views/example/material/MeshNormalMaterial';
 export { default as MeshPhongMaterial } from '@views/example/material/MeshPhongMaterial';
+export { default as MeshPhysicalMaterial } from '@views/example/material/MeshPhysicalMaterial';
+export { default as MeshStandardMaterial } from '@views/example/material/MeshStandardMaterial';
+export { default as MeshToonMaterial } from '@views/example/material/MeshToonMaterial';
+export { default as PointsMaterial } from '@views/example/material/PointsMaterial';
+export { default as RawShaderMaterial } from '@views/example/material/RawShaderMaterial';
+export { default as ShaderMaterial } from '@views/example/material/ShaderMaterial';
+export { default as ShadowMaterial } from '@views/example/material/ShadowMaterial';
+export { default as SpriteMaterial } from '@views/example/material/SpriteMaterial';
