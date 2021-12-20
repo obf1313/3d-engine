@@ -29,6 +29,8 @@ const MeshToonMaterial = () => {
       window.removeEventListener('resize', onWindowResize);
       // 重置全局变量
       resetThreeConst();
+      particleLight = null;
+      effect = null;
     };
   }, []);
   useEffect(() => {

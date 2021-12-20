@@ -5,16 +5,8 @@
  **/
 import React, { useEffect, useState } from 'react';
 import {
-  Color,
-  MeshPhysicalMaterial as TMeshPhysicalMaterial,
-  WebGLRenderer,
-  Mesh,
-  BackSide,
-  FrontSide,
-  LoadingManager,
-  Group,
-  EquirectangularReflectionMapping,
-  PointLight,
+  Color, MeshPhysicalMaterial as TMeshPhysicalMaterial, WebGLRenderer, Mesh, BackSide,
+  FrontSide, LoadingManager, Group, EquirectangularReflectionMapping, PointLight,
   AmbientLight, ACESFilmicToneMapping, sRGBEncoding
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -38,6 +30,9 @@ const MeshPhysicalMaterial = () => {
       window.removeEventListener('resize', onWindowResize);
       // 重置全局变量
       resetThreeConst();
+      objects = [];
+      gemBackMaterial = null;
+      gemFrontMaterial = null;
     };
   }, []);
   useEffect(() => {

@@ -40,7 +40,7 @@
 ## 材质
 - [x] LineBasicMaterial 基础线条材质。
 - [x] LineDashedMaterial 虚线材质。
-- [ ] Material 材质。
+- [x] Material 材质，暂无示例。
 - [x] MeshBasicMaterial 基础网格材质。
 - [x] MeshDepthMaterial 深度网格材质。
 - [x] MeshDistanceMaterial 深度着色材质。
@@ -52,9 +52,9 @@
 - [x] MeshStandardMaterial 标准网格材质。
 - [x] MeshToonMaterial 卡通网格材质。
 - [x] PointsMaterial 点材质。
-- [ ] RawShaderMaterial 原始着色器材质。
-- [ ] ShaderMaterial 着色器材质。
-- [ ] ShadowMaterial 阴影材质。
+- [x] RawShaderMaterial 原始着色器材质。
+- [x] ShaderMaterial 着色器材质。
+- [x] ShadowMaterial 阴影材质。
 - [x] SpriteMaterial 点精灵材质。
 ## 工作中用到的技术，暂无归类
 - [x] Line 画线。

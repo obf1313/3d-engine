@@ -30,6 +30,11 @@ const PointsMaterial = () => {
       window.removeEventListener('resize', onWindowResize);
       // 重置全局变量
       resetThreeConst();
+      material = null;
+      mouseX = 0;
+      mouseY = 0;
+      windowHalfX = 0;
+      windowHalfY = 0;
     };
   }, []);
   useEffect(() => {
