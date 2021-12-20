@@ -56,6 +56,16 @@
 - [x] ShaderMaterial 着色器材质。
 - [x] ShadowMaterial 阴影材质。
 - [x] SpriteMaterial 点精灵材质。
+## 纹理
+- [ ] CanvasTexture Canvas纹理。
+- [ ] CompressedTexture 压缩的纹理。
+- [ ] CubeTexture 立方纹理。
+- [ ] DataTexture 原始数据纹理。
+- [ ] DataTexture2DArray 2D数组数据纹理。
+- [ ] DataTexture3D 三维纹理。
+- [ ] DepthTexture 深度纹理。
+- [ ] Texture 纹理。
+- [ ] VideoTexture 视频纹理。
 ## 工作中用到的技术，暂无归类
 - [x] Line 画线。
 - [x] SimpleScene 简单场景，包含 scene, light, camera, renderer, OrbitControls, 简单结合体。
