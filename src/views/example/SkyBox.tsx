@@ -11,6 +11,7 @@ import {
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initCubeTexture, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 const SkyBox = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
@@ -47,7 +48,7 @@ const SkyBox = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: initCubeTexture('/modelStatic/three/box/', ['right.jpg', 'left.jpg', 'top.jpg', 'bottom.jpg', 'front.jpg', 'back.jpg'])
+      background: initCubeTexture(staticUrlPrefix + 'box/', ['right.jpg', 'left.jpg', 'top.jpg', 'bottom.jpg', 'front.jpg', 'back.jpg'])
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,

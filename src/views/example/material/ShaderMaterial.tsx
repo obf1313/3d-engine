@@ -17,6 +17,7 @@ import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Button, Space } from 'antd';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 let mixers: Array<any> = [];
 const clock: any = new Clock();
@@ -186,7 +187,7 @@ const ShaderMaterial = () => {
   // 初始化模型
   const initModel = () => {
     const loader = new GLTFLoader();
-    loader.load('/modelStatic/three/Flamingo.glb', (gltf: any) => {
+    loader.load(staticUrlPrefix + 'Flamingo.glb', (gltf: any) => {
       const mesh = gltf.scene.children[0];
       const s = 0.35;
       mesh.scale.set(s, s, s);

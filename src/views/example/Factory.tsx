@@ -14,6 +14,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 import { CameraType, getIntersects, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 interface IMaterialData {
   name: string,
@@ -131,12 +132,12 @@ const Factory = () => {
   };
   // 初始化模型
   const initModel = () => {
-    const url: string = '/modelStatic/three/BiomassFactory.gltf';
+    const url: string = staticUrlPrefix + 'BiomassFactory.gltf';
     // 加载模型
     const loader = new GLTFLoader();
     // 设置解压库文件路径
     const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('/modelStatic/three/dracos/gltf/');
+    dracoLoader.setDecoderPath(staticUrlPrefix + 'dracos/gltf/');
     loader.setDRACOLoader(dracoLoader);
     loader.load(url, (object: any) => {
       const pipeList = ['Mesh006', 'Mesh007'];
@@ -215,7 +216,7 @@ const Factory = () => {
   };
   // 箭头纹理
   const initArrowTexture = () => {
-    const texture: Texture = new TextureLoader().load('/modelStatic/three/arrow.png');
+    const texture: Texture = new TextureLoader().load(staticUrlPrefix + 'arrow.png');
     texture.wrapS = texture.wrapT = RepeatWrapping;
     texture.repeat.set(1, 5);
     setArrowTexture(texture);
@@ -258,7 +259,7 @@ const Factory = () => {
     <>
       <div id="threeContainer" />
       <video id="video" controls width={400} height={300} style={{ display: 'none' }} autoPlay loop>
-        <source src="/modelStatic/three/1.mp4" type='video/ogg; codecs="theora, vorbis"' />
+        <source src={staticUrlPrefix + '1.mp4'} type='video/ogg; codecs="theora, vorbis"' />
       </video>
     </>
   );

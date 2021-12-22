@@ -11,6 +11,7 @@ import {
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 import { AnaglyphEffect } from 'three/examples/jsm/effects/AnaglyphEffect';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 let textureCube: any;
 let spheres: Array<any> = [];
@@ -62,7 +63,7 @@ const StereoCamera = () => {
   }, [renderer]);
   // 初始化场景
   const initMyScene = () => {
-    const path = '/modelStatic/three/cube/';
+    const path = staticUrlPrefix + 'cube/';
     const format = '.png';
     const urls = [
       path + 'px' + format, path + 'nx' + format,

@@ -19,6 +19,7 @@ import {
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initCubeTexture, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 let cube: any;
 
@@ -122,7 +123,7 @@ const MeshStandardMaterial = () => {
       'pz' + format, 'nz' + format
     ];
     // @ts-ignore
-    const texture = initCubeTexture('/modelStatic/three/cube/', urls);
+    const texture = initCubeTexture(staticUrlPrefix + 'cube/', urls);
     texture.mapping = CubeRefractionMapping;
     texture.format = RGBFormat;
     return texture;

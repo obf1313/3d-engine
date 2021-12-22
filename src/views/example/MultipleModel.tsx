@@ -13,6 +13,7 @@ import {
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 // 是否停止相机移动
 let stopCamera: boolean = false;
@@ -93,9 +94,9 @@ const MultipleModel = () => {
   // 获取模型列表
   const getModelList = () => {
     const modelList: Array<string> = [
-      '/modelStatic/three/animation.glb',
-      '/modelStatic/three/background.glb',
-      '/modelStatic/three/arrow.glb'
+      staticUrlPrefix + 'animation.glb',
+      staticUrlPrefix + 'background.glb',
+      staticUrlPrefix + 'arrow.glb'
     ];
     setModelList(modelList);
   };
@@ -157,7 +158,7 @@ const MultipleModel = () => {
         getTreeChildren(object.scene.children, (item: any) => {
           // 底面
           if (item.name.indexOf('background') !== -1) {
-            const groundTexture = new TextureLoader().load('/modelStatic/three/grasslight-big.jpg');
+            const groundTexture = new TextureLoader().load(staticUrlPrefix + 'grasslight-big.jpg');
             groundTexture.wrapS = groundTexture.wrapT = RepeatWrapping;
             groundTexture.repeat.set(25, 25);
             groundTexture.anisotropy = 16;
@@ -188,7 +189,7 @@ const MultipleModel = () => {
           }
           // 立方体
           if (item.name.indexOf('立方体') !== -1) {
-            const cubeTexture: any = new TextureLoader().load('/modelStatic/three/crate.gif');
+            const cubeTexture: any = new TextureLoader().load(staticUrlPrefix + 'crate.gif');
             cubeTexture.wrapS = RepeatWrapping;
             cubeTexture.wrapT = RepeatWrapping;
             item.material = new MeshPhongMaterial({ map: cubeTexture });
@@ -238,14 +239,14 @@ const MultipleModel = () => {
   };
   // 箭头纹理
   const initArrowTexture = () => {
-    const texture: Texture = new TextureLoader().load('/modelStatic/three/arrow-right.png');
+    const texture: Texture = new TextureLoader().load(staticUrlPrefix + 'arrow-right.png');
     texture.wrapS = texture.wrapT = RepeatWrapping;
     texture.repeat.set(10, 1);
     setArrowTexture(texture);
   };
   // 轨道纹理
   const initTrackTexture = () => {
-    const texture: Texture = new TextureLoader().load('/modelStatic/three/track.png');
+    const texture: Texture = new TextureLoader().load(staticUrlPrefix + 'track.png');
     texture.wrapS = texture.wrapT = RepeatWrapping;
     texture.encoding = sRGBEncoding;
     setTrackTexture(texture);

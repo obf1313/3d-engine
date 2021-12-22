@@ -12,6 +12,7 @@ import {
 } from 'three';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 let onPointerDownPointerX: number;
 let onPointerDownPointerY: number;
@@ -68,7 +69,7 @@ const CubeCamera = () => {
   // 初始化场景
   const initMyScene = () => {
     const textureLoader = new TextureLoader();
-    const texture = textureLoader.load('/modelStatic/three/home.jpg');
+    const texture = textureLoader.load(staticUrlPrefix + 'home.jpg');
     texture.encoding = sRGBEncoding;
     texture.mapping = EquirectangularReflectionMapping;
     THREE_CONST.scene = initScene({

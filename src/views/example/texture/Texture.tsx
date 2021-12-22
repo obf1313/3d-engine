@@ -12,6 +12,7 @@ import {
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 const Texture = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
@@ -89,7 +90,7 @@ const Texture = () => {
   };
   // 生成一个 cube 放入场景中
   const initCube = () => {
-    const texture = new TextureLoader().load('/modelStatic/three/textures/R-C.png');
+    const texture = new TextureLoader().load(staticUrlPrefix + 'textures/R-C.png');
     const geometry = new BoxGeometry(20, 20, 20);
     const material = new MeshBasicMaterial({
       color: 0xffffff,

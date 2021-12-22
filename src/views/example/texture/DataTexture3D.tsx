@@ -15,6 +15,7 @@ import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 import { NRRDLoader } from 'three/examples/jsm/loaders/NRRDLoader';
 import { VolumeRenderShader1 } from 'three/examples/jsm/shaders/VolumeShader';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 let cmtextures;
 let material;
@@ -98,7 +99,7 @@ const DataTexture3D = () => {
       isothreshold: 0.15,
       colormap: 'viridis'
     };
-    new NRRDLoader().load('/modelStatic/three/stent.nrrd', (volume: any) => {
+    new NRRDLoader().load(staticUrlPrefix + 'stent.nrrd', (volume: any) => {
       // 说实话我觉得这个例子没什么参考性
       const texture = new TDataTexture3D(volume.data, volume.xLength, volume.yLength, volume.zLength);
       texture.format = RedFormat;
@@ -106,8 +107,8 @@ const DataTexture3D = () => {
       texture.minFilter = texture.magFilter = LinearFilter;
       texture.unpackAlignment = 1;
       cmtextures = {
-        viridis: new TextureLoader().load('/modelStatic/three/textures/cm_viridis.png', render),
-        gray: new TextureLoader().load('/modelStatic/three/textures/cm_gray.png', render)
+        viridis: new TextureLoader().load(staticUrlPrefix + 'textures/cm_viridis.png', render),
+        gray: new TextureLoader().load(staticUrlPrefix + 'textures/cm_gray.png', render)
       };
       const shader = VolumeRenderShader1;
       const uniforms = UniformsUtils.clone(shader.uniforms);

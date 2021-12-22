@@ -61,3 +61,7 @@ export enum IPageSession { // page current的类型
 export const PageSessionList: Array<IPageSession> = [
   IPageSession.demo
 ];
+/**
+ * 静态资源路径
+**/
+export const staticUrlPrefix = '/modelStatic/three/';

@@ -9,6 +9,7 @@ import { Color, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh, CubeRefract
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initCubeTexture, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 const CubeTexture = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
@@ -93,7 +94,7 @@ const CubeTexture = () => {
       'pz' + format, 'nz' + format
     ];
     // @ts-ignore
-    const texture = initCubeTexture('/modelStatic/three/cube/', urls);
+    const texture = initCubeTexture(staticUrlPrefix + 'cube/', urls);
     texture.mapping = CubeRefractionMapping;
     texture.format = RGBFormat;
     return texture;

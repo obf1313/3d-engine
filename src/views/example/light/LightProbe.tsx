@@ -22,6 +22,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initCubeTexture, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 import { LightProbeGenerator } from 'three/examples/jsm/lights/LightProbeGenerator';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 let lightProbe: any;
 
@@ -110,7 +111,7 @@ const LightProbe = () => {
       ];
     };
     // @ts-ignore
-    initCubeTexture('/modelStatic/three/cube/', genCubeUrls('.png'), (texture: CubeTexture) => {
+    initCubeTexture(staticUrlPrefix + 'cube/', genCubeUrls('.png'), (texture: CubeTexture) => {
       texture.encoding = sRGBEncoding;
       THREE_CONST.scene.background = texture;
       lightProbe.copy(LightProbeGenerator.fromCubeTexture(texture));

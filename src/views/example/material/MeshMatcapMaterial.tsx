@@ -14,6 +14,7 @@ import {
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 let cube: any;
 
@@ -107,7 +108,7 @@ const MeshMatcapMaterial = () => {
     const textureLoader = new TextureLoader();
     const material = new TMeshMatcapMaterial({
       side: DoubleSide,
-      matcap: textureLoader.load('/modelStatic/three/matcap-porcelain-white.jpg')
+      matcap: textureLoader.load(staticUrlPrefix + 'matcap-porcelain-white.jpg')
     });
     cube = new Mesh(geometry, material);
     THREE_CONST.scene.add(cube);

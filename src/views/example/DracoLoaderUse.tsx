@@ -14,6 +14,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 import { CameraType, getIntersects, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 interface IMaterialData {
   name: string,
@@ -121,12 +122,12 @@ const DracoLoaderUse = () => {
   };
   // 初始化模型
   const initModel = () => {
-    const url: string = '/modelStatic/three/model.gltf';
+    const url: string = staticUrlPrefix + 'model.gltf';
     // 加载模型
     const loader = new GLTFLoader();
     // 设置解压库文件路径
     const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('/modelStatic/three/dracos/gltf/');
+    dracoLoader.setDecoderPath(staticUrlPrefix + 'dracos/gltf/');
     loader.setDRACOLoader(dracoLoader);
     loader.load(url, (object: any) => {
       // 对模型进行一些修改
@@ -214,7 +215,7 @@ const DracoLoaderUse = () => {
   };
   // 箭头纹理
   const initArrowTexture = () => {
-    const texture: Texture = new TextureLoader().load('/modelStatic/three/arrow-up.png');
+    const texture: Texture = new TextureLoader().load(staticUrlPrefix + 'arrow-up.png');
     texture.wrapS = texture.wrapT = RepeatWrapping;
     texture.repeat.set(1, 100);
     setArrowTexture(texture);

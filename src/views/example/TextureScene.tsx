@@ -11,6 +11,7 @@ import {
 import { getClientHeight, getClientWidth } from '@utils/CommonFunc';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 const TextureScene = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
@@ -110,7 +111,7 @@ const TextureScene = () => {
   const initCube = () => {
     const geometry = new BoxGeometry(20, 20, 20);
     // 初始化纹理
-    const texture = new TextureLoader().load('/modelStatic/three/crate.gif');
+    const texture = new TextureLoader().load(staticUrlPrefix + 'crate.gif');
     texture.wrapS = texture.wrapT = RepeatWrapping;
     const material = new MeshBasicMaterial({
       map: texture

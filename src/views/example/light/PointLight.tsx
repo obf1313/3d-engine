@@ -14,6 +14,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 let object: any;
 let light1: any;
@@ -115,7 +116,7 @@ const PointLight = () => {
   };
   // 加载模型
   const initModel = () => {
-    const url: string = '/modelStatic/three/WaltHead.obj';
+    const url: string = staticUrlPrefix + 'WaltHead.obj';
     const loader = new OBJLoader();
     loader.load(url, (obj: any) => {
       object = obj;

@@ -14,6 +14,7 @@ import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 let objects: any = [];
 let gemBackMaterial: any;
@@ -141,7 +142,7 @@ const MeshPhysicalMaterial = () => {
     });
     const manager = new LoadingManager();
     const loader = new OBJLoader(manager);
-    loader.load('/modelStatic/three/emerald.obj', (object: any) => {
+    loader.load(staticUrlPrefix + 'emerald.obj', (object: any) => {
       object.traverse((child: any) => {
         if (child instanceof Mesh) {
           child.material = gemBackMaterial;
@@ -155,7 +156,7 @@ const MeshPhysicalMaterial = () => {
         }
       });
     });
-    new RGBELoader().setPath('/modelStatic/three/textures/').load('royal_esplanade_1k.hdr', (texture: any) => {
+    new RGBELoader().setPath(staticUrlPrefix + 'textures/').load('royal_esplanade_1k.hdr', (texture: any) => {
       texture.mapping = EquirectangularReflectionMapping;
       gemFrontMaterial.envMap = gemBackMaterial.envMap = texture;
       gemFrontMaterial.needsUpdate = gemBackMaterial.needsUpdate = true;

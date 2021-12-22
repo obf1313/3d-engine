@@ -12,6 +12,7 @@ import {
 } from 'three';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 let material: any;
 let mouseX: number = 0;
@@ -113,7 +114,7 @@ const PointsMaterial = () => {
   const initCube = () => {
     const geometry = new BufferGeometry();
     const vertices = [];
-    const sprite = new TextureLoader().load('/modelStatic/three/textures/disc.png');
+    const sprite = new TextureLoader().load(staticUrlPrefix + 'textures/disc.png');
     for (let i = 0; i < 10000; i++) {
       const x = 2000 * Math.random() - 1000;
       const y = 2000 * Math.random() - 1000;

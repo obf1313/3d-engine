@@ -16,6 +16,7 @@ import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { VertexNormalsHelper } from 'three/examples/jsm/helpers/VertexNormalsHelper';
 import { VertexTangentsHelper } from 'three/examples/jsm/helpers/VertexTangentsHelper';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 let light: any;
 let vnh: any;
@@ -91,7 +92,7 @@ const EdgesGeometry = () => {
   // 导入模型 todo 要去写物联网引擎了，尴尬
   const loadModel = () => {
     const loader = new GLTFLoader();
-    loader.load('/modelStatic/three/LeePerrySmith.glb', (gltf) => {
+    loader.load(staticUrlPrefix + 'LeePerrySmith.glb', (gltf) => {
       const mesh: any = gltf.scene.children[0];
       // 这是在干啥
       mesh.geometry.computeTangents();

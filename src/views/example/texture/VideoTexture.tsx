@@ -10,6 +10,7 @@ import { VideoTexture as TVideoTexture, DirectionalLight, WebGLRenderer, BoxGeom
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import { staticUrlPrefix } from '@utils/CommonVars';
 
 const VideoTexture = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
@@ -86,7 +87,7 @@ const VideoTexture = () => {
   // 生成一个 cube 放入场景中
   const initCube = () => {
     const video = document.createElement('video');
-    video.src = '/modelStatic/three/video/sintel.ogv';
+    video.src = staticUrlPrefix + 'video/sintel.ogv';
     video.play();
     video.loop = true;
     const texture = new TVideoTexture(video);
