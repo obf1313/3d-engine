@@ -70,3 +70,13 @@ export { default as RawShaderMaterial } from '@views/example/material/RawShaderM
 export { default as ShaderMaterial } from '@views/example/material/ShaderMaterial';
 export { default as ShadowMaterial } from '@views/example/material/ShadowMaterial';
 export { default as SpriteMaterial } from '@views/example/material/SpriteMaterial';
+// 三维示例 - 纹理
+export { default as CanvasTexture } from '@views/example/texture/CanvasTexture';
+export { default as CompressedTexture } from '@views/example/texture/CompressedTexture';
+export { default as CubeTexture } from '@views/example/texture/CubeTexture';
+export { default as DataTexture } from '@views/example/texture/DataTexture';
+export { default as DataTexture2DArray } from '@views/example/texture/DataTexture2DArray';
+export { default as DataTexture3D } from '@views/example/texture/DataTexture3D';
+export { default as DepthTexture } from '@views/example/texture/DepthTexture';
+export { default as VideoTexture } from '@views/example/texture/VideoTexture';
+export { default as Texture } from '@views/example/texture/Texture';

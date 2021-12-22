@@ -57,15 +57,15 @@
 - [x] ShadowMaterial 阴影材质。
 - [x] SpriteMaterial 点精灵材质。
 ## 纹理
-- [ ] CanvasTexture Canvas纹理。
-- [ ] CompressedTexture 压缩的纹理。
-- [ ] CubeTexture 立方纹理。
-- [ ] DataTexture 原始数据纹理。
-- [ ] DataTexture2DArray 2D数组数据纹理。
-- [ ] DataTexture3D 三维纹理。
-- [ ] DepthTexture 深度纹理。
-- [ ] Texture 纹理。
-- [ ] VideoTexture 视频纹理。
+- [x] CanvasTexture Canvas纹理。
+- [x] CompressedTexture 压缩的纹理 暂无示例。
+- [x] CubeTexture 立方纹理。
+- [x] DataTexture 原始数据纹理。
+- [x] DataTexture2DArray 2D数组数据纹理。
+- [x] DataTexture3D 三维纹理。
+- [x] DepthTexture 深度纹理。
+- [x] Texture 纹理。
+- [x] VideoTexture 视频纹理。
 ## 工作中用到的技术，暂无归类
 - [x] Line 画线。
 - [x] SimpleScene 简单场景，包含 scene, light, camera, renderer, OrbitControls, 简单结合体。

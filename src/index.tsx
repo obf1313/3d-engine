@@ -18,7 +18,8 @@ import {
   LineBasicMaterial, LineDashedMaterial, MeshBasicMaterial, MeshDepthMaterial, MeshDistanceMaterial,
   MeshLambertMaterial, MeshMatcapMaterial, MeshNormalMaterial, MeshPhongMaterial, MeshPhysicalMaterial,
   MeshStandardMaterial, MeshToonMaterial, PointsMaterial, RawShaderMaterial, ShaderMaterial,
-  ShadowMaterial, SpriteMaterial
+  ShadowMaterial, SpriteMaterial, CanvasTexture, CompressedTexture, CubeTexture,
+  DataTexture, DataTexture2DArray, DataTexture3D, DepthTexture, VideoTexture, Texture
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -95,6 +96,16 @@ const App = () => {
                 <Route exact path={platform + 'example/shaderMaterial'} component={ShaderMaterial} />
                 <Route exact path={platform + 'example/shadowMaterial'} component={ShadowMaterial} />
                 <Route exact path={platform + 'example/spriteMaterial'} component={SpriteMaterial} />
+                {/* 三维示例 - 纹理 */}
+                <Route exact path={platform + 'example/canvasTexture'} component={CanvasTexture} />
+                <Route exact path={platform + 'example/compressedTexture'} component={CompressedTexture} />
+                <Route exact path={platform + 'example/cubeTexture'} component={CubeTexture} />
+                <Route exact path={platform + 'example/dataTexture'} component={DataTexture} />
+                <Route exact path={platform + 'example/dataTexture2DArray'} component={DataTexture2DArray} />
+                <Route exact path={platform + 'example/dataTexture3D'} component={DataTexture3D} />
+                <Route exact path={platform + 'example/depthTexture'} component={DepthTexture} />
+                <Route exact path={platform + 'example/videoTexture'} component={VideoTexture} />
+                <Route exact path={platform + 'example/texture'} component={Texture} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

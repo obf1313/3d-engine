@@ -94,6 +94,17 @@ const Header = () => {
               <Menu.Item key="shadowMaterial">阴影材质</Menu.Item>
               <Menu.Item key="spriteMaterial">点精灵材质</Menu.Item>
             </Menu.ItemGroup>
+            <Menu.ItemGroup title="Texture 纹理">
+              <Menu.Item key="canvasTexture">Canvas 纹理</Menu.Item>
+              <Menu.Item key="compressedTexture">压缩的纹理</Menu.Item>
+              <Menu.Item key="cubeTexture">立方纹理</Menu.Item>
+              <Menu.Item key="dataTexture">原始数据纹理</Menu.Item>
+              <Menu.Item key="dataTexture2DArray">2D数组数据纹理</Menu.Item>
+              <Menu.Item key="dataTexture3D">三维纹理</Menu.Item>
+              <Menu.Item key="depthTexture">深度纹理</Menu.Item>
+              <Menu.Item key="texture">纹理</Menu.Item>
+              <Menu.Item key="videoTexture">视频纹理</Menu.Item>
+            </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="line">画线</Menu.Item>
               <Menu.Item key="simpleScene">简单场景</Menu.Item>
