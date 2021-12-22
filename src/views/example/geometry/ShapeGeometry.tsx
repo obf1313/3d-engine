@@ -50,7 +50,7 @@ const ShapeGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,

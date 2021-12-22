@@ -47,7 +47,7 @@ const WireframeGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -96,7 +96,7 @@ const WireframeGeometry = () => {
     line.material.transparent = true;
     line.material.background = 'red';
     const material = new MeshBasicMaterial({
-      color: 0xff0000,
+      color: 0xff00ff,
       side: DoubleSide
     });
     const tubeGeometry = new Mesh(geometry, material);

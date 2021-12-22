@@ -50,7 +50,7 @@ const CircleGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -91,8 +91,12 @@ const CircleGeometry = () => {
   };
   // 生成一个 circle 放入场景中
   const initCircle = () => {
-    const geometry = new TCircleGeometry(5, 32);
-    const material = new MeshBasicMaterial({ color: 0xffff00, side: DoubleSide });
+    const geometry = new TCircleGeometry(10, 32);
+    const material = new MeshBasicMaterial({
+      color: 0xdddddd,
+      side: DoubleSide,
+      wireframe: true
+    });
     circle = new Mesh(geometry, material);
     THREE_CONST.scene.add(circle);
   };

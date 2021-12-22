@@ -51,7 +51,7 @@ const LatheGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -99,8 +99,9 @@ const LatheGeometry = () => {
     // points 指 y 梯度点，其实我也不是很懂，大概理解
     const geometry = new TLatheGeometry(points, 5);
     const material = new MeshBasicMaterial({
-      color: 0x00ff00,
-      side: DoubleSide
+      color: 0x00ffff,
+      side: DoubleSide,
+      wireframe: true
     });
     latheGeometry = new Mesh(geometry, material);
     THREE_CONST.scene.add(latheGeometry);

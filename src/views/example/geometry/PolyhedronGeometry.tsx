@@ -53,7 +53,7 @@ const PolyhedronGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -116,10 +116,11 @@ const PolyhedronGeometry = () => {
     // indices — 一个构成面的索引Array（数组）， [0,1,2, 2,3,0, ... ]。
     // radius — Float - 最终形状的半径。
     // detail — Integer - 将对这个几何体细分多少个级别。细节越多，形状就越平滑。
-    const geometry = new TPolyhedronGeometry(verticesOfCube, indicesOfFaces, 6, 2);
+    const geometry = new TPolyhedronGeometry(verticesOfCube, indicesOfFaces, 15, 2);
     const material = new MeshBasicMaterial({
-      color: 0x00ff00,
-      side: DoubleSide
+      color: 0x05ff40,
+      side: DoubleSide,
+      wireframe: true
     });
     polyhedronGeometry = new Mesh(geometry, material);
     THREE_CONST.scene.add(polyhedronGeometry);

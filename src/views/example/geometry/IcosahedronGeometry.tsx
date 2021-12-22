@@ -48,7 +48,7 @@ const IcosahedronGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -93,8 +93,11 @@ const IcosahedronGeometry = () => {
     // radius — 二十面体的半径，默认为 1。
     // detail — 默认值为 0。将这个值设为一个大于 0 的数将会为它增加一些顶点，使其不再是一个二十面体。当这个值大于 1 的时候，实际上它将变成一个球体。
     // todo detail 设置为大于 1 的数会报错。
-    const geometry = new TIcosahedronGeometry(5, 1);
-    const material = new MeshBasicMaterial({ color: 0x00ff00 });
+    const geometry = new TIcosahedronGeometry(10, 1);
+    const material = new MeshBasicMaterial({
+      color: 0xffff00,
+      wireframe: true
+    });
     icosahedronGeometry = new Mesh(geometry, material);
     THREE_CONST.scene.add(icosahedronGeometry);
   };

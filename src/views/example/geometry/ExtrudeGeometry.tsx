@@ -49,7 +49,7 @@ const ExtrudeGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -109,7 +109,10 @@ const ExtrudeGeometry = () => {
       bevelSegments: 1, // 斜角的分段层数，默认值为3。
     };
     const geometry = new TExtrudeGeometry(shape, extrudeSettings);
-    const material = new MeshBasicMaterial({ color: 0x00ff00 });
+    const material = new MeshBasicMaterial({
+      color: 0x00ff00,
+      wireframe: true
+    });
     extrudeGeometry = new Mesh(geometry, material);
     THREE_CONST.scene.add(extrudeGeometry);
   };

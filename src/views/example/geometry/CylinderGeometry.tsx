@@ -49,7 +49,7 @@ const CylinderGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -91,7 +91,10 @@ const CylinderGeometry = () => {
   // 生成一个 cylinder 放入场景中
   const initCylinder = () => {
     const geometry = new TCylinderGeometry(5, 5, 20, 20);
-    const material = new MeshBasicMaterial({ color: 0xffff00 });
+    const material = new MeshBasicMaterial({
+      color: 0xdddddd,
+      wireframe: true
+    });
     cylinder = new Mesh(geometry, material);
     THREE_CONST.scene.add(cylinder);
   };

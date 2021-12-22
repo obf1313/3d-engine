@@ -50,7 +50,7 @@ const TetrahedronGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -93,8 +93,9 @@ const TetrahedronGeometry = () => {
   const initTetrahedronGeometry = () => {
     const geometry = new TTetrahedronGeometry(15);
     const material = new MeshBasicMaterial({
-      color: 0xff0000,
-      side: DoubleSide
+      color: 0xff0250,
+      side: DoubleSide,
+      wireframe: true
     });
     tetrahedronGeometry = new Mesh(geometry, material);
     THREE_CONST.scene.add(tetrahedronGeometry);

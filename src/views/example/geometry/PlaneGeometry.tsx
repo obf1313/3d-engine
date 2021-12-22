@@ -51,7 +51,7 @@ const PlaneGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -92,10 +92,11 @@ const PlaneGeometry = () => {
   };
   // 生成一个 planeGeometry 放入场景中
   const initPlaneGeometry = () => {
-    const geometry = new TPlaneGeometry(10, 10);
+    const geometry = new TPlaneGeometry(20, 20);
     const material = new MeshBasicMaterial({
-      color: 0x00ff00,
-      side: DoubleSide
+      color: 0x22ff22,
+      side: DoubleSide,
+      wireframe: true
     });
     planeGeometry = new Mesh(geometry, material);
     THREE_CONST.scene.add(planeGeometry);

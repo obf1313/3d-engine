@@ -49,7 +49,7 @@ const ConeGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -90,8 +90,11 @@ const ConeGeometry = () => {
   };
   // 生成一个 cone 放入场景中
   const initCone = () => {
-    const geometry = new TConeGeometry(5, 20, 32);
-    const material = new MeshBasicMaterial({ color: 0xffff00 });
+    const geometry = new TConeGeometry(10, 20, 32);
+    const material = new MeshBasicMaterial({
+      color: 0xdddddd,
+      wireframe: true
+    });
     cone = new Mesh(geometry, material);
     THREE_CONST.scene.add(cone);
   };

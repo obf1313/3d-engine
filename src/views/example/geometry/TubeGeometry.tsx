@@ -65,7 +65,7 @@ const TubeGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -113,10 +113,11 @@ const TubeGeometry = () => {
     // radialSegments — Integer - 管道横截面的分段数目，默认值为 8。
     // closed — Boolean 管道的两端是否闭合，默认值为 false。
     const path = new CustomSinCurve(10);
-    const geometry = new TTubeGeometry(path, 20, 2, 8, false);
+    const geometry = new TTubeGeometry(path, 20, 3, 8, false);
     const material = new MeshBasicMaterial({
-      color: 0xff0000,
-      side: DoubleSide
+      color: 0x22e040,
+      side: DoubleSide,
+      wireframe: true,
     });
     tubeGeometry = new Mesh(geometry, material);
     THREE_CONST.scene.add(tubeGeometry);

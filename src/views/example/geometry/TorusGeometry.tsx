@@ -50,7 +50,7 @@ const TorusGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -98,8 +98,9 @@ const TorusGeometry = () => {
     // arc — 圆环的圆心角（单位是弧度），默认值为Math.PI * 2。
     const geometry = new TTorusGeometry(15, 3, 20, 100);
     const material = new MeshBasicMaterial({
-      color: 0xff0000,
-      side: DoubleSide
+      color: 0xdd5822,
+      side: DoubleSide,
+      wireframe: true
     });
     torusGeometry = new Mesh(geometry, material);
     THREE_CONST.scene.add(torusGeometry);

@@ -50,7 +50,7 @@ const TorusKnotGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -99,8 +99,9 @@ const TorusKnotGeometry = () => {
     // q — 这个值决定了几何体将绕着其内部圆环旋转多少次，默认值是 3。
     const geometry = new TTorusKnotGeometry(15, 3, 100, 16, 1, 2);
     const material = new MeshBasicMaterial({
-      color: 0xff0000,
-      side: DoubleSide
+      color: 0xeeeee5,
+      side: DoubleSide,
+      wireframe: true
     });
     torusKnotGeometry = new Mesh(geometry, material);
     THREE_CONST.scene.add(torusKnotGeometry);

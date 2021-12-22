@@ -49,7 +49,7 @@ const DodecahedronGeometry = () => {
   // 初始化场景
   const initMyScene = () => {
     THREE_CONST.scene = initScene({
-      background: new Color(0xcce0ff)
+      background: new Color(0x000000)
     });
     THREE_CONST.camera = initCamera({
       cameraType: CameraType.perspectiveCamera,
@@ -90,8 +90,11 @@ const DodecahedronGeometry = () => {
   };
   // 生成一个 dodecahedron 放入场景中
   const initCylinder = () => {
-    const geometry = new TDodecahedronGeometry(5);
-    const material = new MeshBasicMaterial({ color: 0xffff00 });
+    const geometry = new TDodecahedronGeometry(10);
+    const material = new MeshBasicMaterial({
+      color: 0xdddddd,
+      wireframe: true
+    });
     dodecahedron = new Mesh(geometry, material);
     THREE_CONST.scene.add(dodecahedron);
   };
