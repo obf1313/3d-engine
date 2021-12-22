@@ -6,14 +6,9 @@
  **/
 import React, { useEffect, useState } from 'react';
 import {
-  WebGLRenderer,
-  sRGBEncoding,
-  DataTexture3D as TDataTexture3D,
-  RedFormat,
-  FloatType,
-  LinearFilter,
-  TextureLoader,
-  UniformsUtils, ShaderMaterial, BackSide, BoxGeometry, Mesh, MeshBasicMaterial
+  WebGLRenderer, sRGBEncoding, DataTexture3D as TDataTexture3D, RedFormat,
+  FloatType, LinearFilter, TextureLoader, UniformsUtils, ShaderMaterial,
+  BackSide, BoxGeometry, Mesh
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
@@ -34,6 +29,8 @@ const DataTexture3D = () => {
       window.removeEventListener('resize', onWindowResize);
       // 重置全局变量
       resetThreeConst();
+      cmtextures = null;
+      material = null;
     };
   }, []);
   useEffect(() => {

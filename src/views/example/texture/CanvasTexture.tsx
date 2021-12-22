@@ -7,8 +7,8 @@
  **/
 import React, { useEffect, useState } from 'react';
 import {
-  Color, HemisphereLight, DirectionalLight, WebGLRenderer, BoxGeometry,
-  MeshBasicMaterial, Mesh, NearestFilter, RepeatWrapping, CanvasTexture as TCanvasTexture
+  Color, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh,
+  NearestFilter, RepeatWrapping, CanvasTexture as TCanvasTexture
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';

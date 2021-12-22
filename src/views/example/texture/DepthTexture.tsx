@@ -46,6 +46,11 @@ const DepthTexture = () => {
       window.removeEventListener('resize', onWindowResize);
       // 重置全局变量
       resetThreeConst();
+      target = null;
+      postScene = null;
+      postCamera = null;
+      postMaterial = null;
+      controls = null;
     };
   }, []);
   useEffect(() => {
