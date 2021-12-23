@@ -1,18 +1,20 @@
 /**
- * @description: 画线
+ * @description: 线段
+ * 在若干对的顶点之间绘制的一系列的线。
+ * 它和 Line 几乎是相同的，唯一区别是在它渲染时使用的是 gl.LINES，而不是 gl.LINE_STRIP。
  * @author: cnn
- * @createTime: 2021/10/26 13:50
+ * @createTime: 2021/12/23 9:55
  **/
 import React, { useEffect, useState } from 'react';
 import {
-  Color, HemisphereLight, DirectionalLight, WebGLRenderer, LineBasicMaterial,
-  Vector3, BufferGeometry, Line
+  Color, WebGLRenderer, LineBasicMaterial, Vector3, BufferGeometry,
+  LineSegments as TLineSegments
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
 import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
 
-const ThreeLine = () => {
+const LineSegments = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
   const [renderer, setRenderer] = useState<any>();
   const [animationId, setAnimationId] = useState<number>();
@@ -60,28 +62,8 @@ const ThreeLine = () => {
       position: [0, 200, 200]
     });
     const threeContainer = document.getElementById('threeContainer') || document;
-    initLight();
     initLine();
     setThreeContainer(threeContainer);
-  };
-  // 初始化光源
-  const initLight = () => {
-    // 半球光，光源直接放置于场景之上，光照颜色从天空光线颜色渐变到地面光线颜色。
-    const hemisphereLight = new HemisphereLight(0xffffff, 0x444444);
-    hemisphereLight.position.set(0, 200, 0);
-    THREE_CONST.scene.add(hemisphereLight);
-    // 平行光
-    // 平行光是沿着特定方向发射的光。
-    // 这种光的表现像是无限远，从它发出的光线都是平行的。
-    // 常常用平行光来模拟太阳光 的效果; 太阳足够远，因此我们可以认为太阳的位置是无限远，所以我们认为从太阳发出的光线也都是平行的。
-    const directionalLight = new DirectionalLight(0xffffff);
-    directionalLight.position.set(0, 200, 100);
-    directionalLight.castShadow = true;
-    directionalLight.shadow.camera.top = 180;
-    directionalLight.shadow.camera.bottom = -100;
-    directionalLight.shadow.camera.left = -120;
-    directionalLight.shadow.camera.right = 120;
-    THREE_CONST.scene.add(directionalLight);
   };
   // 初始化 webgl 渲染器
   const initRenderer = () => {
@@ -115,10 +97,11 @@ const ThreeLine = () => {
     points.push(new Vector3(-10, 0, 0));
     points.push(new Vector3(0, 10, 0));
     points.push(new Vector3(10, 0, 0));
+    points.push(new Vector3(10, 10, 0));
     // 几何体
     const geometry = new BufferGeometry().setFromPoints(points);
     // 线条未闭合
-    const line = new Line(geometry, material);
+    const line = new TLineSegments(geometry, material);
     THREE_CONST.scene.add(line);
   };
   // 更新
@@ -135,4 +118,4 @@ const ThreeLine = () => {
   };
   return <div id="threeContainer" />;
 };
-export default ThreeLine;
+export default LineSegments;

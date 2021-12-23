@@ -105,8 +105,21 @@ const Header = () => {
               <Menu.Item key="texture">纹理</Menu.Item>
               <Menu.Item key="videoTexture">视频纹理</Menu.Item>
             </Menu.ItemGroup>
+            <Menu.ItemGroup title="Object 物体">
+              <Menu.Item key="bone">骨骼</Menu.Item>
+              <Menu.Item key="group">组</Menu.Item>
+              <Menu.Item key="instancedMesh">实例化网格</Menu.Item>
+              <Menu.Item key="line">线</Menu.Item>
+              <Menu.Item key="lineLoop">环线</Menu.Item>
+              <Menu.Item key="lineSegments">线段</Menu.Item>
+              <Menu.Item key="levelsOfDetails">多细节层次</Menu.Item>
+              <Menu.Item key="mesh">网格</Menu.Item>
+              <Menu.Item key="points">点</Menu.Item>
+              <Menu.Item key="skeleton">骨架</Menu.Item>
+              <Menu.Item key="skinnedMesh">蒙皮网格</Menu.Item>
+              <Menu.Item key="sprite">精灵</Menu.Item>
+            </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
-              <Menu.Item key="line">画线</Menu.Item>
               <Menu.Item key="simpleScene">简单场景</Menu.Item>
               <Menu.Item key="skyBox">天空盒</Menu.Item>
               <Menu.Item key="textureScene">三维模型材质</Menu.Item>

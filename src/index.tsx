@@ -19,7 +19,9 @@ import {
   MeshLambertMaterial, MeshMatcapMaterial, MeshNormalMaterial, MeshPhongMaterial, MeshPhysicalMaterial,
   MeshStandardMaterial, MeshToonMaterial, PointsMaterial, RawShaderMaterial, ShaderMaterial,
   ShadowMaterial, SpriteMaterial, CanvasTexture, CompressedTexture, CubeTexture,
-  DataTexture, DataTexture2DArray, DataTexture3D, DepthTexture, VideoTexture, Texture
+  DataTexture, DataTexture2DArray, DataTexture3D, DepthTexture, VideoTexture,
+  Texture, Bone, Group, InstancedMesh, LineLoop, LineSegments, LOD,
+  Mesh, Points, SkinnedMesh, Sprite, Skeleton
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -43,7 +45,6 @@ const App = () => {
                 <Route exact path={platform + 'example/multipleModel'} component={MultipleModel} />
                 <Route exact path={platform + 'example/skyBox'} component={SkyBox} />
                 <Route exact path={platform + 'example/factory'} component={Factory} />
-                <Route exact path={platform + 'example/line'} component={Line} />
                 {/* 三维示例 - 摄像机 */}
                 <Route exact path={platform + 'example/arrayCamera'} component={ArrayCamera} />
                 <Route exact path={platform + 'example/cubeCamera'} component={CubeCamera} />
@@ -106,6 +107,19 @@ const App = () => {
                 <Route exact path={platform + 'example/depthTexture'} component={DepthTexture} />
                 <Route exact path={platform + 'example/videoTexture'} component={VideoTexture} />
                 <Route exact path={platform + 'example/texture'} component={Texture} />
+                {/* 三维示例 - 物体 */}
+                <Route exact path={platform + 'example/bone'} component={Bone} />
+                <Route exact path={platform + 'example/group'} component={Group} />
+                <Route exact path={platform + 'example/instancedMesh'} component={InstancedMesh} />
+                <Route exact path={platform + 'example/line'} component={Line} />
+                <Route exact path={platform + 'example/lineLoop'} component={LineLoop} />
+                <Route exact path={platform + 'example/lineSegments'} component={LineSegments} />
+                <Route exact path={platform + 'example/levelsOfDetails'} component={LOD} />
+                <Route exact path={platform + 'example/mesh'} component={Mesh} />
+                <Route exact path={platform + 'example/points'} component={Points} />
+                <Route exact path={platform + 'example/Skeleton'} component={Skeleton} />
+                <Route exact path={platform + 'example/skinnedMesh'} component={SkinnedMesh} />
+                <Route exact path={platform + 'example/sprite'} component={Sprite} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

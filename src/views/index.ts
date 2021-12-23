@@ -17,7 +17,6 @@ export { default as DracoLoaderUse } from '@views/example/DracoLoaderUse';
 export { default as MultipleModel } from '@views/example/MultipleModel';
 export { default as SkyBox } from '@views/example/SkyBox';
 export { default as Factory } from '@views/example/Factory';
-export { default as Line } from '@views/example/Line';
 // 三维示例 - 摄像机
 export { default as Camera } from '@views/example/camera/Camera';
 export { default as ArrayCamera } from '@views/example/camera/ArrayCamera';
@@ -80,3 +79,16 @@ export { default as DataTexture3D } from '@views/example/texture/DataTexture3D';
 export { default as DepthTexture } from '@views/example/texture/DepthTexture';
 export { default as VideoTexture } from '@views/example/texture/VideoTexture';
 export { default as Texture } from '@views/example/texture/Texture';
+// 三维示例 - 物体
+export { default as Bone } from '@views/example/object/Bone';
+export { default as Group } from '@views/example/object/Group';
+export { default as InstancedMesh } from '@views/example/object/InstancedMesh';
+export { default as Line } from '@views/example/object/Line';
+export { default as LineLoop } from '@views/example/object/LineLoop';
+export { default as LineSegments } from '@views/example/object/LineSegments';
+export { default as LOD } from '@views/example/object/LOD';
+export { default as Mesh } from '@views/example/object/Mesh';
+export { default as Points } from '@views/example/object/Points';
+export { default as Skeleton } from '@views/example/object/Skeleton';
+export { default as SkinnedMesh } from '@views/example/object/SkinnedMesh';
+export { default as Sprite } from '@views/example/object/Sprite';

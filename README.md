@@ -66,6 +66,19 @@
 - [x] DepthTexture 深度纹理。
 - [x] Texture 纹理。
 - [x] VideoTexture 视频纹理。
+## 物体
+- [x] Bone 骨骼。
+- [x] Group 组。
+- [x] InstancedMesh 实例化网格。
+- [x] Line 线。
+- [x] LineLoop 环线。
+- [x] LineSegments 线段。
+- [x] LOD 多细节层次（Levels of Detail）。
+- [x] Mesh 网格。
+- [ ] Points 点（未找到具体场景，待之后添加）。
+- [x] Skeleton 骨架。
+- [x] SkinnedMesh 蒙皮网格。
+- [x] Sprite 精灵。
 ## 工作中用到的技术，暂无归类
 - [x] Line 画线。
 - [x] SimpleScene 简单场景，包含 scene, light, camera, renderer, OrbitControls, 简单结合体。
