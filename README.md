@@ -6,8 +6,8 @@
 - [x] CubeCamera 立方相机。
 - [x] StereoCamera 立体相机。
 ## scene 场景
-- [ ] Fog 雾。
-- [ ] FogExp2 雾-指数。
+- [x] Fog 雾。
+- [x] FogExp2 雾-指数。
 - [ ] Scene 场景。
 ## light 灯光
 - [x] Light 光源基类，暂无示例。
