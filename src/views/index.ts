@@ -92,3 +92,7 @@ export { default as Points } from '@views/example/object/Points';
 export { default as Skeleton } from '@views/example/object/Skeleton';
 export { default as SkinnedMesh } from '@views/example/object/SkinnedMesh';
 export { default as Sprite } from '@views/example/object/Sprite';
+// 三维示例 - 场景
+export { default as Fog } from '@views/example/scene/Fog';
+export { default as FogExp2 } from '@views/example/scene/FogExp2';
+export { default as Scene } from '@views/example/scene/Scene';

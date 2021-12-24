@@ -21,7 +21,7 @@ import {
   ShadowMaterial, SpriteMaterial, CanvasTexture, CompressedTexture, CubeTexture,
   DataTexture, DataTexture2DArray, DataTexture3D, DepthTexture, VideoTexture,
   Texture, Bone, Group, InstancedMesh, LineLoop, LineSegments, LOD,
-  Mesh, Points, SkinnedMesh, Sprite, Skeleton
+  Mesh, Points, SkinnedMesh, Sprite, Skeleton, Fog, FogExp2, Scene
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -120,6 +120,10 @@ const App = () => {
                 <Route exact path={platform + 'example/Skeleton'} component={Skeleton} />
                 <Route exact path={platform + 'example/skinnedMesh'} component={SkinnedMesh} />
                 <Route exact path={platform + 'example/sprite'} component={Sprite} />
+                {/* 三维示例 - 场景 */}
+                <Route exact path={platform + 'example/fog'} component={Fog} />
+                <Route exact path={platform + 'example/fogExp2'} component={FogExp2} />
+                <Route exact path={platform + 'example/scene'} component={Scene} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

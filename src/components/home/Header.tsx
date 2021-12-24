@@ -44,6 +44,11 @@ const Header = () => {
               <Menu.Item key="cubeCamera">立方相机</Menu.Item>
               <Menu.Item key="stereoCamera">立体相机</Menu.Item>
             </Menu.ItemGroup>
+            <Menu.ItemGroup title="Scene 场景">
+              <Menu.Item key="fog">雾</Menu.Item>
+              <Menu.Item key="fogExp2">雾-指数</Menu.Item>
+              <Menu.Item key="scene">场景</Menu.Item>
+            </Menu.ItemGroup>
             <Menu.ItemGroup title="Geometry 几何体">
               <Menu.Item key="boxGeometry">立方缓冲几何体</Menu.Item>
               <Menu.Item key="circleGeometry">圆形缓冲几何体</Menu.Item>
