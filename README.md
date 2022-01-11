@@ -1,14 +1,14 @@
 # 3d-engine
 该项目主要是我的 three.js 学习案例，把一些用到的技术和官网的例子整合在里面，可查看 src/views/examples 目录查看代码。
+## scene 场景
+- [x] Scene 场景。
+- [x] Fog 雾。
+- [x] FogExp2 雾-指数。
 ## camera 相机
 - [x] ArrayCamera 摄像机阵列。
 - [x] PerspectiveCamera 透视相机，OrthographicCamera 正交相机。
 - [x] CubeCamera 立方相机。
 - [x] StereoCamera 立体相机。
-## scene 场景
-- [x] Fog 雾。
-- [x] FogExp2 雾-指数。
-- [ ] Scene 场景。
 ## light 灯光
 - [x] Light 光源基类，暂无示例。
 - [x] LightProbe 光照探针。
