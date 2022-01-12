@@ -38,16 +38,22 @@ const Header = () => {
       <Row>
         <Menu onClick={menuClick} selectedKeys={[current]} mode="horizontal" style={{ borderBottom: 'none' }}>
           <SubMenu key="example" title="示例列表" icon={<OrderedListOutlined />}>
-            <Menu.ItemGroup title="Camera 相机">
-              <Menu.Item key="camera">正交相机、透视相机</Menu.Item>
-              <Menu.Item key="arrayCamera">摄像机阵列</Menu.Item>
-              <Menu.Item key="cubeCamera">立方相机</Menu.Item>
-              <Menu.Item key="stereoCamera">立体相机</Menu.Item>
+            <Menu.ItemGroup title="Core 核心">
+              <Menu.Item key="bufferAttribute">流几何体属性</Menu.Item>
+              <Menu.Item key="bufferGeometry">流几何体</Menu.Item>
+              <Menu.Item key="interleavedBuffer">交叉存储流</Menu.Item>
+              <Menu.Item key="raycaster">光线投射</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Scene 场景">
               <Menu.Item key="fog">雾</Menu.Item>
               <Menu.Item key="fogExp2">雾-指数</Menu.Item>
               <Menu.Item key="scene">场景</Menu.Item>
+            </Menu.ItemGroup>
+            <Menu.ItemGroup title="Camera 相机">
+              <Menu.Item key="camera">正交相机、透视相机</Menu.Item>
+              <Menu.Item key="arrayCamera">摄像机阵列</Menu.Item>
+              <Menu.Item key="cubeCamera">立方相机</Menu.Item>
+              <Menu.Item key="stereoCamera">立体相机</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Geometry 几何体">
               <Menu.Item key="boxGeometry">立方缓冲几何体</Menu.Item>

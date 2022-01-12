@@ -21,7 +21,9 @@ import {
   ShadowMaterial, SpriteMaterial, CanvasTexture, CompressedTexture, CubeTexture,
   DataTexture, DataTexture2DArray, DataTexture3D, DepthTexture, VideoTexture,
   Texture, Bone, Group, InstancedMesh, LineLoop, LineSegments, LOD,
-  Mesh, Points, SkinnedMesh, Sprite, Skeleton, Fog, FogExp2, Scene
+  Mesh, Points, SkinnedMesh, Sprite, Skeleton,
+  Fog, FogExp2, Scene, BufferGeometry, BufferAttribute,
+  InterleavedBuffer, Raycaster
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -124,6 +126,11 @@ const App = () => {
                 <Route exact path={platform + 'example/fog'} component={Fog} />
                 <Route exact path={platform + 'example/fogExp2'} component={FogExp2} />
                 <Route exact path={platform + 'example/scene'} component={Scene} />
+                {/* 三维示例 - 核心 */}
+                <Route exact path={platform + 'example/bufferAttribute'} component={BufferAttribute} />
+                <Route exact path={platform + 'example/bufferGeometry'} component={BufferGeometry} />
+                <Route exact path={platform + 'example/interleavedBuffer'} component={InterleavedBuffer} />
+                <Route exact path={platform + 'example/raycaster'} component={Raycaster} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

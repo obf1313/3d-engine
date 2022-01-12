@@ -1,5 +1,19 @@
 # 3d-engine
 该项目主要是我的 three.js 学习案例，把一些用到的技术和官网的例子整合在里面，可查看 src/views/examples 目录查看代码。
+## core 核心
+- [x] BufferAttribute 流属性。
+- [x] BufferGeometry 流几何体。
+- [ ] Clock 时钟。
+- [x] EventDispatcher 事件调度。
+- [ ] GLBufferAttribute GL流属性。
+- [x] InstancedBufferAttribute 实例化流属性。
+- [x] InstancedBufferGeometry 实例化流几何体。
+- [x] InterleavedBuffer 交叉存储流。
+- [x] InstancedInterleavedBuffer 实例化交叉存储流。
+- [x] Layers 图层。
+- [x] Object3D 三维物体。
+- [x] Raycaster 光线投射。
+- [x] Uniform GLSL着色器中的全局变量。
 ## scene 场景
 - [x] Scene 场景。
 - [x] Fog 雾。

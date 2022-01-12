@@ -15,7 +15,14 @@ import {
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
-import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import {
+  CameraType,
+  getIntersectPosition,
+  initCamera,
+  initScene,
+  resetThreeConst,
+  THREE_CONST
+} from '@utils/ThreeUtils';
 
 let mesh: any;
 let amount = parseInt((window.location.search.substr(1) || 10) as string, 10);
@@ -152,9 +159,9 @@ const InstancedMesh = () => {
   // 鼠标移动事件监听
   const onMouseMove = (e: any) => {
     e.preventDefault();
-    let getBoundingClientRect = threeContainer.getBoundingClientRect();
-    mouse.x = ((e.clientX - getBoundingClientRect.left) / threeContainer.offsetWidth) * 2 - 1;
-    mouse.y = -((e.clientY - getBoundingClientRect.top) / threeContainer.offsetHeight) * 2 + 1;
+    const { x, y } = getIntersectPosition(e, threeContainer);
+    mouse.x = x;
+    mouse.y = y;
   };
   return <div id="threeContainer" />;
 };

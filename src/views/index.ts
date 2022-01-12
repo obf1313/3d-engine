@@ -96,3 +96,8 @@ export { default as Sprite } from '@views/example/object/Sprite';
 export { default as Fog } from '@views/example/scene/Fog';
 export { default as FogExp2 } from '@views/example/scene/FogExp2';
 export { default as Scene } from '@views/example/scene/Scene';
+// 三维示例 - 核心
+export { default as BufferAttribute } from '@views/example/core/BufferAttribute';
+export { default as BufferGeometry } from '@views/example/core/BufferGeometry';
+export { default as InterleavedBuffer } from '@views/example/core/InterleavedBuffer';
+export { default as Raycaster } from '@views/example/core/Raycaster';

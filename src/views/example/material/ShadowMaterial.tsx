@@ -14,7 +14,14 @@ import {
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
-import { CameraType, initCamera, initScene, resetThreeConst, THREE_CONST } from '@utils/ThreeUtils';
+import {
+  CameraType,
+  getIntersectPosition,
+  initCamera,
+  initScene,
+  resetThreeConst,
+  THREE_CONST
+} from '@utils/ThreeUtils';
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls';
 
 let transformControl: any;
@@ -215,9 +222,9 @@ const ShadowMaterial = () => {
   };
   // 鼠标移动
   const onPointerMove = (e: any) => {
-    let getBoundingClientRect = threeContainer.getBoundingClientRect();
-    pointer.x = ((e.clientX - getBoundingClientRect.left) / threeContainer.offsetWidth) * 2 - 1;
-    pointer.y = -((e.clientY - getBoundingClientRect.top) / threeContainer.offsetHeight) * 2 + 1;
+    const { x, y } = getIntersectPosition(e, threeContainer);
+    pointer.x = x;
+    pointer.y = y;
     raycaster.setFromCamera(pointer, THREE_CONST.camera);
     const intersects = raycaster.intersectObjects(splineHelperObjects, false);
     if (intersects.length > 0) {
