@@ -97,6 +97,20 @@
 - [x] Skeleton 骨架。
 - [x] SkinnedMesh 蒙皮网格。
 - [x] Sprite 精灵。
+## 辅助对象
+- [ ] ArrowHelper 箭头辅助对象。
+- [ ] AxesHelper 坐标轴辅助对象。
+- [ ] BoxHelper 包围盒辅助对象。
+- [ ] Box3Helper 3维包围盒辅助对象。
+- [ ] CameraHelper 相机视锥体辅助对象。
+- [ ] DirectionalLightHelper 平行光辅助对象。
+- [ ] GridHelper 坐标格辅助对象。
+- [ ] PolarGridHelper 极坐标格辅助对象。
+- [ ] HemisphereLightHelper 半球形光源辅助对象。
+- [ ] PlaneHelper 平面辅助对象。
+- [ ] PointLightHelper 点光辅助对象。
+- [ ] SkeletonHelper 骨骼辅助对象。
+- [ ] SpotLightHelper 聚光灯锥形辅助对象。
 ## 工作中用到的技术，暂无归类
 - [x] Line 画线。
 - [x] SimpleScene 简单场景，包含 scene, light, camera, renderer, OrbitControls, 简单结合体。
