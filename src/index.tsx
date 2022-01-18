@@ -23,7 +23,9 @@ import {
   Texture, Bone, Group, InstancedMesh, LineLoop, LineSegments, LOD,
   Mesh, Points, SkinnedMesh, Sprite, Skeleton,
   Fog, FogExp2, Scene, BufferGeometry, BufferAttribute,
-  InterleavedBuffer, Raycaster
+  InterleavedBuffer, Raycaster, ArrowHelper, AxesHelper, BoxHelper,
+  Box3Helper, CameraHelper, DirectionalLightHelper, GridHelper, PolarGridHelper,
+  HemisphereLightHelper
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -131,6 +133,16 @@ const App = () => {
                 <Route exact path={platform + 'example/bufferGeometry'} component={BufferGeometry} />
                 <Route exact path={platform + 'example/interleavedBuffer'} component={InterleavedBuffer} />
                 <Route exact path={platform + 'example/raycaster'} component={Raycaster} />
+                {/* 三维示例 - 辅助对象 */}
+                <Route exact path={platform + 'example/arrowHelper'} component={ArrowHelper} />
+                <Route exact path={platform + 'example/axesHelper'} component={AxesHelper} />
+                <Route exact path={platform + 'example/boxHelper'} component={BoxHelper} />
+                <Route exact path={platform + 'example/box3Helper'} component={Box3Helper} />
+                <Route exact path={platform + 'example/cameraHelper'} component={CameraHelper} />
+                <Route exact path={platform + 'example/directionalLightHelper'} component={DirectionalLightHelper} />
+                <Route exact path={platform + 'example/gridHelper'} component={GridHelper} />
+                <Route exact path={platform + 'example/polarGridHelper'} component={PolarGridHelper} />
+                <Route exact path={platform + 'example/hemisphereLightHelper'} component={HemisphereLightHelper} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

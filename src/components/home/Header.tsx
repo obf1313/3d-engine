@@ -130,6 +130,17 @@ const Header = () => {
               <Menu.Item key="skinnedMesh">蒙皮网格</Menu.Item>
               <Menu.Item key="sprite">精灵</Menu.Item>
             </Menu.ItemGroup>
+            <Menu.ItemGroup title="Helper 辅助对象">
+              <Menu.Item key="arrowHelper">箭头辅助对象</Menu.Item>
+              <Menu.Item key="axesHelper">坐标轴辅助对象</Menu.Item>
+              <Menu.Item key="boxHelper">包围盒辅助对象</Menu.Item>
+              <Menu.Item key="box3Helper">3维包围盒辅助对象</Menu.Item>
+              <Menu.Item key="cameraHelper">相机视锥体辅助对象</Menu.Item>
+              <Menu.Item key="directionalLightHelper">平行光辅助对象</Menu.Item>
+              <Menu.Item key="gridHelper">坐标格辅助对象</Menu.Item>
+              <Menu.Item key="polarGridHelper">极坐标格辅助对象</Menu.Item>
+              <Menu.Item key="hemisphereLightHelper">半球形光源辅助对象</Menu.Item>
+            </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="simpleScene">简单场景</Menu.Item>
               <Menu.Item key="skyBox">天空盒</Menu.Item>

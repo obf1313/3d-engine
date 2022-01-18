@@ -4,6 +4,8 @@
  * @createTime: 2020/7/16 16:55
  **/
 // 首页
+import ArrowHelper from '@views/example/helper/ArrowHelper';
+
 export { default as Welcome } from '@views/home/Welcome';
 export { default as Home } from '@views/home/Home';
 // 404
@@ -101,3 +103,13 @@ export { default as BufferAttribute } from '@views/example/core/BufferAttribute'
 export { default as BufferGeometry } from '@views/example/core/BufferGeometry';
 export { default as InterleavedBuffer } from '@views/example/core/InterleavedBuffer';
 export { default as Raycaster } from '@views/example/core/Raycaster';
+// 三维示例 - 辅助对象
+export { default as ArrowHelper } from '@views/example/helper/ArrowHelper';
+export { default as AxesHelper } from '@views/example/helper/AxesHelper';
+export { default as BoxHelper } from '@views/example/helper/BoxHelper';
+export { default as Box3Helper } from '@views/example/helper/Box3Helper';
+export { default as CameraHelper } from '@views/example/helper/CameraHelper';
+export { default as DirectionalLightHelper } from '@views/example/helper/DirectionalLightHelper';
+export { default as GridHelper } from '@views/example/helper/GridHelper';
+export { default as PolarGridHelper } from '@views/example/helper/PolarGridHelper';
+export { default as HemisphereLightHelper } from '@views/example/helper/HemisphereLightHelper';
