@@ -107,10 +107,10 @@
 - [x] GridHelper 坐标格辅助对象。
 - [x] PolarGridHelper 极坐标格辅助对象。
 - [x] HemisphereLightHelper 半球形光源辅助对象。
-- [ ] PlaneHelper 平面辅助对象。
-- [ ] PointLightHelper 点光辅助对象。
-- [ ] SkeletonHelper 骨骼辅助对象。
-- [ ] SpotLightHelper 聚光灯锥形辅助对象。
+- [x] PlaneHelper 平面辅助对象。
+- [x] PointLightHelper 点光辅助对象。
+- [x] SkeletonHelper 骨骼辅助对象。
+- [x] SpotLightHelper 聚光灯锥形辅助对象。
 ## 工作中用到的技术，暂无归类
 - [x] Line 画线。
 - [x] SimpleScene 简单场景，包含 scene, light, camera, renderer, OrbitControls, 简单结合体。

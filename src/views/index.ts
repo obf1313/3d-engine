@@ -113,3 +113,7 @@ export { default as DirectionalLightHelper } from '@views/example/helper/Directi
 export { default as GridHelper } from '@views/example/helper/GridHelper';
 export { default as PolarGridHelper } from '@views/example/helper/PolarGridHelper';
 export { default as HemisphereLightHelper } from '@views/example/helper/HemisphereLightHelper';
+export { default as PlaneHelper } from '@views/example/helper/PlaneHelper';
+export { default as PointLightHelper } from '@views/example/helper/PointLightHelper';
+export { default as SkeletonHelper } from '@views/example/helper/SkeletonHelper';
+export { default as SpotLightHelper } from '@views/example/helper/SpotLightHelper';

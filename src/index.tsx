@@ -25,7 +25,7 @@ import {
   Fog, FogExp2, Scene, BufferGeometry, BufferAttribute,
   InterleavedBuffer, Raycaster, ArrowHelper, AxesHelper, BoxHelper,
   Box3Helper, CameraHelper, DirectionalLightHelper, GridHelper, PolarGridHelper,
-  HemisphereLightHelper
+  HemisphereLightHelper, PlaneHelper, PointLightHelper, SkeletonHelper, SpotLightHelper
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -143,6 +143,10 @@ const App = () => {
                 <Route exact path={platform + 'example/gridHelper'} component={GridHelper} />
                 <Route exact path={platform + 'example/polarGridHelper'} component={PolarGridHelper} />
                 <Route exact path={platform + 'example/hemisphereLightHelper'} component={HemisphereLightHelper} />
+                <Route exact path={platform + 'example/planeHelper'} component={PlaneHelper} />
+                <Route exact path={platform + 'example/pointLightHelper'} component={PointLightHelper} />
+                <Route exact path={platform + 'example/skeletonHelper'} component={SkeletonHelper} />
+                <Route exact path={platform + 'example/spotLightHelper'} component={SpotLightHelper} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

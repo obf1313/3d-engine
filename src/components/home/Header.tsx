@@ -140,6 +140,10 @@ const Header = () => {
               <Menu.Item key="gridHelper">坐标格辅助对象</Menu.Item>
               <Menu.Item key="polarGridHelper">极坐标格辅助对象</Menu.Item>
               <Menu.Item key="hemisphereLightHelper">半球形光源辅助对象</Menu.Item>
+              <Menu.Item key="planeHelper">平面辅助对象</Menu.Item>
+              <Menu.Item key="pointLightHelper">点光辅助对象</Menu.Item>
+              <Menu.Item key="skeletonHelper">骨骼辅助对象</Menu.Item>
+              <Menu.Item key="spotLightHelper">聚光灯锥形辅助对象</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="simpleScene">简单场景</Menu.Item>
