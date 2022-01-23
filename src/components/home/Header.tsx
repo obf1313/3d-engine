@@ -12,7 +12,7 @@ import './index.less';
 import logo from '@static/images/logo.png';
 import ExtrudeGeometry from '@views/example/geometry/ExtrudeGeometry';
 import LatheGeometry from '@views/example/geometry/LatheGeometry';
-import { MeshDistanceMaterial, MeshLambertMaterial, OctahedronGeometry } from '@views/index';
+import { CubeTextureLoader, MeshDistanceMaterial, MeshLambertMaterial, OctahedronGeometry } from '@views/index';
 import PlaneGeometry from '@views/example/geometry/PlaneGeometry';
 
 const { SubMenu } = Menu;
@@ -144,6 +144,14 @@ const Header = () => {
               <Menu.Item key="pointLightHelper">点光辅助对象</Menu.Item>
               <Menu.Item key="skeletonHelper">骨骼辅助对象</Menu.Item>
               <Menu.Item key="spotLightHelper">聚光灯锥形辅助对象</Menu.Item>
+            </Menu.ItemGroup>
+            <Menu.ItemGroup title="Loader 加载器">
+              <Menu.Item key="cache">简单缓存系统</Menu.Item>
+              <Menu.Item key="cubeTextureLoader">CubeTexture加载器</Menu.Item>
+              <Menu.Item key="imageBitmapLoader">ImageBitmap加载器</Menu.Item>
+              <Menu.Item key="imageLoader">图片加载器</Menu.Item>
+              <Menu.Item key="objectLoader">JSON资源加载器</Menu.Item>
+              <Menu.Item key="textureLoader">纹理加载器</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="simpleScene">简单场景</Menu.Item>

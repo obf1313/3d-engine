@@ -25,7 +25,8 @@ import {
   Fog, FogExp2, Scene, BufferGeometry, BufferAttribute,
   InterleavedBuffer, Raycaster, ArrowHelper, AxesHelper, BoxHelper,
   Box3Helper, CameraHelper, DirectionalLightHelper, GridHelper, PolarGridHelper,
-  HemisphereLightHelper, PlaneHelper, PointLightHelper, SkeletonHelper, SpotLightHelper
+  HemisphereLightHelper, PlaneHelper, PointLightHelper, SkeletonHelper, SpotLightHelper,
+  Cache, CubeTextureLoader, ImageBitmapLoader, ImageLoader, ObjectLoader, TextureLoader
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -147,6 +148,13 @@ const App = () => {
                 <Route exact path={platform + 'example/pointLightHelper'} component={PointLightHelper} />
                 <Route exact path={platform + 'example/skeletonHelper'} component={SkeletonHelper} />
                 <Route exact path={platform + 'example/spotLightHelper'} component={SpotLightHelper} />
+                {/* 三维示例 - 加载器 */}
+                <Route exact path={platform + 'example/cache'} component={Cache} />
+                <Route exact path={platform + 'example/cubeTextureLoader'} component={CubeTextureLoader} />
+                <Route exact path={platform + 'example/imageBitmapLoader'} component={ImageBitmapLoader} />
+                <Route exact path={platform + 'example/imageLoader'} component={ImageLoader} />
+                <Route exact path={platform + 'example/objectLoader'} component={ObjectLoader} />
+                <Route exact path={platform + 'example/textureLoader'} component={TextureLoader} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

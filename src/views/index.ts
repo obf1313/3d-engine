@@ -117,3 +117,10 @@ export { default as PlaneHelper } from '@views/example/helper/PlaneHelper';
 export { default as PointLightHelper } from '@views/example/helper/PointLightHelper';
 export { default as SkeletonHelper } from '@views/example/helper/SkeletonHelper';
 export { default as SpotLightHelper } from '@views/example/helper/SpotLightHelper';
+// 三维示例 - 加载器
+export { default as Cache } from '@views/example/loader/Cache';
+export { default as CubeTextureLoader } from '@views/example/loader/CubeTextureLoader';
+export { default as ImageBitmapLoader } from '@views/example/loader/ImageBitmapLoader';
+export { default as ImageLoader } from '@views/example/loader/ImageLoader';
+export { default as ObjectLoader } from '@views/example/loader/ObjectLoader';
+export { default as TextureLoader } from '@views/example/loader/TextureLoader';

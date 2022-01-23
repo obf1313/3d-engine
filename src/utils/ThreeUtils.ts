@@ -9,7 +9,6 @@ import {
 } from 'three';
 import { getClientHeight, getClientWidth } from '@utils/CommonFunc';
 
-
 /**
  * Three.js 全局变量
 **/

@@ -111,6 +111,22 @@
 - [x] PointLightHelper 点光辅助对象。
 - [x] SkeletonHelper 骨骼辅助对象。
 - [x] SpotLightHelper 聚光灯锥形辅助对象。
+## 加载器
+- [ ] AnimationLoader 动画加载器。
+- [ ] AudioLoader 音频加载器。
+- [ ] BufferGeometryLoader 流几何体加载器。
+- [x] Cache 简单缓存系统。
+- [ ] CompressedTextureLoader 基于块的纹理加载器。
+- [x] CubeTextureLoader CubeTexture加载器。
+- [ ] DataTextureLoader 二进制文件加载器。
+- [ ] FileLoader 文件加载器。
+- [x] ImageBitmapLoader 把图片加载为ImageBitmap的加载器。
+- [x] ImageLoader 图片加载器。
+- [ ] Loader 加载器。
+- [ ] LoaderUtils 加载器功能函数。
+- [ ] MaterialLoader 材质加载器。
+- [x] ObjectLoader JSON资源加载器。
+- [x] TextureLoader 纹理加载器。
 ## 工作中用到的技术，暂无归类
 - [x] Line 画线。
 - [x] SimpleScene 简单场景，包含 scene, light, camera, renderer, OrbitControls, 简单结合体。

@@ -37,7 +37,7 @@ module.exports = {
   plugins: [...developmentPlugins],
   optimization,
   devServer: {
-    port: 3006,
+    port: 3007,
     // 代理，将请求接口做代理，将前端从后台完全剥离出来
     // 部署时使用 nginx 反向代理到后台端口
     proxy: {
