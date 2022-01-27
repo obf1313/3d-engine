@@ -26,7 +26,8 @@ import {
   InterleavedBuffer, Raycaster, ArrowHelper, AxesHelper, BoxHelper,
   Box3Helper, CameraHelper, DirectionalLightHelper, GridHelper, PolarGridHelper,
   HemisphereLightHelper, PlaneHelper, PointLightHelper, SkeletonHelper, SpotLightHelper,
-  Cache, CubeTextureLoader, ImageBitmapLoader, ImageLoader, ObjectLoader, TextureLoader
+  Cache, CubeTextureLoader, ImageBitmapLoader, ImageLoader, ObjectLoader,
+  TextureLoader, Audio, Shape, ShapePath
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -155,6 +156,10 @@ const App = () => {
                 <Route exact path={platform + 'example/imageLoader'} component={ImageLoader} />
                 <Route exact path={platform + 'example/objectLoader'} component={ObjectLoader} />
                 <Route exact path={platform + 'example/textureLoader'} component={TextureLoader} />
+                {/* 三维示例 - 音频 */}
+                <Route exact path={platform + 'example/audio'} component={Audio} />
+                {/* 三维示例 - 附件/核心 */}
+                <Route exact path={platform + 'example/shapePath'} component={ShapePath} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

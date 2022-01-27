@@ -124,3 +124,8 @@ export { default as ImageBitmapLoader } from '@views/example/loader/ImageBitmapL
 export { default as ImageLoader } from '@views/example/loader/ImageLoader';
 export { default as ObjectLoader } from '@views/example/loader/ObjectLoader';
 export { default as TextureLoader } from '@views/example/loader/TextureLoader';
+// 三维示例 - 音频
+export { default as Audio } from '@views/example/audio/Audio';
+// 三维示例 - 附件/核心
+export { default as Shape } from '@views/example/extrasCore/Shape';
+export { default as ShapePath } from '@views/example/extrasCore/ShapePath';

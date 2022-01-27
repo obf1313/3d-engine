@@ -153,6 +153,13 @@ const Header = () => {
               <Menu.Item key="objectLoader">JSON资源加载器</Menu.Item>
               <Menu.Item key="textureLoader">纹理加载器</Menu.Item>
             </Menu.ItemGroup>
+            <Menu.ItemGroup title="Audio 音频">
+              <Menu.Item key="audio">音频相关所有</Menu.Item>
+            </Menu.ItemGroup>
+            <Menu.ItemGroup title="ExtraCore 附件/核心">
+              <Menu.Item key="shape">形状</Menu.Item>
+              <Menu.Item key="shapePath">形状路径</Menu.Item>
+            </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="simpleScene">简单场景</Menu.Item>
               <Menu.Item key="skyBox">天空盒</Menu.Item>

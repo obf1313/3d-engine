@@ -127,6 +127,15 @@
 - [ ] MaterialLoader 材质加载器。
 - [x] ObjectLoader JSON资源加载器。
 - [x] TextureLoader 纹理加载器。
+## 音频 Audio
+- [ ] Audio 音频。
+- [ ] AudioAnalyser 音频分析器。
+- [ ] AudioContext 音频上下文。
+- [ ] AudioListener 音频监听器。
+- [ ] PositionalAudio 位置相关音频对象。
+## 附件 / 核心
+- [x] Shape 形状。
+- [x] ShapePath 形状路径。
 ## 工作中用到的技术，暂无归类
 - [x] Line 画线。
 - [x] SimpleScene 简单场景，包含 scene, light, camera, renderer, OrbitControls, 简单结合体。
