@@ -136,7 +136,7 @@
 ## 附件 / 核心
 - [x] Shape 形状。
 - [x] ShapePath 形状路径。
-- ## 附件 / 核心
+## 附件 / 曲线
 - [x] CatmullRomCurve3 平滑三维样条曲线。
 - [x] CubicBezierCurve 二维三次贝塞尔曲线。
 - [x] CubicBezierCurve3 三维三次贝塞尔曲线。
