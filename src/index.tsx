@@ -27,7 +27,8 @@ import {
   Box3Helper, CameraHelper, DirectionalLightHelper, GridHelper, PolarGridHelper,
   HemisphereLightHelper, PlaneHelper, PointLightHelper, SkeletonHelper, SpotLightHelper,
   Cache, CubeTextureLoader, ImageBitmapLoader, ImageLoader, ObjectLoader,
-  TextureLoader, Audio, Shape, ShapePath
+  TextureLoader, Audio, ShapePath, CatmullRomCurve3, CubicBezierCurve,
+  CubicBezierCurve3, EllipseCurve, QuadraticBezierCurve, QuadraticBezierCurve3, SplineCurve
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -160,6 +161,14 @@ const App = () => {
                 <Route exact path={platform + 'example/audio'} component={Audio} />
                 {/* 三维示例 - 附件/核心 */}
                 <Route exact path={platform + 'example/shapePath'} component={ShapePath} />
+                {/* 三维示例 - 附件/曲线 */}
+                <Route exact path={platform + 'example/catmullRomCurve3'} component={CatmullRomCurve3} />
+                <Route exact path={platform + 'example/cubicBezierCurve'} component={CubicBezierCurve} />
+                <Route exact path={platform + 'example/cubicBezierCurve3'} component={CubicBezierCurve3} />
+                <Route exact path={platform + 'example/ellipseCurve'} component={EllipseCurve} />
+                <Route exact path={platform + 'example/quadraticBezierCurve'} component={QuadraticBezierCurve} />
+                <Route exact path={platform + 'example/quadraticBezierCurve3'} component={QuadraticBezierCurve3} />
+                <Route exact path={platform + 'example/splineCurve'} component={SplineCurve} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

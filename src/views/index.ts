@@ -129,3 +129,11 @@ export { default as Audio } from '@views/example/audio/Audio';
 // 三维示例 - 附件/核心
 export { default as Shape } from '@views/example/extrasCore/Shape';
 export { default as ShapePath } from '@views/example/extrasCore/ShapePath';
+// 三维示例 - 附件/曲线
+export { default as CatmullRomCurve3 } from '@views/example/extrasCurve/CatmullRomCurve3';
+export { default as CubicBezierCurve } from '@views/example/extrasCurve/CubicBezierCurve';
+export { default as CubicBezierCurve3 } from '@views/example/extrasCurve/CubicBezierCurve3';
+export { default as EllipseCurve } from '@views/example/extrasCurve/EllipseCurve';
+export { default as QuadraticBezierCurve } from '@views/example/extrasCurve/QuadraticBezierCurve';
+export { default as QuadraticBezierCurve3 } from '@views/example/extrasCurve/QuadraticBezierCurve3';
+export { default as SplineCurve } from '@views/example/extrasCurve/SplineCurve';

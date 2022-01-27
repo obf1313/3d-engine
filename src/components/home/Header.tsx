@@ -160,6 +160,15 @@ const Header = () => {
               <Menu.Item key="shape">形状</Menu.Item>
               <Menu.Item key="shapePath">形状路径</Menu.Item>
             </Menu.ItemGroup>
+            <Menu.ItemGroup title="ExtraCore 附件/曲线">
+              <Menu.Item key="catmullRomCurve3">曲线（摄像头路径）</Menu.Item>
+              <Menu.Item key="cubicBezierCurve">二维三次贝塞尔曲线</Menu.Item>
+              <Menu.Item key="cubicBezierCurve3">三维三次贝塞尔曲线</Menu.Item>
+              <Menu.Item key="ellipseCurve">椭圆曲线</Menu.Item>
+              <Menu.Item key="quadraticBezierCurve">二维二次贝塞尔曲线</Menu.Item>
+              <Menu.Item key="quadraticBezierCurve3">三维二次贝塞尔曲线</Menu.Item>
+              <Menu.Item key="splineCurve">样条曲线</Menu.Item>
+            </Menu.ItemGroup>
             <Menu.ItemGroup title="Other 其他">
               <Menu.Item key="simpleScene">简单场景</Menu.Item>
               <Menu.Item key="skyBox">天空盒</Menu.Item>

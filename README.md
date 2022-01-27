@@ -136,6 +136,14 @@
 ## 附件 / 核心
 - [x] Shape 形状。
 - [x] ShapePath 形状路径。
+- ## 附件 / 核心
+- [x] CatmullRomCurve3 平滑三维样条曲线。
+- [x] CubicBezierCurve 二维三次贝塞尔曲线。
+- [x] CubicBezierCurve3 三维三次贝塞尔曲线。
+- [x] EllipseCurve 椭圆曲线。
+- [x] QuadraticBezierCurve 二维二次贝塞尔曲线。
+- [x] QuadraticBezierCurve3 三维二次贝塞尔曲线。
+- [x] SplineCurve 样条曲线。
 ## 工作中用到的技术，暂无归类
 - [x] Line 画线。
 - [x] SimpleScene 简单场景，包含 scene, light, camera, renderer, OrbitControls, 简单结合体。
