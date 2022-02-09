@@ -28,7 +28,7 @@ import {
   HemisphereLightHelper, PlaneHelper, PointLightHelper, SkeletonHelper, SpotLightHelper,
   Cache, CubeTextureLoader, ImageBitmapLoader, ImageLoader, ObjectLoader,
   TextureLoader, Audio, ShapePath, CatmullRomCurve3, CubicBezierCurve,
-  CubicBezierCurve3, EllipseCurve, QuadraticBezierCurve, QuadraticBezierCurve3, SplineCurve, LoaderManager
+  CubicBezierCurve3, EllipseCurve, QuadraticBezierCurve, QuadraticBezierCurve3, SplineCurve, LoaderManager, Triangle
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -171,6 +171,8 @@ const App = () => {
                 <Route exact path={platform + 'example/quadraticBezierCurve'} component={QuadraticBezierCurve} />
                 <Route exact path={platform + 'example/quadraticBezierCurve3'} component={QuadraticBezierCurve3} />
                 <Route exact path={platform + 'example/splineCurve'} component={SplineCurve} />
+                {/* webgl 学习 */}
+                <Route exact path={platform + 'example/triangle'} component={Triangle} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

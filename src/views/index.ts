@@ -139,3 +139,5 @@ export { default as EllipseCurve } from '@views/example/extrasCurve/EllipseCurve
 export { default as QuadraticBezierCurve } from '@views/example/extrasCurve/QuadraticBezierCurve';
 export { default as QuadraticBezierCurve3 } from '@views/example/extrasCurve/QuadraticBezierCurve3';
 export { default as SplineCurve } from '@views/example/extrasCurve/SplineCurve';
+// WebGL 学习
+export { default as Triangle } from '@views/example/webgl/Triangle';
