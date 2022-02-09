@@ -124,6 +124,8 @@ export { default as ImageBitmapLoader } from '@views/example/loader/ImageBitmapL
 export { default as ImageLoader } from '@views/example/loader/ImageLoader';
 export { default as ObjectLoader } from '@views/example/loader/ObjectLoader';
 export { default as TextureLoader } from '@views/example/loader/TextureLoader';
+// 三维示例 - 加载器 / 管理器
+export { default as LoaderManager } from '@views/example/loader/LoaderManager';
 // 三维示例 - 音频
 export { default as Audio } from '@views/example/audio/Audio';
 // 三维示例 - 附件/核心

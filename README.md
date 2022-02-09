@@ -128,7 +128,7 @@
 - [x] ObjectLoader JSON资源加载器。
 - [x] TextureLoader 纹理加载器。
 ## 加载器 / 管理器
-- [ ] LoadingManager 加载器管理器。
+- [x] LoadingManager 加载器管理器。
 ## 音频
 - [ ] Audio 音频。
 - [ ] AudioAnalyser 音频分析器。

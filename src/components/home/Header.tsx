@@ -152,6 +152,7 @@ const Header = () => {
               <Menu.Item key="imageLoader">图片加载器</Menu.Item>
               <Menu.Item key="objectLoader">JSON资源加载器</Menu.Item>
               <Menu.Item key="textureLoader">纹理加载器</Menu.Item>
+              <Menu.Item key="loaderManager">加载器管理器</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Audio 音频">
               <Menu.Item key="audio">音频相关所有</Menu.Item>

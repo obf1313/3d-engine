@@ -28,7 +28,7 @@ import {
   HemisphereLightHelper, PlaneHelper, PointLightHelper, SkeletonHelper, SpotLightHelper,
   Cache, CubeTextureLoader, ImageBitmapLoader, ImageLoader, ObjectLoader,
   TextureLoader, Audio, ShapePath, CatmullRomCurve3, CubicBezierCurve,
-  CubicBezierCurve3, EllipseCurve, QuadraticBezierCurve, QuadraticBezierCurve3, SplineCurve
+  CubicBezierCurve3, EllipseCurve, QuadraticBezierCurve, QuadraticBezierCurve3, SplineCurve, LoaderManager
 } from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
@@ -157,6 +157,8 @@ const App = () => {
                 <Route exact path={platform + 'example/imageLoader'} component={ImageLoader} />
                 <Route exact path={platform + 'example/objectLoader'} component={ObjectLoader} />
                 <Route exact path={platform + 'example/textureLoader'} component={TextureLoader} />
+                {/* 三维示例 - 加载器/管理器 */}
+                <Route exact path={platform + 'example/loaderManager'} component={LoaderManager} />
                 {/* 三维示例 - 音频 */}
                 <Route exact path={platform + 'example/audio'} component={Audio} />
                 {/* 三维示例 - 附件/核心 */}
