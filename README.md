@@ -155,4 +155,4 @@
 - [x] Factory 工厂模型，基本功能同上，添加平面作为视频承载。
 - [x] MultipleModel 多个模型同时加载，制作动画。
 ## WebGL 学习
-- [ ] 使用 WebGL 画三角形。
+- [x] 使用 WebGL 画三角形。
