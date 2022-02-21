@@ -22,6 +22,7 @@ module.exports = () => {
     new TerserPlugin({
       test: /\.js(\?.*)?$/i,
       exclude: /[\\/]node_modules[\\/]/,
+      // 使用多线程并发进行 并发运行的默认数量： os.cpus().length - 1
       parallel: true,
       extractComments: false
     })
