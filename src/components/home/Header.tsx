@@ -177,6 +177,7 @@ const Header = () => {
               <Menu.Item key="dracoLoaderUse">DracoLoader 导入</Menu.Item>
               <Menu.Item key="factory">工厂模型</Menu.Item>
               <Menu.Item key="multipleModel">多模型（动画）</Menu.Item>
+              <Menu.Item key="postProcessingUnrealBloom">后期处理-外发光效果</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="WebGL 学习">
               <Menu.Item key="triangle">三角形</Menu.Item>

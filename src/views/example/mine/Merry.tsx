@@ -31,6 +31,7 @@ const Merry = () => {
   const [animationId, setAnimationId] = useState<number>();
   const [loadingProcess, setLoadingProcess] = useState<number>(0);
   const [sunHeight, setSunHeight] = useState<number>(0);
+  const [weatherList, setWeatherList] = useState<Array<string>>(['sun', 'lightStorm', 'rain', 'snow']);
   useEffect(() => {
     initMyScene();
     getSunHeight();

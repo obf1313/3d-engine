@@ -29,6 +29,7 @@ const App = () => {
                 <Route exact path={platform + 'example/multipleModel'} component={Views.MultipleModel} />
                 <Route exact path={platform + 'example/skyBox'} component={Views.SkyBox} />
                 <Route exact path={platform + 'example/factory'} component={Views.Factory} />
+                <Route exact path={platform + 'example/postProcessingUnrealBloom'} component={Views.PostProcessingUnrealBloom} />
                 {/* 三维示例 - 摄像机 */}
                 <Route exact path={platform + 'example/arrayCamera'} component={Views.ArrayCamera} />
                 <Route exact path={platform + 'example/cubeCamera'} component={Views.CubeCamera} />

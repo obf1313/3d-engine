@@ -4,8 +4,6 @@
  * @createTime: 2020/7/16 16:55
  **/
 // 首页
-import ArrowHelper from '@views/example/helper/ArrowHelper';
-
 export { default as Welcome } from '@views/home/Welcome';
 export { default as Home } from '@views/home/Home';
 // 404
@@ -19,6 +17,7 @@ export { default as DracoLoaderUse } from '@views/example/other/DracoLoaderUse';
 export { default as MultipleModel } from '@views/example/other/MultipleModel';
 export { default as SkyBox } from '@views/example/other/SkyBox';
 export { default as Factory } from '@views/example/other/Factory';
+export { default as PostProcessingUnrealBloom } from '@views/example/other/PostProcessingUnrealBloom';
 // 三维示例 - 摄像机
 export { default as Camera } from '@views/example/camera/Camera';
 export { default as ArrayCamera } from '@views/example/camera/ArrayCamera';
