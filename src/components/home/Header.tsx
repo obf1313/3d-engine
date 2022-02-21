@@ -181,6 +181,9 @@ const Header = () => {
             <Menu.ItemGroup title="WebGL 学习">
               <Menu.Item key="triangle">三角形</Menu.Item>
             </Menu.ItemGroup>
+            <Menu.ItemGroup title="最终目标">
+              <Menu.Item key="merry">大海上漂浮的小船</Menu.Item>
+            </Menu.ItemGroup>
           </SubMenu>
         </Menu>
       </Row>

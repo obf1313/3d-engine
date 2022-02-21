@@ -141,3 +141,5 @@ export { default as QuadraticBezierCurve3 } from '@views/example/extrasCurve/Qua
 export { default as SplineCurve } from '@views/example/extrasCurve/SplineCurve';
 // WebGL 学习
 export { default as Triangle } from '@views/example/webgl/Triangle';
+// 最终目标
+export { default as Merry } from '@views/example/mine/Merry';
