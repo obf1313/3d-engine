@@ -228,16 +228,24 @@ const Merry = () => {
       });
       THREE_CONST.scene.add(lightingStorm);
     } else if (currentWeather === 'rain') {
-      updateSun(0);
+      updateSun(170);
       addPoints('rain');
     } else if (currentWeather === 'snow') {
-      updateSun(0);
+      updateSun(-10);
       addPoints('snow');
     }
   };
   // 添加雨特效
   const addPoints = (type: 'rain' | 'snow') => {
-    const texture = new TextureLoader().load(staticUrlPrefix + 'textures/snow.png');
+    if (points1) {
+      THREE_CONST.scene.remove(points1);
+      points1 = null;
+    }
+    if (points2) {
+      THREE_CONST.scene.remove(points2);
+      points2 = null;
+    }
+    const texture = new TextureLoader().load(staticUrlPrefix + `textures/${type}.png`);
     const material = new PointsMaterial({
       size: 2,
       transparent: true,
