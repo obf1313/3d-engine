@@ -28,6 +28,7 @@ let ship: any;
 let points1: any;
 let points2: any;
 let sky: any;
+let weather: string;
 
 const Merry = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
@@ -179,13 +180,13 @@ const Merry = () => {
   // 雪花（雨的）动画
   const pointsRender = () => {
     if (points1) {
-      points1.position.y -= 0.2;
+      points1.position.y -= weather === 'rain' ? 0.5 : 0.2;
       if (points1.position.y < -100) {
         points1.position.y = 100;
       }
     }
     if (points2) {
-      points2.position.y -= 0.2;
+      points2.position.y -= weather === 'rain' ? 0.5 : 0.2;
       if (points2.position.y < -100) {
         points2.position.y = 100;
       }
@@ -223,6 +224,7 @@ const Merry = () => {
   };
   // 改变天气
   const changeWeather = () => {
+    weather = currentWeather;
     if (currentWeather === 'lightStorm') {
       const lightingStorm = new LightningStorm({
         size: 20,
@@ -249,7 +251,7 @@ const Merry = () => {
     }
     const texture = new TextureLoader().load(staticUrlPrefix + `textures/${type}.png`);
     const material = new PointsMaterial({
-      size: 2,
+      size: type === 'rain' ? 1 : 2,
       transparent: true,
       opacity: 0.8,
       map: texture,
