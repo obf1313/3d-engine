@@ -108,7 +108,7 @@ const Merry = () => {
     const controls = new OrbitControls(THREE_CONST.camera, renderer.domElement);
     controls.maxPolarAngle = Math.PI * 0.45;
     controls.minDistance = 0.1;
-    controls.maxDistance = 100;
+    controls.maxDistance = 80;
     controls.update();
     animate();
   };
@@ -198,6 +198,8 @@ const Merry = () => {
     setAnimationId(animationId);
     if (ship) {
       ship.position.y = Math.sin(time) * 0.2 - 0.2;
+      ship.position.x = Math.sin(time) * 0.5;
+      ship.position.z = Math.sin(time) * 0.5;
     }
     if (water) {
       water.material.uniforms['time'].value += 0.5 / 60.0;
@@ -231,7 +233,7 @@ const Merry = () => {
       updateSun(170);
       addPoints('rain');
     } else if (currentWeather === 'snow') {
-      updateSun(-10);
+      updateSun(150);
       addPoints('snow');
     }
   };
@@ -260,10 +262,10 @@ const Merry = () => {
     });
     const geometry: any = new BufferGeometry();
     const vertices = [];
-    for (let i = 0; i < 2000; i++) {
-      const x = MathUtils.randFloatSpread(100);
-      const y = MathUtils.randFloatSpread(100);
-      const z = MathUtils.randFloatSpread(100);
+    for (let i = 0; i < 5000; i++) {
+      const x = MathUtils.randFloatSpread(150);
+      const y = MathUtils.randFloatSpread(150);
+      const z = MathUtils.randFloatSpread(150);
       let vertex: any = new Vector3(x, y, z);
       // 纵向移动速度
       vertex.velocityY = 0.1 + Math.random() / 15;
