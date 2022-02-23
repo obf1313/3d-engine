@@ -7,7 +7,8 @@ import React, { useEffect, useState } from 'react';
 import {
   Color, WebGLRenderer, Vector3, PMREMGenerator, MathUtils,
   PlaneGeometry, TextureLoader, RepeatWrapping, ACESFilmicToneMapping, LoadingManager,
-  PointsMaterial, Points, AdditiveBlending, BufferGeometry, Float32BufferAttribute
+  PointsMaterial, Points, AdditiveBlending, BufferGeometry, Float32BufferAttribute,
+  PlaneBufferGeometry, MeshLambertMaterial, Mesh, AmbientLight, DirectionalLight, PointLight
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getClientWidth, getClientHeight } from '@utils/CommonFunc';
@@ -20,7 +21,6 @@ import { Water } from 'three/examples/jsm/objects/Water';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin, Radio } from 'antd';
 import dayjs from 'dayjs';
-import { LightningStorm } from 'three/examples/jsm/objects/LightningStorm';
 
 let sun: any;
 let water: any;
@@ -29,6 +29,10 @@ let points1: any;
 let points2: any;
 let sky: any;
 let weather: string;
+let clouds: any;
+let lighting: any;
+let ambientLight: any;
+let directionLight: any;
 
 const Merry = () => {
   const [threeContainer, setThreeContainer] = useState<any>();
@@ -113,6 +117,24 @@ const Merry = () => {
     controls.update();
     animate();
   };
+  // 创建云层 todo 会有明显的平面的感觉
+  const initCloud = () => {
+    const texture = new TextureLoader().load(staticUrlPrefix + 'textures/smoke.png');
+    const cloudGeo = new PlaneBufferGeometry(560, 300);
+    const cloudMaterial = new MeshLambertMaterial({
+      map: texture,
+      transparent: true,
+      opacity: 0.4
+    });
+    clouds = [];
+    for (let i = 0; i < 800; i++) {
+      const cloud = new Mesh(cloudGeo, cloudMaterial);
+      clouds.push(cloud);
+      cloud.position.set(Math.random() * 5000 - 460, 300, Math.random() * 5000 - 400);
+      cloud.rotation.set(1.16, -0.12, Math.random() * 360);
+      THREE_CONST.scene.add(cloud);
+    }
+  };
   // 生成场景
   const renderBackground = () => {
     sun = new Vector3();
@@ -144,19 +166,21 @@ const Merry = () => {
     updateSun(sunHeight);
   };
   const updateSun = (elevation: number) => {
-    // elevation 越小越接近水平线，最高空 90
-    const parameters = {
-      elevation,
-      azimuth: 180
-    };
-    const pmremGenerator = new PMREMGenerator(renderer);
-    const phi = MathUtils.degToRad(90 - parameters.elevation);
-    const theta = MathUtils.degToRad(parameters.azimuth);
-    sun.setFromSphericalCoords(1, phi, theta);
-    water.material.uniforms['sunDirection'].value.copy(sun).normalize();
-    sky.material.uniforms['sunPosition'].value.copy(sun);
-    // @ts-ignore
-    THREE_CONST.scene.environment = pmremGenerator.fromScene(sky).texture;
+    if (renderer) {
+      // elevation 越小越接近水平线，最高空 90
+      const parameters = {
+        elevation,
+        azimuth: 180
+      };
+      const pmremGenerator = new PMREMGenerator(renderer);
+      const phi = MathUtils.degToRad(90 - parameters.elevation);
+      const theta = MathUtils.degToRad(parameters.azimuth);
+      sun.setFromSphericalCoords(1, phi, theta);
+      water.material.uniforms['sunDirection'].value.copy(sun).normalize();
+      sky.material.uniforms['sunPosition'].value.copy(sun);
+      // @ts-ignore
+      THREE_CONST.scene.environment = pmremGenerator.fromScene(sky).texture;
+    }
   };
   // 导入模型
   const initModel = () => {
@@ -180,39 +204,17 @@ const Merry = () => {
   // 雪花（雨的）动画
   const pointsRender = () => {
     if (points1) {
-      points1.position.y -= weather === 'rain' ? 0.5 : 0.2;
+      points1.position.y -= weather === 'snow' ? 0.2 : 0.5;
       if (points1.position.y < -100) {
         points1.position.y = 100;
       }
     }
     if (points2) {
-      points2.position.y -= weather === 'rain' ? 0.5 : 0.2;
+      points2.position.y -= weather === 'snow' ? 0.2 : 0.5;
       if (points2.position.y < -100) {
         points2.position.y = 100;
       }
     }
-  };
-  // 更新
-  const animate = () => {
-    const time = performance.now() * 0.002;
-    const animationId = requestAnimationFrame(animate);
-    setAnimationId(animationId);
-    if (ship) {
-      ship.position.y = Math.sin(time) * 0.2 - 0.2;
-      ship.position.x = Math.sin(time) * 0.5;
-      ship.position.z = Math.sin(time) * 0.5;
-    }
-    if (water) {
-      water.material.uniforms['time'].value += 0.5 / 60.0;
-    }
-    pointsRender();
-    renderer.render(THREE_CONST.scene, THREE_CONST.camera);
-  };
-  // 监听拉伸浏览器事件
-  const onWindowResize = () => {
-    THREE_CONST.camera.aspect = getClientWidth() / (getClientHeight() - 60);
-    THREE_CONST.camera.updateProjectionMatrix();
-    renderer.setSize(getClientWidth(), getClientHeight() - 60);
   };
   // 根据当前时间计算太阳位置
   const getSunHeight = () => {
@@ -226,21 +228,32 @@ const Merry = () => {
   const changeWeather = () => {
     weather = currentWeather;
     if (currentWeather === 'lightStorm') {
-      const lightingStorm = new LightningStorm({
-        size: 20,
-        minHeight: 100
-      });
-      THREE_CONST.scene.add(lightingStorm);
+      reset();
+      initCloud();
+      updateSun(-10);
+      addPoints('rain');
+      ambientLight = new AmbientLight(0x555555);
+      THREE_CONST.scene.add(ambientLight);
+      directionLight = new DirectionalLight(0xffeedd);
+      directionLight.position.set(0, 0, 1);
+      THREE_CONST.scene.add(directionLight);
+      // 闪电
+      lighting = new PointLight(0xeeeeee, 50, 1000, 1.7);
+      lighting.position.set(200, 300, 100);
+      THREE_CONST.scene.add(lighting);
     } else if (currentWeather === 'rain') {
       updateSun(170);
       addPoints('rain');
     } else if (currentWeather === 'snow') {
       updateSun(150);
       addPoints('snow');
+    } else {
+      updateSun(sunHeight);
+      reset();
     }
   };
-  // 添加雨特效
-  const addPoints = (type: 'rain' | 'snow') => {
+  // 重置当前 points
+  const reset = () => {
     if (points1) {
       THREE_CONST.scene.remove(points1);
       points1 = null;
@@ -249,6 +262,28 @@ const Merry = () => {
       THREE_CONST.scene.remove(points2);
       points2 = null;
     }
+    if (clouds) {
+      clouds.forEach((item: any) => {
+        THREE_CONST.scene.remove(item);
+      });
+      clouds = [];
+    }
+    if (ambientLight) {
+      THREE_CONST.scene.remove(ambientLight);
+      ambientLight = null;
+    }
+    if (directionLight) {
+      THREE_CONST.scene.remove(directionLight);
+      directionLight = null;
+    }
+    if (lighting) {
+      THREE_CONST.scene.remove(lighting);
+      lighting = null;
+    }
+  };
+  // 添加雨特效
+  const addPoints = (type: 'rain' | 'snow') => {
+    reset();
     const texture = new TextureLoader().load(staticUrlPrefix + `textures/${type}.png`);
     const material = new PointsMaterial({
       size: type === 'rain' ? 1 : 2,
@@ -283,6 +318,45 @@ const Merry = () => {
     points2.position.y = 200;
     THREE_CONST.scene.add(points1);
     THREE_CONST.scene.add(points2);
+  };
+  // 更新
+  const animate = () => {
+    const time = performance.now() * 0.002;
+    const animationId = requestAnimationFrame(animate);
+    setAnimationId(animationId);
+    if (ship) {
+      ship.position.y = Math.sin(time) * 0.2 - 0.2;
+      ship.position.x = Math.sin(time) * 0.5;
+      ship.position.z = Math.sin(time) * 0.5;
+    }
+    if (water) {
+      water.material.uniforms['time'].value += 0.5 / 60.0;
+    }
+    if (clouds) {
+      clouds.forEach((item: any) => {
+        item.rotation.z -= 0.003;
+      });
+    }
+    if (lighting) {
+      if (Math.random() > 0.99 || lighting.power > 100) {
+        if (lighting.power < 100) {
+          lighting.position.set(
+            Math.random() * 400,
+            300 + Math.random() * 200,
+            100
+          );
+        }
+        lighting.power = 50 + Math.random() * 500;
+      }
+    }
+    pointsRender();
+    renderer.render(THREE_CONST.scene, THREE_CONST.camera);
+  };
+  // 监听拉伸浏览器事件
+  const onWindowResize = () => {
+    THREE_CONST.camera.aspect = getClientWidth() / (getClientHeight() - 60);
+    THREE_CONST.camera.updateProjectionMatrix();
+    renderer.setSize(getClientWidth(), getClientHeight() - 60);
   };
   // 天气列表
   const weatherList: Array<string> = ['sun', 'lightStorm', 'rain', 'snow'];
