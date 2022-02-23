@@ -49,6 +49,17 @@ const Merry = () => {
       window.removeEventListener('resize', onWindowResize);
       // 重置全局变量
       resetThreeConst();
+      sun = null;
+      water = null;
+      ship = null;
+      points1 = null;
+      points2 = null;
+      sky = null;
+      weather = '';
+      clouds = null;
+      lighting = null;
+      ambientLight = null;
+      directionLight = null;
     };
   }, []);
   useEffect(() => {
@@ -238,7 +249,7 @@ const Merry = () => {
       directionLight.position.set(0, 0, 1);
       THREE_CONST.scene.add(directionLight);
       // 闪电
-      lighting = new PointLight(0xeeeeee, 50, 1000, 1.7);
+      lighting = new PointLight(0xF7DF1E, 50, 1000, 1.7);
       lighting.position.set(200, 300, 100);
       THREE_CONST.scene.add(lighting);
     } else if (currentWeather === 'rain') {
