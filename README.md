@@ -157,3 +157,6 @@
 - [x] PostProcessingUnrealBloom 后期处理-外发光效果。
 ## WebGL 学习
 - [x] 使用 WebGL 画三角形。
+## 写着玩的
+- [ ] 大海上漂浮的小船，（天气变化），时间变化。
+- [x] 给模型打标签，使用 Sprite。
