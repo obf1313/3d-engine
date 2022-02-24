@@ -4,8 +4,9 @@
  * @createTime: 2021/9/17 11:11
  **/
 import {
-  Color, CubeTexture, CubeTextureLoader, Fog, FogExp2, Material, OrthographicCamera,
-  PerspectiveCamera, Raycaster, Scene, ShapePath, Texture, Vector2, Vector3
+  Color, CubeTexture, CubeTextureLoader, Fog, FogExp2,
+  Material, OrthographicCamera, PerspectiveCamera, Raycaster, Scene,
+  ShapePath, Texture, Vector2, Vector3
 } from 'three';
 import { getClientHeight, getClientWidth } from '@utils/CommonFunc';
 
@@ -64,7 +65,16 @@ export const getIntersects = (event: MouseEvent, container: any, camera: any, sc
   // 返回射线选中的对象 第二个参数如果不填 默认是false
   return rayCaster.intersectObjects(scene.children, true);
 };
-
+/**
+ * 返回世界坐标
+**/
+export const getWordVector = (event: MouseEvent, container: any, camera: any) => {
+  event.preventDefault();
+  const { x, y } = getIntersectPosition(event, container);
+  let standardVector = new Vector3(x, y, 1);// 标准设备坐标
+  // 标准设备坐标转世界坐标
+  return standardVector.unproject(camera);
+};
 /**
  * 初始化 CubeTexture
  * 文件路径前缀 path: string,

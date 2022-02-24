@@ -172,7 +172,6 @@ const Raycaster = () => {
       }
       render();
     }
-
   };
   // render
   const render = () => {

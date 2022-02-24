@@ -184,6 +184,7 @@ const Header = () => {
             </Menu.ItemGroup>
             <Menu.ItemGroup title="最终目标">
               <Menu.Item key="merry">大海上漂浮的小船</Menu.Item>
+              <Menu.Item key="mark">模型标注</Menu.Item>
             </Menu.ItemGroup>
           </SubMenu>
         </Menu>

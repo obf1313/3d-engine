@@ -66,7 +66,7 @@ const SpriteMaterial = () => {
       position: [15, 15, 15]
     });
     const threeContainer = document.getElementById('threeContainer') || document;
-    initCube();
+    initSprite();
     setThreeContainer(threeContainer);
   };
   // 初始化 webgl 渲染器
@@ -88,8 +88,8 @@ const SpriteMaterial = () => {
     controls.enableRotate = true;
     animate();
   };
-  // 生成一个 cube 放入场景中
-  const initCube = () => {
+  // 放入精灵
+  const initSprite = () => {
     group = new Group();
     THREE_CONST.scene.add(group);
     const sprite1 = new Sprite(new TSpriteMaterial({ color: '#69f' }));

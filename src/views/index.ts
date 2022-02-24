@@ -142,3 +142,4 @@ export { default as SplineCurve } from '@views/example/extrasCurve/SplineCurve';
 export { default as Triangle } from '@views/example/webgl/Triangle';
 // 最终目标
 export { default as Merry } from '@views/example/mine/Merry';
+export { default as Mark } from '@views/example/mine/Mark';

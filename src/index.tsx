@@ -9,6 +9,7 @@ import { ErrorBoundary } from '@components/index';
 import * as Views from '@views/index';
 import { platform } from '@utils/CommonVars';
 import { homeInit, homeReducer } from '@views/home/HomeReducer';
+import { Mark } from '@views/index';
 
 export const HomeContext = createContext({ homeState: homeInit, homeDispatch: (value: any) => {} });
 
@@ -153,6 +154,7 @@ const App = () => {
                 <Route exact path={platform + 'example/triangle'} component={Views.Triangle} />
                 {/* 最终目标 */}
                 <Route exact path={platform + 'example/merry'} component={Views.Merry} />
+                <Route exact path={platform + 'example/mark'} component={Views.Mark} />
               </ErrorBoundary>
               <Route component={Views.NotFound} />
             </Switch>
