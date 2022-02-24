@@ -85,7 +85,7 @@ const Mark = () => {
         near: 1,
         far: 20000,
       },
-      position: [0, 10, 30]
+      position: [0, 5, 15]
     });
     const threeContainer = document.getElementById('threeContainer') || document;
     initLight();
